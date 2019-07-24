@@ -1,0 +1,10 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/test/test",
+    "pages/test2/test2"
+  ],
+  "window": {
+    "defaultTitle": "工作日志管理系统"
+  }
+}

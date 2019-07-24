@@ -1,0 +1,19 @@
+
+
+<view class="button">
+  <view class='countDown'>录音倒计时：<text class="text">{{countDownNum}}</text>秒</view>
+   <button type="primary" onTap="startRecord">{{buttonText_1}}</button>
+
+   <button type="warn" onTap="stopRecord">结束</button>
+
+   <button type="default" onTap="start" plain>播放</button>
+
+   <button type="primary" onTap="upload" plain>上传</button>
+
+  <button type="primary" onTap="stop" plain>暂停</button>
+<text class="ps">*如果需要录制长时间,推荐多次录音</text>
+</view>
+
+
+
+
