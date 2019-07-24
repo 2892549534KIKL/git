@@ -1,0 +1,14 @@
+
+<form onSubmit="formSubmit" onReset="formReset">
+<view class="container">
+    <view class="mt-24"><text>用户名：</text></view>
+    <view class="inputOne">
+        <input class="name" name="name" placeholder="请输入用户名" maxlength="10" />
+    </view>
+     <view class="mt-24"><text>密码：</text></view>
+    <view class="inputOne">
+        <input class="password" name="password" placeholder="请输入密码" maxlength="16" type="password" />
+    </view>
+    <button  form-type="submit" type="primary" loading>登录</button>
+</view>
+</form>

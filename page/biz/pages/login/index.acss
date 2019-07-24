@@ -1,0 +1,20 @@
+@import '../../components/tag/index.acss';
+
+.container {
+    padding: 0 20rpx;
+}
+
+.mt-24 {
+    margin-top: 24rpx;
+}
+
+
+
+input{
+  width: 100%;
+  height: 66rpx;
+}
+
+button{
+  margin-top: 111rpx;
+}
