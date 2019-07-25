@@ -45,6 +45,11 @@ Page({
         title: '登录',
         entitle: 'login',
         page: '/page/biz/pages/login/index',
+      }, {
+        icon: '/image/mine/loginPlus.png',
+        title: '表格ui',
+        entitle: 'tableUI',
+        page: '/page/biz/pages/tableUI/index',
       }],
     },
   },

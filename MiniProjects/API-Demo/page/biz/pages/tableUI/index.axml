@@ -1,0 +1,13 @@
+
+<form onSubmit="formSubmit" onReset="formReset">
+<view class="login">
+  <view >
+    <input placeholder="邮箱/手机号" maxlength="10" name='name'/>
+     <input placeholder="密码" maxlength="16" name='password' type="password"/>
+    </view>
+      <view >
+    <button type="primary" formType="submit" loading>Submit</button>
+    <button type="primary" formType="reset">Reset</button>
+  </view>
+  </view>
+  </form>

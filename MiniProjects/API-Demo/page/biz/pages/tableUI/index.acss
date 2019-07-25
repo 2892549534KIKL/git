@@ -1,0 +1,9 @@
+
+.login{
+ margin-top: 22rpx;
+ margin-left: 22px;
+}
+input{
+  width: 100%;
+  height: 66rpx;
+}

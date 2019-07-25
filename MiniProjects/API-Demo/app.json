@@ -8,6 +8,7 @@
     "page/biz/pages/list/index",
     "page/biz/pages/tag/index",
     "page/biz/pages/login/index",
+    "page/biz/pages/tableUI/index",
     "page/component/index",
     "page/component/action-sheet/action-sheet",
     "page/component/button/button",
