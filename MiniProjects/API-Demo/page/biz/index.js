@@ -40,6 +40,11 @@ Page({
         title: '标签',
         entitle: 'Tag',
         page: '/page/biz/pages/tag/index',
+      }, {
+        icon: '/image/mine/login.png',
+        title: '登录',
+        entitle: 'login',
+        page: '/page/biz/pages/login/index',
       }],
     },
   },

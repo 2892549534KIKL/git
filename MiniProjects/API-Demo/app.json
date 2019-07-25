@@ -7,6 +7,7 @@
     "page/biz/pages/grid/index",
     "page/biz/pages/list/index",
     "page/biz/pages/tag/index",
+    "page/biz/pages/login/index",
     "page/component/index",
     "page/component/action-sheet/action-sheet",
     "page/component/button/button",
@@ -108,20 +109,20 @@
     "items": [
       {
         "pagePath": "page/component/index",
-        "icon": "image/icon_component.png",
-        "activeIcon": "image/icon_component_HL.png",
+        "icon": "image/mine/experienceArea.png",
+        "activeIcon": "image/mine/experienceAreaPlus.png",
         "name": "体验区"
       },
       {
         "pagePath": "page/API/index/index",
-        "icon": "image/icon_API.png",
-        "activeIcon": "image/icon_API_HL.png",
+        "icon": "image/mine/vipArea.png",
+        "activeIcon": "image/mine/vipAreaPlus.png",
         "name": "会员区"
       },
       {
         "pagePath": "page/biz/index",
-        "icon": "image/icon_biz.png",
-        "activeIcon": "image/icon_biz_HL.png",
+        "icon": "image/mine/mine.png",
+        "activeIcon": "image/mine/minePlus.png",
         "name": "我的"
       }
     ]
