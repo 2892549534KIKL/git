@@ -1,0 +1,41 @@
+<view style="position: fixed; width: 100%;height: 100px;margin-top:-2px">
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <!-- 搜索框 -->
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" onBlur="save" placeholder="请输入搜索内容"/>
+      </view>
+    </view>
+    <!-- 搜索按钮,调用搜索查询方法 -->
+    <view class="weui-search-bar__cancel-btn" onTap='search'>搜索</view>
+  </view>
+</view>
+<view style="margin-top: 50px;"></view>
+<block a:for="{{constructionSiteData}}">
+  <!-- <block a:for="{{hideViewId}}" key=""> -->
+    <!-- 开始循环读取js中的数组 -->
+    <view class="box {{constructionSiteData[index].createTime=='-1'?'none ':'block'}}"><!-- 如果等于-1就表示已删除,界面隐藏此记录 -->
+      <view class="box_txt">
+        <text class="box_title">{{constructionSiteData[index].name}}\n
+        </text>
+        </text>
+        <!-- 商品名称 -->
+        <text class="">({{constructionSiteData[index].province}}-{{constructionSiteData[index].city}}-{{constructionSiteData[index].county}}:{{constructionSiteData[index].address}})\n</text>
+        <!-- 仓库 -->
+        <text class="">操作人:{{constructionSiteData[index].headName}}\n</text>
+        <!-- 出库人 -->
+        <view class="box_bottom">
+          <text class="">创建时间:{{constructionSiteData[index].createTime}}\n</text>
+          <button onTap="del" size="mini" data-id="{{constructionSiteData[index].id}}" data-index="{{index}}" type="warn">删除</button>
+        </view>
+        <!-- 出库时间 -->
+      </view>
+    </view>
+    <view class="divLine {{index==hideViewId?'none':'block'}}"></view>
+    <!-- 读取结束 -->
+  <!-- </block> -->
+</block>
+<view class="over_box {{showView?'block':'none'}}">
+  已加载全部数据
+</view>

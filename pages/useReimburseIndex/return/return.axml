@@ -1,0 +1,22 @@
+<view class="head">
+  <button class="head_button" onTap="saoMa" size="default" type="primary">点击扫码</button>
+  <view class="table">
+    <view class="tr">
+      <view class="th">名称</view>
+      <view class="th">数量</view>
+      <view class="th">单位</view>
+    </view>
+    <form onSubmit="up" onReset="">
+    <block a:for="{{arrayList}}">
+      <view class="tr">
+        <view class="td">{{arrayList[index].name}}</view>
+        <view class="td">{{arrayList[index].surplus}}</view>
+        <view class="td">{{arrayList[index].unit}}</view>
+      </view>
+    </block>
+    <view class="btn-area">
+    <button formType="submit">提交</button>
+    </view>
+    </form>
+  </view>
+</view>

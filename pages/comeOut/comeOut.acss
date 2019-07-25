@@ -1,0 +1,131 @@
+.weui-search-bar {
+  position: relative;
+  padding: 8px 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #EFEFF4;
+  border-top: 1rpx solid #D7D6DC;
+  border-bottom: 1rpx solid #D7D6DC;
+}
+
+.weui-icon-search_in-box {
+  position: absolute;
+  left: 10px;
+  top: 7px;
+}
+
+.weui-search-bar__form {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+  flex: auto;
+  border-radius: 5px;
+  background: #FFFFFF;
+  border: 1rpx solid #E6E6EA;
+}
+
+.weui-search-bar__box {
+  position: relative;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.weui-search-bar__input {
+  height: 28px;
+  line-height: 28px;
+  font-size: 14px;
+}
+
+.weui-search-bar__cancel-btn {
+  margin-top: 3px;
+  margin-left: 10px;
+  line-height: 28px;
+  color: #09BB07;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.box {
+  width: 100%;
+  height: 100px;
+  /* border-radius: 10px; */
+  /* border: 1px solid #70bcf6; */
+  margin-top: 5px;
+}
+
+
+/* .comeOutSucceed {
+  background-color: #E0E3DA;
+} */
+
+/*分割线样式*/
+
+.divLine {
+  background: #E0E3DA;
+  width: 100%;
+  height: 5rpx;
+}
+
+.box_txt {
+  margin-left: 10px;
+}
+
+.box_title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.stateSucceed {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.stateDefeated {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.stateSucceed text {
+  /* border: 1.5px solid #70bcf6; */
+  background-color: #00CCFF;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-radius: 4px;
+}
+
+.stateDefeated text {
+  /* border: 1.5px solid #70bcf6; */
+  background-color: #FF3333;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-radius: 4px;
+}
+
+.box_bottom {
+  /* display: flex; */
+  /* background-color: #09BB07; */
+}
+
+.box_bottom button {
+  float: right;
+  margin-top: -20px;
+  margin-right: 5px;
+}
+
+.over_box {
+  margin: 10px;
+  color: #969696;
+  text-align: center;
+}
+
+.block{
+  display: block;
+}
+.none{
+  display: none;
+}

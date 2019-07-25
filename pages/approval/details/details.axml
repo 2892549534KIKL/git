@@ -1,0 +1,21 @@
+<block a:for="{{detailsData}}">
+  <!-- 开始循环读取js中的数组 -->
+  <view class="box_txt">
+    <text class="box_title">{{detailsData[index].goodsName}}:
+      <text class="">{{detailsData[index].number}}
+        <text>{{detailsData[index].unit}}\n</text>
+      </text>
+    </text>
+    <!-- 标题 -->
+    <text >出库数量:{{detailsData[index].quantity}}\n
+      <!-- 内容 -->
+    </text>
+    </text>
+    <text >总计:{{detailsData[index].number}}\n</text>
+    <!-- 审批意见 -->
+    <text >条形码:{{detailsData[index].barcode}}\n</text>
+  </view>
+  </view>
+  <view class="divLine"></view>
+  <!-- 读取结束 -->
+</block>

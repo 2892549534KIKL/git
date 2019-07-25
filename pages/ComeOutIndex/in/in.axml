@@ -1,0 +1,21 @@
+<view class="head">
+  <button class="head_button" onTap="saoMa" size="default" type="primary">点击扫码</button>
+  <view class="table">
+    <view class="tr">
+      <view class="th">状态</view>
+      <view class="th">仓库</view>
+      <view class="th">入库人</view>
+      <view class="th">商品名称</view>
+      <view class="th">入库时间</view>
+    </view>
+    <block a:for="{{arrayTest}}">
+      <view class="tr">
+        <view class="td">{{arrayTest[arrayTest.length-index-1].msg}}</view>
+        <view class="td">{{arrayTest[arrayTest.length-index-1].storeHouseName}}</view>
+        <view class="td">{{arrayTest[arrayTest.length-index-1].userName}}</view>
+        <view class="td">{{arrayTest[arrayTest.length-index-1].name}}[{{arrayTest[arrayTest.length-index-1].number}}{{arrayTest[arrayTest.length-index-1].unit}}]</view>
+        <view class="td">{{arrayTest[arrayTest.length-index-1].time}}</view>
+      </view>
+    </block>
+  </view>
+</view>

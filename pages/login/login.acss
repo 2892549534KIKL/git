@@ -1,0 +1,16 @@
+.logo image {
+  width: 170px;
+  height: 170px;
+}
+
+.logo {
+  display: flex;
+  /*设置显示样式**/
+  align-items: center;
+  /**子view垂直居中*/
+  vertical-align: center;
+  /**垂直居中*/
+  justify-content: center;
+  /**内容居中*/
+  flex-direction: row;
+}

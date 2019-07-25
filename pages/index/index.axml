@@ -1,0 +1,16 @@
+<view style="text-align: center;">操作菜单</view>
+<view class="boxBig">
+  <view class="box">
+    <view onTap="jump"  data-index="{{index}}" style="background-color: {{item.color}};float: left;" class="section" a:for="{{array}}" a:for-item="item" >
+      <view class="box_img">
+        <image style="width: 80%; height: 80%;" mode="{{item.mode}}" src="{{item.src}}" onError="imageError" onLoad="imageLoad" />
+      </view>
+      <view class="box_text">
+        <text >{{item.text}}<text class="{{item.number>0?'box_text_number':''}}" >{{item.number}}</text></text>
+      </view>
+    </view>
+  </view>
+
+  <view class="td-2" selectable="true" scroll-y="true" >     
+      <text class="th-text" disabled='true'  style="overflow-y:auto;overflow-x:scroll;" selectable="true"></text>
+ </view>

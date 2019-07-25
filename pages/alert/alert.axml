@@ -1,0 +1,22 @@
+<view class='toast-box' a:if="{{sign}}">
+  <view onTap="hide" class='toastbg'></view>
+  <view class='showToast'>
+    <view class='toast-title'>
+      <text>审批意见</text>
+    </view>
+    <view class='toast-main'>
+      <view class='toast-input'>
+        <textarea class="detailText" placeholder="请输入审批意见" bindblur="bindTextAreaBlur" value="{{details}}">
+        </textarea>
+      </view>
+    </view>
+    <view class='toast-button'>
+      <view class='button1'>
+        <button onTap='cancel'>驳回</button>
+      </view>
+      <view class='button2'>
+        <button onTap='confirm'>同意</button>
+      </view>
+    </view>
+  </view>
+</view>

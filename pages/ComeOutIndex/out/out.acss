@@ -1,0 +1,33 @@
+.head{
+  width: 100%;
+}
+.head_button{
+  width: 70%;
+  margin: 0 auto;
+}
+page {
+　　font-size: 14px;
+　　color: #333
+}
+.table {
+   margin-top: 10px;
+　　border:1px solid #dadada;
+　　border-right: 0;
+　　border-bottom: 0;
+   width: 100%;
+}
+.tr {
+　　width: 100%;
+　　display: flex;
+　　justify-content: space-between;
+}
+.th,.td {
+　　border-bottom: 1px solid #dadada;
+　　border-right: 1px solid #dadada;
+　　text-align: center;
+　　width:100%
+}
+.th {
+　　font-weight: 400;
+　　background-color: #dadada
+}

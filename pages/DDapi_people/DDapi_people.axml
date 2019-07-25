@@ -1,0 +1,9 @@
+<view>
+  <button size="default" type="primary" onTap="getPeopleAndDepartment">点击获取人员和部门</button>
+  <button size="default" type="primary" onTap="getDepartment">点击获取部门</button>
+  <button size="default" type="primary" onTap="postMessage">发送信息</button>
+  <button size="default" type="primary" onTap="postMessage2">打开与某个用户的聊天页面(单聊)</button>
+  <button size="default" type="primary" onTap="getConversation">选择会话</button>
+  <button size="default" type="primary" onTap="postConversationMessage">选择会话并打开聊天界面(群聊)</button>
+  <button size="default" type="primary" onTap="getLocation">获取地理位置</button>
+</view>

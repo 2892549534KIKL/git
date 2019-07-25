@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/approval/approval",
+    "pages/login/login",
+    "pages/comeOut/comeOut",
+    "pages/form2/form2",
+    "pages/myHome/changePassword/changePassword",
+    "pages/myHome/myInformation/myInformation",
+    "pages/myHome/myHome",
+    "pages/login/login",
+    "pages/index/index",
+    "pages/form/form",
+    "pages/DDapi_people/DDapi_people",
+    "pages/applyApproval/applyApproval",
+    "pages/construction/construction",
+    "pages/construction/construction",
+    "pages/ComeOutIndex/ComeOutIndex",
+    "pages/ComeOutIndex/in/in",
+    "pages/ComeOutIndex/out/out",
+    "pages/useReimburseIndex/personOut/personOut",
+    "pages/useReimburseIndex/return/return",
+    "pages/useReimburseIndex/useReimburseIndex",
+    "pages/approval/details/details",
+    "pages/alert/alert"
+  ],
+  "window": {
+    "defaultTitle": "中江鹏欢迎您"
+  },
+  "tabBar": {
+    "items": [
+      {
+        "pagePath": "pages/index/index",
+        "name": "首页"
+      },
+      {
+        "pagePath": "pages/construction/construction",
+        "name": "施工管理"
+      },
+      {
+        "pagePath": "pages/comeOut/comeOut",
+        "name": "出入库数据"
+      },
+      {
+        "pagePath": "pages/myHome/myHome",
+        "name": "我的"
+      }
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+<view style="position: fixed; width: 100%;height: 100px;margin-top:-2px">
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <!-- 搜索框 -->
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input onInput='save' type="text" class="weui-search-bar__input" placeholder="请输入搜索内容" value="{{searchText}}"/>
+      </view>
+    </view>
+    <!-- 搜索按钮,调用搜索查询方法 -->
+    <view class="weui-search-bar__cancel-btn" onTap='search'>搜索</view>
+    <view class="weui-search-bar__cancel-btn" onTap='cut'>{{buttonText}}</view>
+  </view>
+</view>
+<view style="margin-top: 50px;"></view>
+<block a:for="{{approvalData}}">
+  <!-- 开始循环读取js中的数组 -->
+  <view class="box {{approvalData[index].createTime=='-1'?'none ':'block'}}">
+    <view class="box_txt">
+      <text class="box_title">{{approvalData[index].title}}\n
+        <!-- 标题 -->
+        <text a:if="{{buttonText=='未审批'}}">{{approvalData[index].content}}\n
+          <!-- 内容 -->
+        </text>
+      </text>
+      <text a:if="{{buttonText=='已审批'}}">审批意见:{{approvalData[index].text}}\n</text>
+      <!-- 审批意见 -->
+      <text >申请人:{{approvalData[index].senderName}}\n</text>
+      <!-- 申请人 -->
+      <view class="{{approvalData[index].stateName=='审批成功'?'stateSucceed':'stateDefeated'}}">
+        <text>{{approvalData[index].stateName}}\n</text>
+        <!-- 状态 -->
+      </view>
+      <view class="box_bottom">
+        <text class="">时间:{{approvalData[index].createTime}}\n</text>
+        <!-- 创建时间 -->
+        <button size="mini" type="primary" onTap="showDetails"  data-id="{{approvalData[index].id}}">物料详情</button>
+        <button a:if="{{buttonText=='已审批'}}" onTap="show" size="mini" data-id="{{approvalData[index].id}}" data-index="{{index}}" type="warn">审批</button>
+      </view>
+      <!-- 出库时间 -->
+    </view>
+  </view>
+  <view class="divLine"></view>
+  <!-- 读取结束 -->
+</block>
+<view class="over_box {{showView?'block':'none'}}">
+  已加载全部数据
+</view>
+<!-- 弹窗 -->
+<view class='toast-box' a:if="{{isShowWindow}}">
+  <view onTap="hide" class='toastbg'></view>
+  <view class='showToast'>
+    <view class='toast-title'>
+      <text>审批意见</text>
+    </view>
+    <view class='toast-main'>
+      <view class='toast-input'>
+        <textarea class="detailText" onInput='savedetails' placeholder="请输入审批意见" bindblur="bindTextAreaBlur" value="{{details}}">
+        </textarea>
+      </view>
+    </view>
+    <view class='toast-button'>
+      <view class='button1'>
+        <button onTap='check' data-value='no'>驳回</button>
+      </view>
+      <view class='button2'>
+        <button onTap='check' data-value='yes'>同意</button>
+      </view>
+    </view>
+  </view>
+</view>

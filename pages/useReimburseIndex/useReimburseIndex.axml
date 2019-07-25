@@ -1,0 +1,6 @@
+<view class="page">
+  <view>
+    <button type="primary" onTap="in">扫码使用物品</button>
+    <button type="primary" onTap="out">扫码报销物品</button>
+  </view>
+</view>

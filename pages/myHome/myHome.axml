@@ -1,0 +1,36 @@
+<!-- 头像+名称部分 -->
+<view class="top_box" style="">
+  <view class="top_box_img">
+    <image src="{{photo}}" />
+  </view>
+  <view class="top_box_text">
+    姓名:{{nickName}}
+  </view>
+</view>
+<!-- 底部导航栏部分 -->
+<view class="" style="margin-top:10px;">
+  <block a:for="{{array_bottom}}">
+    <navigator url="{{array_bottom[index].url}}" hover-class="none">
+      <view class="form-row">
+        <view class="form-row-label">
+          <image class="box_img" src='{{array_bottom[index].src}}'></image>
+          <text class="box_text">{{array_bottom[index].text}}</text>
+          <view class="form-row-content" style="text-align: right">
+            <view class='arrow'></view>
+          </view>
+        </view>
+      </view>
+    </navigator>
+    </block>
+    <navigator onTap="out" url="../login/login" hover-class="none">
+      <view class="form-row">
+        <view class="form-row-label">
+          <image class="box_img" src='../images/comeOut.png'></image>
+          <text class="box_text">退出登录</text>
+          <view class="form-row-content" style="text-align: right">
+            <view class='arrow'></view>
+          </view>
+        </view>
+      </view>
+    </navigator>
+</view>

@@ -1,0 +1,105 @@
+<view class="page">
+  <view class="page-description">表单</view>
+  <form onSubmit="onSubmit" onReset="onReset">
+    <view class="page-section">
+      <view class="page-section-title">Slider</view>
+      <view class="page-section-demo">
+        <slider value="80" name="slider" show-value />
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="form-row">
+        <view class="form-row-label">开关</view>
+        <view class="form-row-content" style="text-align: right">
+          <switch name="switch" />
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label">输入框</view>
+        <view class="form-row-content">
+          <input name="input" class="input" placeholder="input something" />
+        </view>
+          <button size="default" type="primary" onTap="test">上传附件</button>
+
+      </view>
+      <view class="form-line" />
+      <view class="pv-container">
+        <view class="pv-left">
+          <picker-view value="{{value}}" onChange="onChange">
+            <picker-view-column>
+              <view>2013</view>
+              <view>2014</view>
+              <view>2013</view>
+              <view>2014</view>
+              <view>2013</view>
+              <view>2014</view>
+              <view>2013</view>
+              <view>2014</view>
+            </picker-view-column>
+            <picker-view-column>
+              <view>春</view>
+              <view>夏</view>
+            </picker-view-column>
+          </picker-view>
+        </view>
+        <view class="pv-right">
+          {{value}}
+        </view>
+      </view>
+    </view>
+    <view class="page">
+      <view class="page-description">操作菜单 API</view>
+      <view class="page-section">
+        <view class="page-section-title">dd.showActionSheet</view>
+        <view class="page-section-demo">
+          <button type="primary" onTap="showActionSheet">显示操作菜单</button>
+        </view>
+      </view>
+    </view>
+    <view class="page">
+      <view class="page-description">选择日期 API</view>
+      <view class="page-section">
+        <view class="page-section-title">dd.datePicker</view>
+        <view class="page-section-demo">
+          <button class="page-body-button" type="primary" onTap="datePicker">选择日期-1</button>
+          <button class="page-body-button" type="primary" onTap="datePickerHMS">选择日期-2</button>
+          <button class="page-body-button" type="primary" onTap="datePickerYMDHMS">选择日期-3</button>
+        </view>
+      </view>
+    </view>
+
+    <view class="page">
+      <button type="primary" onTap="uploadFile">上传图片</button>
+    </view>
+    
+    <view class="page-section">
+      <view class="page-section-title">单选框</view>
+      <view class="page-section-demo">
+        <radio-group name="radio-group">
+          <label>
+            <radio value="radio1" />radio1</label>
+          <label>
+            <radio value="radio2" />radio2</label>
+        </radio-group>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="page-section-title">多选框</view>
+      <view class="page-section-demo">
+        <checkbox-group name="checkbox">
+          <label>
+            <checkbox value="checkbox1" />checkbox1</label>
+          <label>
+            <checkbox value="checkbox2" />checkbox2</label>
+        </checkbox-group>
+      </view>
+      <view class="page-section-btns">
+        <view>
+          <button type="ghost" size="mini" formType="reset">清空</button></view>
+        <view>
+          <button type="primary" size="mini" formType="submit">提交</button></view>
+      </view>
+    </view>
+  </form>
+</view>

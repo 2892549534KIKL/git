@@ -1,0 +1,41 @@
+<view  style="position: fixed; width: 100%;height: 100px;margin-top:-2px">
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <!-- 搜索框 -->
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="请输入搜索内容"/>
+      </view>
+    </view>
+    <!-- 搜索按钮,调用搜索查询方法 -->
+    <view class="weui-search-bar__cancel-btn" onTap='search'>搜索</view>
+  </view>
+</view>
+<block a:for="{{table}}">
+  <!-- 开始循环读取js中的数组 -->
+    <view  class="box {{index==0?'box_one':''}}">
+      <view class="box_txt">
+        <text class="box_title">{{table[index].itemName}}:
+          <text class="">{{table[index].number}}
+            <text>{{table[index].unit}}\n</text>
+          </text>
+        </text>
+        <!-- 商品名称 -->
+        <text class="">{{table[index].customerName}}\n</text>
+        <!-- 仓库 -->
+        <text class="">操作人:{{table[index].operator}}\n</text>
+        <!-- 出库人 -->
+        <view class="{{item.state=='出库成功'?'stateSucceed':'stateDefeated'}}">
+          <text>{{table[index].state}}\n</text>
+        </view>
+        <view class="box_bottom">
+          <text class="">出库时间:{{table[index].time}}\n</text>
+          <button size="mini" type="primary">修改</button>
+          <button size="mini" type="warn">删除</button>
+        </view>
+        <!-- 出库时间 -->
+      </view>
+    </view>
+    <view class="divLine"></view>
+  <!-- 读取结束 -->
+</block>
