@@ -24,12 +24,11 @@ Page({
       });
       return;
     }
-    console.log(11)
     setTimeout(() => {
-      dd.hideLoading();
-      // dd.alert({
-      //   content: `数据：${JSON.stringify(e.detail.value)}`,
-      // });
+      dd.showLoading({
+        content: '加载中...',
+        delay: 100,
+      });
       dd.httpRequest({
         headers: {
           "Content-Type": "application/json"
@@ -38,24 +37,26 @@ Page({
         method: 'POST',
         data: JSON.stringify({
             name: e.detail.value.name,
-             password: e.detail.value.password,
+            password: e.detail.value.password,
         }),
         dataType: 'json',
         success: function(res) {
-          console.log(res);
           if (res.data.code > 0) {
-                    dd.setStorage({
-                      key: 'user',
-                      data: {
-                        user: res.data.data
-                      }
-                    });
-                  dd.switchTab({
-                    url: '../index/index',
-                  })
-          } else {
-                    dd.showToast({content: res.data.msg,duration: 3000,});
-                }
+             dd.setStorage({
+              key: 'user',
+              data: {
+                 user: res.data.data
+              }
+              });
+              dd.hideLoading();
+              dd.switchTab({
+                url: '../index/index',
+              })
+          } 
+          else {
+            dd.hideLoading();
+            dd.showToast({content: res.data.msg,duration: 3000,});
+          }
         },
       });
   //   dd.getStorage({

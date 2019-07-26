@@ -1,8 +1,47 @@
 Page({
 
   onLoad(query) {
+    var that = this;
     // 页面加载
     console.info(`Page onLoad with query: ${JSON.stringify(query)}`);
+    dd.getStorage({
+      key: 'user',
+      success: function(res) {
+        that.data.userID = res.data.user.iD;
+        that.data.userName = res.data.user.name;
+      },
+      fail: function(res) {
+        console.log({ content: res.errorMessage });
+      },
+    });
+    var IuserID = that.data.userID;
+    console.log("IuserID" + IuserID);
+    dd.httpRequest({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      url: 'http://172.18.1.72:8082/zjp/approval/findByListIDunreleased',
+      method: 'POST',
+      data: IuserID,
+      // dataType: 'int',
+      success: function(res) {
+        console.log(that.data.userID);
+        console.log(res.data)
+        var shnl = JSON.parse(JSON.stringify(res.data));
+        var listArr = JSON.parse(JSON.stringify(res.data));
+        console.log(res.data);
+        for (let i = 0; i < res.data.length; i++) {
+          shnl[i] = shnl[i].title;
+          listArr[i] = listArr[i].id;
+        }
+        that.setData({
+          selectNameList: shnl,
+          listArr: listArr,
+          listID: listArr[that.data.index],
+          index: 0,
+        });
+      },
+    });
   },
   onReady() {
     // 页面加载完成
@@ -34,63 +73,92 @@ Page({
     };
   },
   data: {
-    arrayTest:[],
-    msg:"",
-    customerName:"",
-    name:"张三",
-    value:"",
-    time:"",
-    Id:0,
+    arrayTest: [],
+    msg: "",
+    storeHouseName: "",
+    name: "",
+    userName: "",
+    time: "",
+    Id: 0,
+    index: 0,
+    selectNameList: ["请选择"],
+    quantity: 0,
+    userID: 0,
+    listID: 0,
+    listArr: [],
+    productList: [],
+    outBarcode:0
   },
-  saoMa(){
+  bindPickerChange(e) {
+    let that = this;
+    let listIDTemp = that.data.listArr[e.detail.value]+"";
+    console.log(listIDTemp);
+    dd.httpRequest({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      url: 'http://172.18.1.72:8082/zjp/approval/findOutList',
+      method: 'POST',
+      data: listIDTemp,
+      // dataType: 'int',
+      success: function(res) {
+        var rpl = JSON.parse(JSON.stringify(res.data));
+        console.log(rpl);
+        that.setData({
+          productList: rpl,
+          index: e.detail.value,
+          listID: that.data.listArr[e.detail.value],
+        });
+
+      },fail:function(res){
+        console.log(res);
+      }
+    });
+  },
+  saoMa() {
     dd.scan({
       type: 'qr',
       success: (res) => {
         this.setData({
-          tempId: res.code,
+          qrcodeVal: res.code,
+
         })
         var that = this;
-      dd.httpRequest({
-        headers: {
-          "Content-Type": "application/json"
-        },
-        url: 'http://www.xn--qrqy46c.top/test/comeOut/getData',
-        method: 'POST',
-        data:JSON.stringify({
-            id : this.data.Id,
-            userName : this.data.name,
-        }),
-        dataType: 'json',
-        success: function(res) {
-          if (res.data.code==0){
-            that.setData({
-              msg: "出库成功",
-            });
-          }else{
-            that.setData({
-              msg: "出库失败",
-            });
-          }
-          that.setData({
-            customerName:res.data.data.customerName,
-            name:res.data.data.name,
-            value:res.data.data.value,
-            time:res.data.data.time,
-          })
-          that.setData({
-            arrayTest: that.data.arrayTest.concat({
-              msg:that.data.msg,//返回结果
-              name:res.data.data.name,//出库人姓名
-              customerName:res.data.data.customerName,//地名
-              id:that.data.tempId,//扫码获取的id
-              time:res.data.data.time,//出库时间
-              }),
-          });
-
-        },
-      });
+        dd.httpRequest({
+          headers: {
+            "Content-Type": "application/json"
+          },
+          url: 'http://172.18.1.72:8082/zjp/approval/findByQrcode',
+          method: 'POST',
+          data: JSON.stringify({
+            qrcode: that.data.qrcodeVal,
+            senderID: that.data.userID,
+            listID: that.data.listID,
+          }),
+          dataType: 'json',
+          success: function(res) {
+            console.log(that.data)
+            console.log(res.data)
+            if (res.data.code == 0) {
+              that.setData({
+                msg: "出库失败",
+              });
+            } else {
+              var proList = that.data.productList;
+              for(let i=0;i<proList.length;i++){
+                if(proList[i].barcode == res.data.data.barcode){
+                  proList[i].unreleased = proList[i].unreleased-1;
+                  break;
+                }
+              }
+              that.setData({
+                msg: "出库成功",
+                productList: proList,
+              });
+            }
+          },
+        });
       },
     });
   },
-  
 });

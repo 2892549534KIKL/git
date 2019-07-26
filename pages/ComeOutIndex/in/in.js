@@ -19,15 +19,13 @@ Page({
       },
     });
     dd.getStorage({
-      key: 'userData',
+      key: 'user',
       success: function(res) {
-        that.setData({
-          userName: res.data.userData.userData.nickName,
-          userID: res.data.userData.userData.iD,
-        });
+        that.data.userID = res.data.user.iD;
+        that.data.userName = res.data.user.name;
       },
       fail: function(res) {
-        dd.alert({ content: res.errorMessage });
+        console.log({ content: res.errorMessage });
       },
     });
   },
@@ -86,7 +84,7 @@ Page({
           headers: {
             "Content-Type": "application/json"
           },
-          url: 'http://172.18.1.72:8022/zjp/comeOut/come',
+          url: 'http://172.18.1.72:8082/zjp/comeOut/come',
           method: 'POST',
           data: JSON.stringify({
             id: this.data.Id,
@@ -94,6 +92,7 @@ Page({
             storeHouseName: that.data.storeHouseName,
             storeHouseID: that.data.storeHouseID,
             userID: that.data.userID,
+            state:38,
           }),
           dataType: 'json',
           success: function(res) {

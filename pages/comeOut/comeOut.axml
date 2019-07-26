@@ -32,7 +32,6 @@
         </view>
         <view class="box_bottom">
           <text class="">出库时间:{{comeOutData[index].createTime}}\n</text>
-          <button size="mini" type="primary">修改</button>
           <button onTap="del" size="mini" data-id="{{comeOutData[index].id}}" data-index="{{index}}" type="warn">删除</button>
         </view>
         <!-- 出库时间 -->

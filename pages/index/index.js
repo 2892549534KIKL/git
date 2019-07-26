@@ -1,5 +1,6 @@
 Page({
   data: {
+    userID:"",
     array: [{
       src: '../images/comeOut.png',
       color: 'white',
@@ -26,12 +27,70 @@ Page({
       mode: 'center',
       text: '施工管理'
     }, {
+      number:null,
       src: '../images/inform.png',
       color: 'white',
       mode: 'center',
       text: '通知'
     }],
     src: './2.png'
+  },
+  onLoad() {
+    var that = this;
+     dd.getStorage({
+        key: 'user',
+        success: function(res) {
+          that.data.userID=res.data.user.iD;
+          },
+       fail: function(res){
+            console.log({content: res.errorMessage});
+         },
+      });
+    dd.httpRequest({
+      url: 'http://172.18.0.177:8080/zjp/approval/selectEChartsMap',
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      data: JSON.stringify({
+        userID: that.data.userID,
+      }),
+      dataType: 'json',
+      success: function(res) {
+        that.data.array[3].number= res.data[0].value;
+        that.setData({
+          array: that.data.array,
+        })
+      }, fail: function(res) {
+        console.log("错误:" + res);
+      },
+      complete: function(res) {
+        dd.hideLoading();
+      }
+    });
+    dd.httpRequest({
+      url: 'http://172.18.0.177:8080/zjp/notice/getTotalByUserID',
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      data: JSON.stringify({
+        userID: that.data.userID,
+        isComplete: '否',
+      }),
+      dataType: 'json',
+      success: function(res) {
+        that.data.array[5].number= res.data;
+        that.setData({
+          array: that.data.array,
+        })
+      }, fail: function(res) {
+        console.log("错误:" + res);
+      },
+      complete: function(res) {
+        dd.hideLoading();
+      }
+    });
   },
   jump(e) {
     var index = e.currentTarget.dataset['index'];
@@ -62,13 +121,13 @@ Page({
         });
         break;
       case 5:
-        dd.reLaunch({
-          url: '../../pages/comeOut/comeOut',
+        dd.navigateTo({
+          url: '../../pages/InformInfo/InformInfo',
         });
         break;
       case 6:
         dd.reLaunch({
-          url: '../../pages/comeOut/comeOut',
+          url: '../../pages/InformInfo/InformInfo',
         });
         break;
       default:

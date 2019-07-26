@@ -6,21 +6,26 @@
     <text>{{name}}</text>
     <text>{{id}}</text>
     <text>{{time}}</text> -->
+    <view class="page-section">
+    <picker onChange="bindPickerChange" value="0" range="{{selectNameList}}">
+      <view class="row">
+        <view class="row-title">审批单选择</view>
+        <view class="row-extra">当前选择：{{selectNameList[index]}}</view>
+        <image class="row-arrow" src="/image/arrowright.png" mode="aspectFill" />
+      </view>
+    </picker>
+  </view>
     <view class="table">
         <view class="tr">
-            <view class="th">状态</view>
-            <view class="th">仓库</view>
-            <view class="th">出库人</view>
-            <view class="th">商品编号</view>
-            <view class="th">出库时间</view>
+           <view class="th">产品名称</view>
+           <view class="th">审批数量</view>
+           <view class="th">未出库数量</view>
         </view>
-        <block a:for="{{arrayTest}}">
+        <block a:for="{{productList}}">
         <view class="tr">
-            <view class="td">{{arrayTest[arrayTest.length-index-1].msg}}</view>
-            <view class="td">{{arrayTest[arrayTest.length-index-1].customerName}}</view>
-            <view class="td">{{arrayTest[arrayTest.length-index-1].name}}</view>
-            <view class="td">{{arrayTest[arrayTest.length-index-1].id}}</view>
-            <view class="td">{{arrayTest[arrayTest.length-index-1].time}}</view>
+            <view class="td">{{productList[index].goodsName}}</view>
+            <view class="td">{{productList[index].quantity}}</view>
+            <view class="td">{{productList[index].unreleased}}</view>
         </view>
         </block>
     </view>

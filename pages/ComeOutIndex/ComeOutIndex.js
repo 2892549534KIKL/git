@@ -11,7 +11,7 @@ Page({
       headers: {
         "Content-Type": "application/json"
       },
-      url: 'http://172.18.0.177:8080/zjp/storeHouse/findAll',
+      url: 'http://172.18.1.72:8082/zjp/storeHouse/findAll',
       method: 'POST',
       dataType: 'json',
       success: function(res) {

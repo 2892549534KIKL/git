@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/login/login",
+    "pages/index/index",
     "pages/approval/approval",
-    "pages/login/login",
+    "pages/InformInfo/InformInfo",
     "pages/comeOut/comeOut",
     "pages/form2/form2",
     "pages/myHome/changePassword/changePassword",
@@ -13,7 +13,6 @@
     "pages/form/form",
     "pages/DDapi_people/DDapi_people",
     "pages/applyApproval/applyApproval",
-    "pages/construction/construction",
     "pages/construction/construction",
     "pages/ComeOutIndex/ComeOutIndex",
     "pages/ComeOutIndex/in/in",
@@ -28,21 +27,32 @@
     "defaultTitle": "中江鹏欢迎您"
   },
   "tabBar": {
+    "textColor": "#404040",
+    "selectedColor": "#108ee9",
+    "backgroundColor": "#F5F5F9",
     "items": [
       {
         "pagePath": "pages/index/index",
+        "icon": "image/icon_component.png",
+        "activeIcon": "image/icon_component_HL.png",
         "name": "首页"
       },
       {
         "pagePath": "pages/construction/construction",
+        "icon": "image/icon_API.png",
+        "activeIcon": "image/icon_API_HL.png",
         "name": "施工管理"
       },
       {
         "pagePath": "pages/comeOut/comeOut",
+        "icon": "image/icon_biz.png",
+        "activeIcon": "image/icon_biz_HL.png",
         "name": "出入库数据"
       },
       {
         "pagePath": "pages/myHome/myHome",
+        "icon": "image/wo.png",
+        "activeIcon": "image/woactive.png",
         "name": "我的"
       }
     ]

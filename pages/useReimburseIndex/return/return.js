@@ -2,6 +2,7 @@ Page({
   data: {
     arrayList:[],
     list:[],
+    id:"",
     userProduct:{
     id:"",
     name:"",//名称
@@ -20,7 +21,16 @@ Page({
     }
   },
   onLoad() {
-
+    var that = this;
+    dd.getStorage({
+        key: 'user',
+        success: function(res) {
+          that.data.id=res.data.user.iD;
+          },
+       fail: function(res){
+            console.log({content: res.errorMessage});
+         },
+        });
   },
   onReady() {
     // 页面加载完成
@@ -52,6 +62,10 @@ Page({
         this.setData({
           [barcode]: res.code,
         })
+      dd.showLoading({
+        content: '加载中...',
+        delay: 100,
+      });
       var that = this;
       dd.httpRequest({
         headers: {
@@ -64,17 +78,17 @@ Page({
         }),
         dataType: 'json', 
         success: function(res) {
-          // console.log(res);
+          dd.hideLoading();
           if(res.data==""||res.data==null)
           {
             dd.alert({content: '不存在此物品'});
           }
           else{
-            if(res.data.userID!=1507)
+            if(res.data.userID!=that.data.id)
             {
               dd.alert({content: '不是你的' + res.data.userName});
             }
-            else if(res.data.userID==1507)
+            else if(res.data.userID==that.data.id)
             {
               for(i=0;i<that.data.arrayList.length;i++)
               {
@@ -111,6 +125,10 @@ Page({
         that.data.arrayList[x].stateID=39;
         that.data.arrayList[x].storeHouseID=1;
       }
+      dd.showLoading({
+        content: '加载中...',
+        delay: 100,
+      });
       dd.httpRequest({
         headers: {
           "Content-Type": "application/json"
@@ -148,6 +166,10 @@ Page({
         data:JSON.stringify(that.data.arrayList),
         dataType: 'json', 
         success: function(res) {
+        dd.hideLoading();
+        that.setData({//啥也不做,只触发渲染就OK
+          arrayList: null,
+        })
         console.log('success，携带数据为：', res)
         },
       });

@@ -4,15 +4,15 @@ Page({
     photo:"",
     array_bottom: [{
       url: '../../pages/myHome/myInformation/myInformation',
-      src: '../images/comeOut.png',
+      src: '../../image/wo_my.png',
       text: '我的信息',
     }, {
       url: '../../pages/myHome/changePassword/changePassword',
-      src: '../images/comeOut.png',
+      src: '../../image/wo_password.png',
       text: '密码修改',
     }, {
       url: '../../pages/approval/approval',
-      src: '../images/comeOut.png',
+      src: '../../image/wo_approval.png',
       text: '我的审批\\审核',
     }],
   },
@@ -33,8 +33,18 @@ Page({
       });
   },
   out(){
-    dd.reLaunch({
-                    url: '../../login/login',
-                  })
+    dd.httpRequest({
+        headers: {
+          "Content-Type": "application/json"
+        },
+        url: 'http://172.18.0.177:8080/zjp/users/deleteSession',
+        method: 'POST',
+        dataType: 'json',
+        success: function(res) {
+          dd.reLaunch({
+            url: '../login/login',
+          })
+        },
+      });
   }
 });

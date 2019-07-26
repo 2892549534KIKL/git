@@ -27,6 +27,13 @@ Page({
       }),
       dataType: 'json',
       success: function(res) {
+        if (res.data.data.length < that.data.rowsCount) {
+          that.setData({
+            page: 1,
+            showView: true,//显示'已加载全部数据'
+            loaderSign: false,
+          });
+        }
         that.setData({
           comeOutData: res.data.data,
         })
@@ -42,9 +49,15 @@ Page({
   //查询搜索的接口方法
   search() {
     var that = this;
-    that.setData({
-        page: 1,
-      })
+     dd.showLoading({
+      content: '加载中...',
+      delay: 100,
+    });
+     that.setData({
+      page: 1,
+      showView: false,//显示'已加载全部数据'
+      loaderSign: true,
+    })
     dd.httpRequest({
       url: 'http://172.18.0.177:8080/zjp/product/findByCondition',
       method: 'POST',
@@ -58,6 +71,13 @@ Page({
       }),
       dataType: 'json',
       success: function(res) {
+        if (res.data.data.length < that.data.rowsCount) {
+          that.setData({
+            page: 1,
+            showView: true,//显示'已加载全部数据'
+            loaderSign: false,
+          });
+        }
         that.setData({
           comeOutData: res.data.data,
         })
@@ -87,7 +107,6 @@ Page({
       data: JSON.stringify(new Array(e.currentTarget.dataset.id)),
       dataType: 'json',
       success: function(res) {
-        dd.alert({ content: '删除完成' });
         var index = e.currentTarget.dataset.index;
         that.data.comeOutData[index].createTime = "-1";
         that.setData({//啥也不做,只触发渲染就OK
@@ -98,7 +117,7 @@ Page({
         console.log("错误:" + JSON.stringify(res));
       },
       complete: function(res) {
-        dd.hideLoading();
+        // dd.hideLoading();
       }
     });
   },
@@ -106,6 +125,10 @@ Page({
   onReachBottom: function() {
     var that = this;
     if (this.data.loaderSign) {
+      dd.showLoading({
+      content: '加载中...',
+      delay: 100,
+    });
       that.setData({
         page: that.data.page + 1
       })
@@ -123,24 +146,22 @@ Page({
         dataType: 'json',
         success: function(res) {
           //如果没查到数据就重置page页码
-          if (res.data.data.length == 0) {
+          if (res.data.data.length < that.data.rowsCount) {
+            for (var i = 0; i < res.data.data.length; i++) {
+              that.setData({
+                comeOutData: that.data.comeOutData.concat(res.data.data[i]),
+              })
+            }
             that.setData({
               page: that.data.page - 1,
               showView: true,//显示'已加载全部数据'
+              loaderSign: false,
             });
           } else {
-            for (var i = 0; i <= res.data.data.length; i++) {
+            for (var i = 0; i < res.data.data.length; i++) {
               that.setData({
-                comeOutData: that.data.comeOutData.concat({
-                  name: res.data.data[i].name,//商品名称
-                  unit: res.data.data[i].unit,//单位
-                  number: res.data.data[i].number,//数量
-                  userName: res.data.data[i].userName,//操作人
-                  storeHouseName: res.data.data[i].storeHouseName,//仓库
-                  state: res.data.data[i].state,//创建时间
-                  createTime: res.data.data[i].createTime,//创建时间
-                }),
-              });
+                comeOutData: that.data.comeOutData.concat(res.data.data[i]),
+              })
             }
           }
           //一秒后再启动流加载
@@ -157,10 +178,6 @@ Page({
           dd.hideLoading();
         }
       });
-
-    } else {
-
     }
-
   },
 });

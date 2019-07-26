@@ -1,44 +1,46 @@
 Page({
   data: {
-    iD:"",
-    name:"",
-    nickName:"",
-    sex:"",
-    status:"",
-    photo:"",
-    phone:"",
-    checkedSex:"true",
-    checkedStatus:"true",
-    imagePath:"",
+    iD: "",
+    name: "",
+    nickName: "",
+    sex: "",
+    status: "",
+    photo: "",
+    photoc: "",
+    phone: "",
+    checkedSex: "true",
+    checkedStatus: "true",
+    imagePath: "",
   },
   onLoad() {
-    var that=this;
-        dd.getStorage({
-          key: 'user',
-          success: function(res) {
-            console.log(res)
-            if(res.data.user.sex=="女")
-              that.data.checkedSex=false;
-            if(res.data.user.sex=="禁用")
-              that.data.checkedStatus=false;
-            that.setData({
-              iD:res.data.user.iD,
-              name:res.data.user.name,
-              nickName:res.data.user.nickName,
-              sex:res.data.user.sex,
-              phone:res.data.user.phone,
-              status:res.data.user.status,
-              imagePath:'http://172.18.0.177:8080/zjp/'+res.data.user.photo,
-              photo:'http://172.18.0.177:8080/zjp/'+res.data.user.photo,
-            })
-          },
-          fail: function(res){
-            dd.alert({content: res.errorMessage});
-          },
-      });
+    var that = this;
+    dd.getStorage({
+      key: 'user',
+      success: function(res) {
+        console.log(res)
+        if (res.data.user.sex == "女")
+          that.data.checkedSex = false;
+        if (res.data.user.sex == "禁用")
+          that.data.checkedStatus = false;
+        that.setData({
+          iD: res.data.user.iD,
+          name: res.data.user.name,
+          nickName: res.data.user.nickName,
+          sex: res.data.user.sex,
+          phone: res.data.user.phone,
+          status: res.data.user.status,
+          imagePath: 'http://172.18.0.177:8080/zjp/' + res.data.user.photo,
+          photo: 'http://172.18.0.177:8080/zjp/' + res.data.user.photo,
+          photoc: res.data.user.photo,
+        })
+      },
+      fail: function(res) {
+        dd.alert({ content: res.errorMessage });
+      },
+    });
   },
   onSubmit(e) {
-    var that=this;
+    var that = this;
     if (e.detail.value.name == "") {
       dd.showToast({ content: '请输入账号', duration: 2000 });
       return;
@@ -54,77 +56,65 @@ Page({
         duration: 2000,
       });
       return;
-    } 
+    }
     setTimeout(() => {
-      dd.hideLoading();
-      console.log(that.data.imagePath);
-       dd.uploadFile({
-          header: {  
-            "Content-Type": "multipart/form-data"  
-          },
-          url: 'http://172.18.0.177:8080/zjp/users/editData',
-          fileType: 'image',
-          fileName: 'enclosure.files',
-          filePath: that.data.imagePath,
-          formData: JSON.stringify({
-             iD:that.data.iD,
-             name: e.detail.value.name,
-             nickName: e.detail.value.nickName,
-             phone: e.detail.value.phone,
-             sex: e.detail.value.sex,
-             status: e.detail.value.status,
-        }),
-          success: res => {
-            dd.alert({ title: `上传成功：${JSON.stringify(res)}` });
-          },
-          fail: function(res) {
-            dd.alert({ title: `上传失败：${JSON.stringify(res)}` });
-          },
-        });
-      // dd.httpRequest({
-      //   headers: {
-      //     "Content-Type": "application/json"
-      //   },
-      //   url: 'http://172.18.0.177:8080/zjp/users/editUser',
-      //   method: 'POST',
-      //   data: JSON.stringify({
-      //        iD:that.data.iD,
-      //        name: e.detail.value.name,
-      //        nickName: e.detail.value.nickName,
-      //        phone: e.detail.value.phone,
-      //        sex: e.detail.value.sex,
-      //        status: e.detail.value.status,
-      //   }),
-      //   dataType: 'json',
-      //   success: function(res) {
-      //     console.log(res);
-      //     if (res.data.code > 0) {
-      //               dd.setStorage({
-      //                 key: 'user',
-      //                 data: {
-      //                   user: res.data.data
-      //                 }
-      //               });
-      //               dd.showToast({ content: '个人信息修改成功', duration: 2000 });
-      //     } else {
-      //               dd.showToast({ content: '个人信息修改失败', duration: 2000 });
-      //           }
-      //   },
+      // dd.showLoading({
+      //   content: '加载中...',
+      //   delay: 100,
       // });
+      console.log(that.data.iD+"-"+that.data.name+"-"+that.data.nickName+"-"+that.data.phone+"-"+that.data.sex+"-"+that.data.status);
+      dd.uploadFile({
+        header: {
+          "Content-Type": "multipart/form-data"
+        },
+        method: 'POST',
+        url: 'http://172.18.0.177:8080/zjp/users/editUser',
+        fileType: 'image',
+        fileName: 'enclosure.files',
+        filePath: that.data.imagePath,
+        formData: {
+          iD: that.data.iD,
+          name: that.data.name,
+          nickName: that.data.nickName,
+          phone: that.data.phone,
+          sex: that.data.sex,
+          status: that.data.status,
+          'enclosure.photo':that.data.photoc
+        },
+        success: res => {
+         console.log(res);
+        //  dd.setStorage({
+        //       key: 'user',
+        //       setData: {
+        //          'user.photo': res.data.data.data
+        //       }
+        //   });
+        },
+        fail: function(res) {
+           console.log('上传失败');
+        },
+        complete: function(res) {
+          console.log(JSON.stringify(res));
+          // dd.hideLoading();
+        }
+      });
     });
   },
   //图片上传
   uploadFile() {
-    var that=this;
+    var that = this;
     dd.chooseImage({
       sourceType: ['camera', 'album'],
       count: 1,
       success: res => {
         const path = (res.filePaths && res.filePaths[0]) || (res.apFilePaths && res.apFilePaths[0]);
         that.setData({
-              imagePath:path,
-            })
+          imagePath: path,
+        })
+        console.log("updataImg:" + that.data.imagePath);
+
       },
+
     });
   },
 });

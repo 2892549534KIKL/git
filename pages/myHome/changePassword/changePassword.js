@@ -41,7 +41,10 @@ Page({
       return;
     } 
     setTimeout(() => {
-      dd.hideLoading();
+      dd.showLoading({
+        content: '加载中...',
+        delay: 100,
+      });
       dd.httpRequest({
         headers: {
           "Content-Type": "application/json"
@@ -55,16 +58,18 @@ Page({
         }),
         dataType: 'json',
         success: function(res) {
-          console.log(res);
+          dd.hideLoading();
           if (res.data!="") {
                     if(res.data.oldPassword=="不正确"){
                       dd.showToast({ content: '旧密码不正确，请重新输入', duration: 2000 });
                       return;
                     }
-                    dd.showToast({ content: '恭喜，密码修改成功', duration: 2000 });
-                    dd.reLaunch({
-                    url: '../../login/login',
-                  })
+                    else{
+                      dd.showToast({ content: '恭喜，密码修改成功', duration: 2000 });
+                      dd.reLaunch({
+                        url: '../../login/login',
+                      })
+                    }
           } else {
                     dd.showToast({ content: '抱谦，密码修改失败', duration: 2000 });
                 }

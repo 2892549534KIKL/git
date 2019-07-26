@@ -2,7 +2,7 @@ Page({
   data: {
     page: 1,//分页查询(第几页)
     rowsCount: 10,//分页查询(一页多少条数据)
-    userID: 1587,//申请/审批的用户id
+    userID: null,//申请/审批的用户id
     isComplete: 21,//21状态表示为审核(二选一)
     condition: null,//null表示已审核(二选一)
     approvalData: {},
@@ -11,13 +11,22 @@ Page({
     searchText: "",//搜索文本
     buttonText: '已审批',//设置按键文本
     isShowWindow: false,//弹窗
-    details:"",
-    id:"",
-    index:"",
+    details: "",
+    id: "",
+    index: "",
   },
   //页面初始化时加载
   onLoad() {
     var that = this;
+     dd.getStorage({
+        key: 'user',
+        success: function(res) {
+          that.data.userID=res.data.user.iD;
+          },
+       fail: function(res){
+            console.log({content: res.errorMessage});
+         },
+      });
     dd.showLoading({
       content: '加载中...',
 
@@ -37,13 +46,13 @@ Page({
       }),
       dataType: 'json',
       success: function(res) {
-        if (res.data.data.length < 10) {
-            that.setData({
-              page: 1,
-              showView: true,//显示'已加载全部数据'
-              loaderSign:false,
-            });
-          }
+        if (res.data.data.length < that.data.rowsCount) {
+          that.setData({
+            page: 1,
+            showView: true,//显示'已加载全部数据'
+            loaderSign: false,
+          });
+        }
         that.setData({
           approvalData: res.data.data,
         })
@@ -60,8 +69,10 @@ Page({
   search() {
     var that = this;
     that.setData({
-        page: 1,
-      })
+      page: 1,
+      showView: false,//显示'已加载全部数据'
+      loaderSign: true,
+    })
     dd.showLoading({
       content: '加载中...',
 
@@ -81,10 +92,17 @@ Page({
       }),
       dataType: 'json',
       success: function(res) {
-                 console.log(res);
+        console.log(res);
         that.setData({
           approvalData: res.data.data,
         })
+        if (res.data.data.length < that.data.rowsCount) {
+          that.setData({
+            page: 1,
+            showView: true,//显示'已加载全部数据'
+            loaderSign: false,
+          });
+        }
       }, fail: function(res) {
         console.log({ content: '无法连接数据,请查看控制台' });
         console.log("错误:" + res);
@@ -106,14 +124,11 @@ Page({
     var that = this;
     var state = 22;
     this.setData({ isShowWindow: false, });
-    console.log(e);
-
-    // dd.showLoading({
-    //   content: '加载中...',
-    // });
-    if(e.target.dataset.value!="yes")
-    {
-      state=23;
+    dd.showLoading({
+      content: '加载中...',
+    });
+    if (e.target.dataset.value != "yes") {
+      state = 23;
     }
     dd.httpRequest({
       url: 'http://172.18.0.177:8080/zjp/approval/editData',
@@ -136,8 +151,8 @@ Page({
         })
         that.setData({
           details: "",
-          index:"",
-          id:"",
+          index: "",
+          id: "",
         })
       }, fail: function(res) {
         dd.alert({ content: '无法连接数据,请查看控制台' });
@@ -168,6 +183,7 @@ Page({
           page: that.data.page,
           rowsCount: that.data.rowsCount,
           userID: that.data.userID,
+          isComplete: that.data.isComplete,
           condition: that.data.searchText,
         }),
         dataType: 'json',
@@ -176,18 +192,18 @@ Page({
           if (res.data.data.length < that.data.rowsCount) {
             for (var i = 0; i < res.data.data.length; i++) {
               that.setData({
-                approvalData:that.data.approvalData.concat(res.data.data[i]),
+                approvalData: that.data.approvalData.concat(res.data.data[i]),
               })
             }
             that.setData({
               page: that.data.page - 1,
               showView: true,//显示'已加载全部数据'
-              loaderSign:false,
+              loaderSign: false,
             });
           } else {
             for (var i = 0; i < res.data.data.length; i++) {
               that.setData({
-                approvalData:that.data.approvalData.concat(res.data.data[i]),
+                approvalData: that.data.approvalData.concat(res.data.data[i]),
               })
             }
           }
@@ -197,7 +213,7 @@ Page({
               loaderSign: false,
             })
           }, 1000);
-        console.log(that.data.approvalData);
+          console.log(that.data.approvalData);
         }, fail: function(res) {
           console.log({ content: '无法连接数据,请查看控制台' });
           console.log("错误:" + res);
@@ -213,13 +229,13 @@ Page({
   //切换待审批\已审批
   cut() {
     this.data.buttonText == '已审批' ? this.data.buttonText = '未审批' : this.data.buttonText = '已审批';
-    this.setData({ buttonText: this.data.buttonText,searchText:"",showView:false,loaderSign:true,page:1})//重新渲染参数
+    this.setData({ buttonText: this.data.buttonText, searchText: "", showView: false, loaderSign: true, page: 1 })//重新渲染参数
     var that = this;
     dd.showLoading({
       content: '加载中...',
     });
     if (this.data.buttonText == '已审批') {
-      that.data.isComplete=21;
+      that.data.isComplete = 21;
       dd.httpRequest({
         url: 'http://172.18.0.177:8080/zjp/approval/findByCondition',
         method: 'POST',
@@ -239,7 +255,7 @@ Page({
             that.setData({
               page: that.data.page - 1,
               showView: true,//显示'已加载全部数据'
-              loaderSign:false,
+              loaderSign: false,
             });
           }
           that.setData({
@@ -254,7 +270,7 @@ Page({
         }
       });
     } else {
-      that.data.isComplete="";
+      that.data.isComplete = "";
       dd.httpRequest({
         url: 'http://172.18.0.177:8080/zjp/approval/findByCondition',
         method: 'POST',
@@ -265,6 +281,7 @@ Page({
           page: that.data.page,
           rowsCount: that.data.rowsCount,
           userID: that.data.userID,
+          isComplete: that.data.isComplete,
           condition: that.data.searchText,
         }),
         dataType: 'json',
@@ -273,7 +290,7 @@ Page({
             that.setData({
               page: that.data.page - 1,
               showView: true,//显示'已加载全部数据'
-              loaderSign:false,
+              loaderSign: false,
             });
           }
           that.setData({
@@ -298,6 +315,6 @@ Page({
     this.setData({ isShowWindow: false, });
   },
   show(e) {
-    this.setData({ isShowWindow: true, id:e.currentTarget.dataset.id,index:e.currentTarget.dataset.index});
+    this.setData({ isShowWindow: true, id: e.currentTarget.dataset.id, index: e.currentTarget.dataset.index });
   },
 });

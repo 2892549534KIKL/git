@@ -4,6 +4,7 @@ Page({
     constructionSiteList: ["请选择"],
     constructionSiteObject: {},
     index: 0,
+    id:"",
     userProduct:{
     id:"",
     name:"",//名称
@@ -22,6 +23,15 @@ Page({
   },
   onLoad() {
     let that = this;
+    dd.getStorage({
+        key: 'user',
+        success: function(res) {
+          that.data.id=res.data.user.iD;
+          },
+       fail: function(res){
+            console.log({content: res.errorMessage});
+         },
+        });
     dd.httpRequest({
       headers: {
         "Content-Type": "application/json"
@@ -98,6 +108,10 @@ Page({
           [barcode]: res.code,
         })
       var that = this;
+      dd.showLoading({
+        content: '加载中...',
+        delay: 100,
+      });
       dd.httpRequest({
         headers: {
           "Content-Type": "application/json"
@@ -105,21 +119,21 @@ Page({
         url: 'http://172.18.0.177:8080/zjp/userProduct/findByBarcode',
         method: 'POST',
         data:JSON.stringify({
-            barcode:this.data.userProduct.barcode,//查询条件barcode
+            qrcode:this.data.userProduct.barcode,//查询条件barcode
         }),
         dataType: 'json', 
         success: function(res) {
-          // console.log(res);
+          dd.hideLoading();
           if(res.data==""||res.data==null)
           {
             dd.alert({content: '不存在此物品'});
           }
           else{
-            if(res.data.userID!=1507)
+            if(res.data.userID!=that.data.id)
             {
               dd.alert({content: '不是你的' + res.data.userName});
             }
-            else if(res.data.userID==1507)
+            else if(res.data.userID==that.data.id)
             {
               for(i=0;i<that.data.arrayList.length;i++)
               {
@@ -159,6 +173,10 @@ Page({
       that.data.arrayList[x].surplus=that.data.arrayList[x].surplus-e.detail.value[i];
       x++;
     }
+    dd.showLoading({
+        content: '加载中...',
+        delay: 100,
+    });
     x=0;
     dd.httpRequest({
         headers: {
@@ -178,7 +196,7 @@ Page({
         that.data.arrayList[x].constructionsiteID=that.data.constructionSiteObject[that.data.index].id;
         x++;
       }
-    x=0;
+      x=0;
       dd.httpRequest({
         headers: {
           "Content-Type": "application/json"
@@ -188,8 +206,12 @@ Page({
         data:JSON.stringify(that.data.arrayList),
         dataType: 'json', 
         success: function(res) {
-        console.log('success，携带数据为：', res)
+        that.setData({//啥也不做,只触发渲染就OK
+          arrayList: null,
+        })
+        console.log('success，携带数据为：', res);
+        dd.hideLoading();
         },
       });
-  },  
+  },
 });
