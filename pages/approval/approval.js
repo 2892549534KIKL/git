@@ -32,7 +32,7 @@ Page({
 
     });
     dd.httpRequest({
-      url: 'http://localhost:8080/zjp/approval/findByCondition',
+      url: 'http://39.96.30.233:8080/zjp/approval/findByCondition',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -78,7 +78,7 @@ Page({
 
     });
     dd.httpRequest({
-      url: 'http://localhost:8080/zjp/approval/findByCondition',
+      url: 'http://39.96.30.233:8080/zjp/approval/findByCondition',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -131,7 +131,7 @@ Page({
       state = 23;
     }
     dd.httpRequest({
-      url: 'http://localhost:8080/zjp/approval/editData',
+      url: 'http://39.96.30.233:8080/zjp/approval/editData',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -174,7 +174,7 @@ Page({
         page: that.data.page + 1
       })
       dd.httpRequest({
-        url: 'http://localhost:8080/zjp/approval/findByCondition',
+        url: 'http://39.96.30.233:8080/zjp/approval/findByCondition',
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
@@ -237,7 +237,7 @@ Page({
     if (this.data.buttonText == '已审批') {
       that.data.isComplete = 21;
       dd.httpRequest({
-        url: 'http://localhost:8080/zjp/approval/findByCondition',
+        url: 'http://39.96.30.233:8080/zjp/approval/findByCondition',
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
@@ -272,7 +272,7 @@ Page({
     } else {
       that.data.isComplete = "";
       dd.httpRequest({
-        url: 'http://localhost:8080/zjp/approval/findByCondition',
+        url: 'http://39.96.30.233:8080/zjp/approval/findByCondition',
         method: 'POST',
         headers: {
           "Content-Type": "application/json"

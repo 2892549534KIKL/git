@@ -15,7 +15,7 @@ Page({
       delay: 100,
     });
     dd.httpRequest({
-      url: 'http://localhost:8080/zjp/product/findByCondition',
+      url: 'http://39.96.30.233:8080/zjp/product/findByCondition',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -59,7 +59,7 @@ Page({
       loaderSign: true,
     })
     dd.httpRequest({
-      url: 'http://localhost:8080/zjp/product/findByCondition',
+      url: 'http://39.96.30.233:8080/zjp/product/findByCondition',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -99,7 +99,7 @@ Page({
     console.log(e.currentTarget.dataset.id);
     var that = this;
     dd.httpRequest({
-      url: 'http://localhost:8080/zjp/product/deleteLarge',
+      url: 'http://39.96.30.233:8080/zjp/product/deleteLarge',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -133,7 +133,7 @@ Page({
         page: that.data.page + 1
       })
       dd.httpRequest({
-        url: 'http://localhost:8080/zjp/product/findByCondition',
+        url: 'http://39.96.30.233:8080/zjp/product/findByCondition',
         method: 'POST',
         headers: {
           "Content-Type": "application/json"

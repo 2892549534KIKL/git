@@ -29,8 +29,8 @@ Page({
           sex: res.data.user.sex,
           phone: res.data.user.phone,
           status: res.data.user.status,
-          imagePath: 'http://localhost:8080/zjp/' + res.data.user.photo,
-          photo: 'http://localhost:8080/zjp/' + res.data.user.photo,
+          imagePath: 'http://39.96.30.233:8080/zjp/' + res.data.user.photo,
+          photo: 'http://39.96.30.233:8080/zjp/' + res.data.user.photo,
           photoc: res.data.user.photo,
         })
       },
@@ -68,7 +68,7 @@ Page({
           "Content-Type": "multipart/form-data"
         },
         method: 'POST',
-        url: 'http://localhost:8080/zjp/users/editUser',
+        url: 'http://39.96.30.233:8080/zjp/users/editUser',
         fileType: 'image',
         fileName: 'enclosure.files',
         filePath: that.data.imagePath,

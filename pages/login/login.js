@@ -6,7 +6,7 @@ Page({
     var that = this;
     //1:获取token
     dd.httpRequest({
-      url: 'http://localhost:8080/zjp/DD_API/getAccess_token',
+      url: 'http://39.96.30.233:8080/zjp/DD_API/getAccess_token',
       method: 'get',
       dataType: 'json',
       success: function(res) {
@@ -23,25 +23,18 @@ Page({
             })
             // console.log('获取成功authCode' + that.data.authCode);
             //3:获取用户id等信息
-            //  dd.httpRequest({
-            //   url: 'https://oapi.dingtalk.com/user/getuserinfo?' +
-            //     'access_token=' + that.data.access_token +
-            //     '&code=' + that.data.authCode,
-            //   method: 'get',
-            //   dataType: 'json',
-            //   success: function(res) {
             dd.httpRequest({
               headers: {
                 "Content-Type": "application/string"
               },
-              url: 'http://localhost:8080/zjp/DD_API/getDDUser',
+              url: 'http://39.96.30.233:8080/zjp/DD_API/getDDUser',
               method: 'POST',
-              data:(that.data.authCode) ,
+              data: (that.data.authCode),
               success: function(res) {
-                // console.log('userid:' +JSON.stringify(res));
+                // console.log('userid:' + JSON.parse(res.data).userid);
                 that.setData({
-                  userid: res.data,
-                  // userName: res.data.name,
+                  userid: JSON.parse(res.data).userid,
+                  userName: JSON.parse(res.data).name,
                 })
                 console.log('获取成功userid' + that.data.userid);
                 //获取后查询是否此钉钉id是否已绑定账号
@@ -49,21 +42,20 @@ Page({
                   headers: {
                     "Content-Type": "application/json"
                   },
-                  url: 'http://localhost:8080/zjp/users/findByDdUserId',
+                  url: 'http://39.96.30.233:8080/zjp/users/findByDdUserId',
                   method: 'POST',
                   data: (
                     that.data.userid
                   ),
                   dataType: 'json',
                   success: function(res) {
-                    console.log('登录后数据:' +JSON.stringify(res.data.data));
-
+                    console.log('登录后数据:' + JSON.stringify(res.data.data));
                     //已绑定账号
                     if (res.data.code > 0) {
                       dd.setStorage({
                         key: 'user',
                         data: {
-                          user: res.data.data
+                          user: res.data.data,
                         }
                       });
                       dd.switchTab({
@@ -126,7 +118,7 @@ Page({
         headers: {
           "Content-Type": "application/json"
         },
-        url: 'http://localhost:8080/zjp/users/login',
+        url: 'http://39.96.30.233:8080/zjp/users/login',
         method: 'POST',
         data: JSON.stringify({
           name: e.detail.value.name,
