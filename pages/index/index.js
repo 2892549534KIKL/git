@@ -47,7 +47,7 @@ Page({
          },
       });
     dd.httpRequest({
-      url: 'http://172.18.0.177:8080/zjp/approval/selectEChartsMap',
+      url: 'http://localhost:8080/zjp/approval/selectEChartsMap',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -69,7 +69,7 @@ Page({
       }
     });
     dd.httpRequest({
-      url: 'http://172.18.0.177:8080/zjp/notice/getTotalByUserID',
+      url: 'http://localhost:8080/zjp/notice/getTotalByUserID',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"

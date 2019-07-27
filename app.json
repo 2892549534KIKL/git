@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/index/index",
     "pages/approval/approval",
     "pages/InformInfo/InformInfo",
@@ -8,7 +9,6 @@
     "pages/myHome/changePassword/changePassword",
     "pages/myHome/myInformation/myInformation",
     "pages/myHome/myHome",
-    "pages/login/login",
     "pages/index/index",
     "pages/form/form",
     "pages/DDapi_people/DDapi_people",

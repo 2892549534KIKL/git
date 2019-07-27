@@ -22,8 +22,12 @@
       </view>
       <text>\n</text>
       <view class="page-section-demo">
-        <button type="primary" formType="submit">登录</button>
+        <button type="primary" formType="submit">绑定钉钉</button>
       </view>
     </view>
   </form>
+</view>
+<view>
+  <text>系统提示:{{userData.errmsg}}\n</text>
+  <text>本人数据:\n{{userName}}\nid:{{userid}}\n</text>
 </view>

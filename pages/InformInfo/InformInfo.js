@@ -25,7 +25,7 @@ Page({
       delay: 100,
     });
     dd.httpRequest({
-      url: 'http://172.18.0.177:8080/zjp/notice/findByUserID',
+      url: 'http://localhost:8080/zjp/notice/findByUserID',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -70,7 +70,7 @@ Page({
         delay: 100,
       });
     dd.httpRequest({
-      url: 'http://172.18.0.177:8080/zjp/notice/findByUserID',
+      url: 'http://localhost:8080/zjp/notice/findByUserID',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -116,7 +116,7 @@ Page({
     });
     console.log(11)
     dd.httpRequest({
-      url: 'http://172.18.0.177:8080/zjp/notice/updateRead',
+      url: 'http://localhost:8080/zjp/notice/updateRead',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -153,7 +153,7 @@ Page({
           delay: 100,
       });
       dd.httpRequest({
-        url: 'http://172.18.0.177:8080/zjp/notice/findByUserID',
+        url: 'http://localhost:8080/zjp/notice/findByUserID',
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
