@@ -124,6 +124,10 @@ Page({
 
         })
         var that = this;
+        dd.showLoading({
+          content: '加载中...',
+          delay: 100,
+        });
         dd.httpRequest({
           headers: {
             "Content-Type": "application/json"
@@ -156,6 +160,9 @@ Page({
                 productList: proList,
               });
             }
+          },
+          complete: function(res) {
+            dd.hideLoading();
           },
         });
       },
