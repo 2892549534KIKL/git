@@ -80,6 +80,10 @@ Page({
           Id: res.code,
         })
         var that = this;
+        dd.showLoading({
+          content: '加载中...',
+          delay: 100,
+        });
         dd.httpRequest({
           headers: {
             "Content-Type": "application/json"
@@ -128,6 +132,9 @@ Page({
                 number: res.data.data.number,//出库时间
               }),
             });
+          },
+          complete: function(res) {
+            dd.hideLoading();
           },
         });
       },
