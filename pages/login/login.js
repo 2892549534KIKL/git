@@ -6,11 +6,11 @@ Page({
     var that = this;
     //1:获取token
     dd.httpRequest({
-      url: 'http://39.96.30.233:8080/zjp/DD_API/getAccess_token',
+      url: 'http://39.96.30.233/zjp/DD_API/getAccess_token',
       method: 'get',
       dataType: 'json',
       success: function(res) {
-        // console.log('token:' + JSON.stringify(res));
+        console.log('token:' + JSON.stringify(res.data));
         that.setData({
           access_token: res.data,
         })
@@ -27,7 +27,7 @@ Page({
               headers: {
                 "Content-Type": "application/string"
               },
-              url: 'http://39.96.30.233:8080/zjp/DD_API/getDDUser',
+              url: 'http://39.96.30.233/zjp/DD_API/getDDUser',
               method: 'POST',
               data: (that.data.authCode),
               success: function(res) {
@@ -42,7 +42,7 @@ Page({
                   headers: {
                     "Content-Type": "application/json"
                   },
-                  url: 'http://39.96.30.233:8080/zjp/users/findByDdUserId',
+                  url: 'http://39.96.30.233/zjp/users/findByDdUserId',
                   method: 'POST',
                   data: (
                     that.data.userid
@@ -118,7 +118,7 @@ Page({
         headers: {
           "Content-Type": "application/json"
         },
-        url: 'http://39.96.30.233:8080/zjp/users/login',
+        url: 'http://39.96.30.233/zjp/users/login',
         method: 'POST',
         data: JSON.stringify({
           name: e.detail.value.name,

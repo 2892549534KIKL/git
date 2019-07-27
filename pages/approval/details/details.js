@@ -13,7 +13,7 @@ Page({
       content: '加载中...',
     });
     dd.httpRequest({
-      url: 'http://39.96.30.233:8080/zjp/approval/findOutList',
+      url: 'http://39.96.30.233/zjp/approval/findOutList',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
