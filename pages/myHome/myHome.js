@@ -16,7 +16,7 @@ Page({
       text: '我的审批\\审核',
     }],
   },
-  onLoad() {
+  onShow(){
     var that=this;
         dd.getStorage({
           key: 'user',

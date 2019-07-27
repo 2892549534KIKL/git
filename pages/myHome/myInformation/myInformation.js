@@ -58,10 +58,10 @@ Page({
       return;
     }
     setTimeout(() => {
-      // dd.showLoading({
-      //   content: '加载中...',
-      //   delay: 100,
-      // });
+      dd.showLoading({
+        content: '加载中...',
+        delay: 100,
+      });
       console.log(that.data.iD+"-"+that.data.name+"-"+that.data.nickName+"-"+that.data.phone+"-"+that.data.sex+"-"+that.data.status);
       dd.uploadFile({
         header: {
@@ -72,6 +72,7 @@ Page({
         fileType: 'image',
         fileName: 'enclosure.files',
         filePath: that.data.imagePath,
+        dataType: 'json',
         formData: {
           iD: that.data.iD,
           name: that.data.name,
@@ -82,20 +83,21 @@ Page({
           'enclosure.photo':that.data.photoc
         },
         success: res => {
-         console.log(res);
-        //  dd.setStorage({
-        //       key: 'user',
-        //       setData: {
-        //          'user.photo': res.data.data.data
-        //       }
-        //   });
+        dd.showToast({ content: '修改成功', duration: 2000 });
+         var obj = JSON.parse(res.data);
+         dd.setStorage({
+              key: 'user',
+              data: {
+                 user: obj.data
+              }
+              });
         },
         fail: function(res) {
+          dd.showToast({ content: '修改失败', duration: 2000 });
            console.log('上传失败');
         },
         complete: function(res) {
-          console.log(JSON.stringify(res));
-          // dd.hideLoading();
+          dd.hideLoading();
         }
       });
     });

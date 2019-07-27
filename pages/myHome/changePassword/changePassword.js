@@ -66,6 +66,19 @@ Page({
                     }
                     else{
                       dd.showToast({ content: '恭喜，密码修改成功', duration: 2000 });
+                      dd.httpRequest({
+                        headers: {
+                          "Content-Type": "application/json"
+                        },
+                        url: 'http://172.18.0.177:8080/zjp/users/deleteSession',
+                        method: 'POST',
+                        dataType: 'json',
+                        success: function(res) {
+                          dd.reLaunch({
+                            url: '../login/login',
+                          })
+                        },
+                      });
                       dd.reLaunch({
                         url: '../../login/login',
                       })
@@ -78,3 +91,4 @@ Page({
     });
   },
 });
+
