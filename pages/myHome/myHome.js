@@ -21,7 +21,8 @@ Page({
         dd.getStorage({
           key: 'user',
           success: function(res) {
-            console.log(res)
+            console.log(1)
+            console.log(res.data.user.photo)
             that.setData({
               nickName:res.data.user.nickName,
               photo:'http://172.18.0.177:8080/zjp/'+res.data.user.photo,

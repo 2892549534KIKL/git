@@ -62,8 +62,45 @@ Page({
         content: '加载中...',
         delay: 100,
       });
-      console.log(that.data.iD+"-"+that.data.name+"-"+that.data.nickName+"-"+that.data.phone+"-"+that.data.sex+"-"+that.data.status);
-      dd.uploadFile({
+      if(that.data.photo==that.data.imagePath){
+        dd.httpRequest({
+        headers: {
+          "Content-Type": "application/json"
+        },
+        url: 'http://172.18.0.177:8080/zjp/users/editUsers',
+        method: 'POST',
+        data: JSON.stringify({
+          iD: that.data.iD,
+          name: e.detail.value.name,
+          nickName: e.detail.value.nickName,
+          phone: e.detail.value.phone,
+          sex: e.detail.value.sex,
+          status: e.detail.value.status,
+        }),
+        dataType: 'json',
+        success: function(res) {
+          dd.showToast({ content: '修改成功', duration: 2000 });
+          res.data.data.photo=that.data.photoc;
+          console.log(res)
+          if (res.data.code > 0) {
+             dd.setStorage({
+              key: 'user',
+              data: {
+                 user: res.data.data
+              }
+              });
+              dd.hideLoading();
+          } 
+          else {
+            dd.showToast({ content: '修改失败', duration: 2000 });
+            dd.hideLoading();
+            dd.showToast({content: res.data.msg,duration: 3000,});
+          }
+        },
+      });
+      }
+      else{
+        dd.uploadFile({
         header: {
           "Content-Type": "multipart/form-data"
         },
@@ -75,22 +112,35 @@ Page({
         dataType: 'json',
         formData: {
           iD: that.data.iD,
-          name: that.data.name,
-          nickName: that.data.nickName,
-          phone: that.data.phone,
-          sex: that.data.sex,
-          status: that.data.status,
+          name: e.detail.value.name,
+          nickName: e.detail.value.nickName,
+          phone: e.detail.value.phone,
+          sex: e.detail.value.sex,
+          status: e.detail.value.status,
           'enclosure.photo':that.data.photoc
         },
         success: res => {
         dd.showToast({ content: '修改成功', duration: 2000 });
-         var obj = JSON.parse(res.data);
-         dd.setStorage({
-              key: 'user',
-              data: {
-                 user: obj.data
-              }
-              });
+        // var obj = JSON.parse(res.data);
+        //  dd.setStorage({
+        //       key: 'user',
+        //       data: {
+        //          user: obj.data
+        //       }
+        //   });
+        dd.httpRequest({
+          headers: {
+            "Content-Type": "application/json"
+          },
+          url: 'http://172.18.0.177:8080/zjp/users/deleteSession',
+          method: 'POST',
+          dataType: 'json',
+          success: function(res) {
+            dd.reLaunch({
+              url: '../../login/login',
+            })
+          },
+        });
         },
         fail: function(res) {
           dd.showToast({ content: '修改失败', duration: 2000 });
@@ -100,6 +150,7 @@ Page({
           dd.hideLoading();
         }
       });
+      }
     });
   },
   //图片上传
