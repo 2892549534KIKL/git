@@ -49,7 +49,7 @@ Page({
         headers: {
           "Content-Type": "application/json"
         },
-        url: 'http://172.18.0.177:8080/zjp/users/editPass',
+        url: 'http://39.96.30.233/zjp/users/editPass',
         method: 'POST',
         data: JSON.stringify({
              iD:that.data.iD,

@@ -71,7 +71,7 @@ Page({
         headers: {
           "Content-Type": "application/json"
         },
-        url: 'http://172.18.0.177:8080/zjp/userProduct/findByBarcode',
+        url: 'http://39.96.30.233/zjp/userProduct/findByBarcode',
         method: 'POST',
         data:JSON.stringify({
             barcode:this.data.userProduct.barcode,//查询条件barcode
@@ -133,7 +133,7 @@ Page({
         headers: {
           "Content-Type": "application/json"
         },
-        url: 'http://172.18.0.177:8080/zjp/userProductLog/addData',
+        url: 'http://39.96.30.233/zjp/userProductLog/addData',
         method: 'POST',
         data:JSON.stringify(that.data.arrayList),
         dataType: 'json', 
@@ -145,7 +145,7 @@ Page({
         headers: {
           "Content-Type": "application/json"
         },
-        url: 'http://172.18.0.177:8080/zjp/product/addData',
+        url: 'http://39.96.30.233/zjp/product/addData',
         method: 'POST',
         data:JSON.stringify(that.data.arrayList),
         dataType: 'json', 
@@ -161,7 +161,7 @@ Page({
         headers: {
           "Content-Type": "application/json"
         },
-        url: 'http://172.18.0.177:8080/zjp/userProduct/editData',
+        url: 'http://39.96.30.233/zjp/userProduct/editData',
         method: 'POST',
         data:JSON.stringify(that.data.arrayList),
         dataType: 'json', 

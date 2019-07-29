@@ -15,7 +15,7 @@ Page({
       delay: 100,
     });
     dd.httpRequest({
-      url: 'http://172.18.0.177:8080/zjp/constructionSite/findByCondition',
+      url: 'http://39.96.30.233/zjp/constructionSite/findByCondition',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -59,7 +59,7 @@ Page({
       delay: 100,
     });
     dd.httpRequest({
-      url: 'http://172.18.0.177:8080/zjp/constructionSite/findByCondition',
+      url: 'http://39.96.30.233/zjp/constructionSite/findByCondition',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -99,7 +99,7 @@ Page({
     console.log(e.currentTarget.dataset.id);
     var that = this;
     dd.httpRequest({
-      url: 'http://172.18.0.177:8080/zjp/constructionSite/deleteLarge',
+      url: 'http://39.96.30.233/zjp/constructionSite/deleteLarge',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -128,7 +128,7 @@ Page({
         page: that.data.page + 1
       })
       dd.httpRequest({
-        url: 'http://172.18.0.177:8080/zjp/constructionSite/findByCondition',
+        url: 'http://39.96.30.233/zjp/constructionSite/findByCondition',
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
