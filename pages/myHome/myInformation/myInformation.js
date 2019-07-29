@@ -67,7 +67,7 @@ Page({
         headers: {
           "Content-Type": "application/json"
         },
-        url: 'http://172.18.0.177:8080/zjp/users/editUsers',
+        url: 'http:/39.96.30.233/zjp/users/editUsers',
         method: 'POST',
         data: JSON.stringify({
           iD: that.data.iD,
@@ -133,7 +133,7 @@ Page({
           headers: {
             "Content-Type": "application/json"
           },
-          url: 'http://172.18.0.177:8080/zjp/users/deleteSession',
+          url: 'http://39.96.30.233/zjp/users/deleteSession',
           method: 'POST',
           dataType: 'json',
           success: function(res) {
