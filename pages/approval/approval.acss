@@ -13,7 +13,7 @@
 .weui-icon-search_in-box {
   position: absolute;
   left: 10px;
-  top: 7px;
+  top: 9px;
 }
 
 .weui-search-bar__form {
@@ -29,16 +29,16 @@
 .weui-search-bar__box {
   position: relative;
   padding-left: 30px;
-  padding-right: 30px;
   width: 100%;
   box-sizing: border-box;
   z-index: 1;
 }
 
 .weui-search-bar__input {
-  height: 28px;
+  width: 125px;
   line-height: 28px;
   font-size: 14px;
+  margin-top: 1px;
 }
 
 .weui-search-bar__cancel-btn {

@@ -88,7 +88,7 @@ Page({
           headers: {
             "Content-Type": "application/json"
           },
-          url: 'http://172.18.1.72:8082/zjp/comeOut/come',
+          url: 'http://39.96.30.233/zjp/comeOut/come',
           method: 'POST',
           data: JSON.stringify({
             id: this.data.Id,
