@@ -79,7 +79,8 @@ Page({
       }),
       dataType: 'json',
       success: function(res) {
-        that.data.array[5].number= res.data;
+        if(res.data>0)
+          that.data.array[5].number= res.data;
         that.setData({
           array: that.data.array,
         })
