@@ -1,16 +1,24 @@
-<!-- <view style="text-align: center;">操作菜单</view> -->
+    
+     <image class="headImage"  src="/image/ant.png" />
+    <!-- <view class="headImageTwo">更换封面</view> -->
+       <view a:for="{{title}}" a:for-item="ite" >
+      <view class="title">{{ite.title}}</view>
 <view class="boxBig">
   <view class="box">
-    <view onTap="jump"  data-index="{{index}}" style="background-color: {{item.color}};float: left;" class="section" a:for="{{array}}" a:for-item="item" >
+    <view onTap="jump"    class="section" a:for="{{ite.array}}" a:for-item="item" >
       <view class="box_img">
-        <image style="width:42%; height:42%;"  src="{{item.src}}" onError="imageError" onLoad="imageLoad" />
+        <image class="icon"  src="{{item.src}}" onError="imageError" onLoad="imageLoad" />
       </view>
       <view class="box_text">
         <text >{{item.text}}<text class="{{item.number>0?'box_text_number':''}}" >{{item.number}}</text></text>
       </view>
     </view>
+    <view>
   </view>
-
+<!-- 
+<view class="divLine"></view> -->
+</view></view>
+    
   <view class="td-2" selectable="true" scroll-y="true" >     
       <text class="th-text" disabled='true'  style="overflow-y:auto;overflow-x:scroll;" selectable="true"></text>
  </view>

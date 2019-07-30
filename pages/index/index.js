@@ -1,37 +1,36 @@
 Page({
   data: {
     userID:"",
-    array: [{
+    title:[{title:'出入库',inde:'array',array: [{
       src: '/image/outInData.png',
       color: 'white',
       mode: 'center',
       text: '出入库数据'
-    }, {
+     },{
       src: '/image/outInScan.png',
       color: 'white',
       mode: 'center',
-      text: '扫码出入库'
-    }, {
+      text: '扫码出入库' }]},
+      {title:'使用或报销',index:'arrayTwo',array:[{
       src: '/image/use.png',
       color: 'white',
       mode: 'center',
-      text: '扫码使用或报销'
-    }, {
+      text: '扫码使用或报销' }]},
+      {title:'申请/审批',index:'arrayThree',array:[{
       src: '/image/approval.png',
       color: 'white',
       mode: 'center',
-      text: '申请/审批'
-    }, {
+      text: '申请/审批' }]},
+      {title:'施工管理',index:'arrayFour',array:[{
       src: '/image/construction.png',
       color: 'white',
       mode: 'center',
-      text: '施工管理'
-    }, {
+      text: '施工管理'}]},
+      {title:'通知',index:'arrayFive',array:[{
       src: '/image/notice.png',
       color: 'white',
       mode: 'center',
-      text: '通知'
-    }],
+      text: '通知' }]}],
     src: './2.png'
   },
   onLoad() {
@@ -56,9 +55,9 @@ Page({
       }),
       dataType: 'json',
       success: function(res) {
-        that.data.array[3].number= res.data[0].value;
+        that.data.title[2].array[0].number= res.data[0].value;
         that.setData({
-          array: that.data.array,
+          title: that.data.title,
         })
       }, fail: function(res) {
         console.log("错误:" + res);
@@ -80,9 +79,10 @@ Page({
       dataType: 'json',
       success: function(res) {
         if(res.data>0)
-          that.data.array[5].number= res.data;
+          that.data.title[4].array[0].number= res.data;
+          console.log(that.data.title[4])
         that.setData({
-          array: that.data.array,
+          title: that.data.title,
         })
       }, fail: function(res) {
         console.log("错误:" + res);
@@ -92,6 +92,23 @@ Page({
       }
     });
   },
+  upload(){
+    console.log('正在执行文件上传')
+    dd.chooseImage({
+  count:1,
+  success: (res) => {
+    console.log(res);
+      dd.uploadFile({
+  url: 'http://47.98.38.78/fms/enclosure/addAttachmentData',
+  fileType: 'image',
+  fileName: 'files',
+  filePath: res.filePaths[0],
+  formData:{filesID:72},
+  success: (res) => {
+    console.log(res);
+    console.log(123);
+    dd.alert({ content: '更换成功'	});
+  }})}})},
   jump(e) {
     var index = e.currentTarget.dataset['index'];
     switch (index) {

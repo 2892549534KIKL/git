@@ -14,6 +14,7 @@
 .section {
   width: 32%;
   height: 80px;
+  float:left;
 }
 
 .box_img {
@@ -79,4 +80,35 @@
   height: 70rpx;
   align-items: center;
   max-height: 70rpx;
+}
+
+.title{
+  margin-left:22rpx;
+  font-weight:bold;
+  font-family: 'Times New Roman', Times, serif
+}
+
+.divLine{
+  position: relative;
+ background: red;
+ width: 100%;
+ height: 5rpx;
+}
+
+.headImage{
+  width: 100%;
+  height: 300rpx;
+  margin-left:0 22rpx;
+}
+
+.headImageTwo{
+  position: absolute;
+  margin-top: 88rpx;
+}
+
+
+
+.icon{
+  width: 88rpx;
+  height: 88rpx;
 }
