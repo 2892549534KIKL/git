@@ -20,7 +20,7 @@ Page({
       headers: {
         "Content-Type": "application/json"
       },
-      url: 'http://172.18.1.72:8082/zjp/approval/findByListIDunreleased',
+      url: 'http://39.96.30.233/zjp/approval/findByListIDunreleased',
       method: 'POST',
       data: IuserID,
       // dataType: 'int',
@@ -97,7 +97,7 @@ Page({
       headers: {
         "Content-Type": "application/json"
       },
-      url: 'http://172.18.1.72:8082/zjp/approval/findOutList',
+      url: 'http://39.96.30.233/zjp/approval/findOutList',
       method: 'POST',
       data: listIDTemp,
       // dataType: 'int',
@@ -132,7 +132,7 @@ Page({
           headers: {
             "Content-Type": "application/json"
           },
-          url: 'http://172.18.1.72:8082/zjp/approval/findByQrcode',
+          url: 'http://39.96.30.233/zjp/approval/findByQrcode',
           method: 'POST',
           data: JSON.stringify({
             qrcode: that.data.qrcodeVal,
