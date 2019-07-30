@@ -1,7 +1,7 @@
 Page({
   data: {
     nickName:"",
-    photo:"",
+    photo:"/image/nobody.png",
     array_bottom: [{
       url: '../../pages/myHome/myInformation/myInformation',
       src: '../../image/wo_my.png',
@@ -25,8 +25,8 @@ Page({
             console.log(res.data.user.photo)
             that.setData({
               nickName:res.data.user.nickName,
-              photo:'http://39.96.30.233/zjp/'+res.data.user.photo,
             })
+            if(res.data.user.photo!=null) { that.setData({  photo:'http://39.96.30.233/zjp/'+res.data.user.photo, }) } 
           },
           fail: function(res){
             dd.alert({content: res.errorMessage});

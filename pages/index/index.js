@@ -2,33 +2,33 @@ Page({
   data: {
     userID:"",
     array: [{
-      src: '../images/comeOut.png',
+      src: '/image/outInData.png',
       color: 'white',
       mode: 'center',
       text: '出入库数据'
     }, {
-      src: '../images/scan.png',
+      src: '/image/outInScan.png',
       color: 'white',
       mode: 'center',
       text: '扫码出入库'
     }, {
-      src: '../images/out.png',
+      src: '/image/use.png',
       color: 'white',
       mode: 'center',
       text: '扫码使用或报销'
     }, {
-      src: '../images/apply.png',
+      src: '/image/approval.png',
       color: 'white',
       mode: 'center',
       text: '申请/审批'
     }, {
-      src: '../images/construction.png',
+      src: '/image/construction.png',
       color: 'white',
       mode: 'center',
       text: '施工管理'
     }, {
       number:null,
-      src: '../images/inform.png',
+      src: '/image/notice.png',
       color: 'white',
       mode: 'center',
       text: '通知'

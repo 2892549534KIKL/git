@@ -33,26 +33,26 @@
     "items": [
       {
         "pagePath": "pages/index/index",
-        "icon": "image/icon_component.png",
-        "activeIcon": "image/icon_component_HL.png",
+        "icon": "image/home.png",
+        "activeIcon": "image/homeTouch.png",
         "name": "首页"
       },
       {
         "pagePath": "pages/construction/construction",
-        "icon": "image/icon_API.png",
-        "activeIcon": "image/icon_API_HL.png",
+        "icon": "image/build.png",
+        "activeIcon": "image/buildTouch.png",
         "name": "施工管理"
       },
       {
         "pagePath": "pages/comeOut/comeOut",
-        "icon": "image/icon_biz.png",
-        "activeIcon": "image/icon_biz_HL.png",
+        "icon": "image/outIn.png",
+        "activeIcon": "image/outInTouch.png",
         "name": "出入库数据"
       },
       {
         "pagePath": "pages/myHome/myHome",
-        "icon": "image/wo.png",
-        "activeIcon": "image/woactive.png",
+        "icon": "image/my.png",
+        "activeIcon": "image/myTouch.png",
         "name": "我的"
       }
     ]
