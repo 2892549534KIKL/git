@@ -21,7 +21,7 @@
     "pages/useReimburseIndex/return/return",
     "pages/useReimburseIndex/useReimburseIndex",
     "pages/approval/details/details",
-    "pages/alert/alert"
+    "pages/alert/alert",
   ],
   "window": {
     "defaultTitle": "中江鹏欢迎您"

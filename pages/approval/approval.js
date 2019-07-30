@@ -46,6 +46,9 @@ Page({
       }),
       dataType: 'json',
       success: function(res) {
+        that.setData({
+          approvalData: res.data.data,
+        })
         if (res.data.data.length < that.data.rowsCount) {
           that.setData({
             page: 1,
@@ -53,9 +56,6 @@ Page({
             loaderSign: false,
           });
         }
-        that.setData({
-          approvalData: res.data.data,
-        })
       }, fail: function(res) {
         dd.alert({ content: '无法连接数据,请查看控制台' });
         console.log("错误:" + res);

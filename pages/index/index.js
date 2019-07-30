@@ -27,7 +27,6 @@ Page({
       mode: 'center',
       text: '施工管理'
     }, {
-      number:null,
       src: '../images/inform.png',
       color: 'white',
       mode: 'center',
