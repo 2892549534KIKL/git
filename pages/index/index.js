@@ -1,7 +1,7 @@
 
 Page({
   data: {
-     background: [{color:'green',src:'/image/1.jpg'},{color:'red',src:'/image/2.jpg'},{color:'yellow',src:'/image/4.jpg'} ],
+     background: [{color:'green',src:'/image/1.jpg'},{color:'red',src:'/image/2.jpg'},{color:'yellow',src:'/image/2.jpg'} ],
     indicatorDots: true,
     autoplay: true,
     interval: 3000,
