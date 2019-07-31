@@ -1,32 +1,42 @@
+
 Page({
   data: {
     userID:"",
-    title:[{title:'出入库',inde:'array',array: [{
+    title:[{title:'出入库',index:0,array: [{
       src: '/image/outInData.png',
       color: 'white',
       mode: 'center',
       text: '出入库数据'
      },{
-      src: '/image/outInScan.png',
+      src: '/image/InScan.png',
       color: 'white',
       mode: 'center',
-      text: '扫码出入库' }]},
-      {title:'使用或报销',index:'arrayTwo',array:[{
+      text: '扫码入库' },{
+      src: '/image/outScan.png',
+      color: 'white',
+      mode: 'center',
+      text: '扫码出库' }]},
+      {title:'使用或报销',index:1,array:[{
       src: '/image/use.png',
       color: 'white',
       mode: 'center',
-      text: '扫码使用或报销' }]},
-      {title:'申请/审批',index:'arrayThree',array:[{
+      text: '扫码使用' },{
+      src: '/image/expense.png',
+      color: 'white',
+      mode: 'center',
+      text: '扫码报销' }
+      ]},
+      {title:'申请/审批',index:2,array:[{
       src: '/image/approval.png',
       color: 'white',
       mode: 'center',
       text: '申请/审批' }]},
-      {title:'施工管理',index:'arrayFour',array:[{
+      {title:'施工管理',index:3,array:[{
       src: '/image/construction.png',
       color: 'white',
       mode: 'center',
       text: '施工管理'}]},
-      {title:'通知',index:'arrayFive',array:[{
+      {title:'通知',index:4,array:[{
       src: '/image/notice.png',
       color: 'white',
       mode: 'center',
@@ -39,6 +49,11 @@ Page({
         key: 'user',
         success: function(res) {
           that.data.userID=res.data.user.iD;
+          var actorName=res.data.user.actorName;
+          var approval='申请';
+         if(actorName=='管理员'||actorName=='老板') approval='审批';
+         that.setData({ 'title[2].array[0].text':approval})
+         console.log(actorName+approval);
           },
        fail: function(res){
             console.log({content: res.errorMessage});
@@ -111,41 +126,24 @@ Page({
   }})}})},
   jump(e) {
     var index = e.currentTarget.dataset['index'];
-    switch (index) {
+    var inde= e.currentTarget.dataset['inde'];
+       console.log(index);
+       console.log(inde);
+    switch (inde) {
       case 0:
-        dd.reLaunch({
-          url: '../../pages/comeOut/comeOut',
-        });
+       index==0?dd.reLaunch({url: '../../pages/comeOut/comeOut'}):index==1?dd.navigateTo({url: '../../pages/ComeOutIndex/ComeOutIndex'}):dd.navigateTo({url: '../../pages/ComeOutIndex/out/out'});
         break;
       case 1:
-        dd.navigateTo({
-          url: '../../pages/ComeOutIndex/ComeOutIndex',
-        });
+        index==0?dd.navigateTo({ url: '../../pages/useReimburseIndex/personOut/personOut'}):dd.navigateTo({ url: '../../pages/useReimburseIndex/return/return'});
         break;
       case 2:
-        dd.navigateTo({
-          url: '../../pages/useReimburseIndex/useReimburseIndex',
-        });
+        dd.navigateTo({url: '../../pages/approval/approval'});
         break;
       case 3:
-        dd.navigateTo({
-          url: '../../pages/approval/approval',
-        })
+        dd.reLaunch({ url: '../../pages/construction/construction', })
         break;
       case 4:
-        dd.reLaunch({
-          url: '../../pages/construction/construction',
-        });
-        break;
-      case 5:
-        dd.navigateTo({
-          url: '../../pages/InformInfo/InformInfo',
-        });
-        break;
-      case 6:
-        dd.reLaunch({
-          url: '../../pages/InformInfo/InformInfo',
-        });
+           dd.navigateTo({   url: '../../pages/InformInfo/InformInfo',  });
         break;
       default:
         dd.alert({

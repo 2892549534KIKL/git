@@ -11,6 +11,5 @@
   </view>
   <view>
     <button type="primary" onTap="in">扫码入库</button>
-    <button type="primary" onTap="out">扫码出库</button>
   </view>
 </view>

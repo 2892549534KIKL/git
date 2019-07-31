@@ -1,11 +1,11 @@
     
-     <image class="headImage"  src="/image/ant.png" />
+     <image class="headImage"  src="/image/1.jpg" />
     <!-- <view class="headImageTwo">更换封面</view> -->
        <view a:for="{{title}}" a:for-item="ite" >
       <view class="title">{{ite.title}}</view>
 <view class="boxBig">
   <view class="box">
-    <view onTap="jump"    class="section" a:for="{{ite.array}}" a:for-item="item" >
+    <view onTap="jump" data-index="{{index}}" data-inde="{{ite.index}}"   class="section" a:for="{{ite.array}}" a:for-item="item" >
       <view class="box_img">
         <image class="icon"  src="{{item.src}}" onError="imageError" onLoad="imageLoad" />
       </view>
@@ -15,8 +15,8 @@
     </view>
     <view>
   </view>
-<!-- 
-<view class="divLine"></view> -->
+
+<!-- <view class="divLine"></view> -->
 </view></view>
     
   <view class="td-2" selectable="true" scroll-y="true" >     
