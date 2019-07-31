@@ -10,6 +10,7 @@
     </swiper-item>
   </block>
 </swiper>
+<view style='margin-top:12rpx'><view>
        <view a:for="{{title}}" a:for-item="ite" >
       <view class="title">{{ite.title}}</view>
 <view class="boxBig">
@@ -17,11 +18,12 @@
     <view onTap="jump" data-index="{{index}}" data-inde="{{ite.index}}"   class="section" a:for="{{ite.array}}" a:for-item="item" >
       <view class="box_img">
         <image class="icon"  src="{{item.src}}" onError="imageError" onLoad="imageLoad" />
+        <text class="{{item.number>0?'box_text_number':''}}" >{{item.number}}</text>
       </view>
       <view class="box_text">
-        <text >{{item.text}}<text class="{{item.number>0?'box_text_number':''}}" >{{item.number}}</text></text>
+        <text >{{item.text}}</text>
       </view>
-         <view class="divLine"></view>
+         <!-- <view class="divLine"></view> -->
     </view>
 </view></view>
     
