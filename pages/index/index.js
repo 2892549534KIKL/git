@@ -6,12 +6,12 @@ Page({
     autoplay: true,
     interval: 3000,
     userID:"",
-    title:[{title:'出入库',index:0,array: [{
+    title:[
+      {title:'出入库',index:0,array: [{
       src: '/image/outInData.png',
       color: 'white',
       mode: 'center',
-      text: '出入库数据'
-     },{
+      text: '出入库数据'},{
       src: '/image/InScan.png',
       color: 'white',
       mode: 'center',
@@ -20,6 +20,7 @@ Page({
       color: 'white',
       mode: 'center',
       text: '扫码出库' }]},
+
       {title:'使用或报销',index:1,array:[{
       src: '/image/use.png',
       color: 'white',
@@ -28,18 +29,20 @@ Page({
       src: '/image/expense.png',
       color: 'white',
       mode: 'center',
-      text: '扫码报销' }
-      ]},
+      text: '扫码报销' }]},
+
       {title:'申请/审批',index:2,array:[{
       src: '/image/approval.png',
       color: 'white',
       mode: 'center',
       text: '申请/审批' }]},
+
       {title:'施工管理',index:3,array:[{
       src: '/image/construction.png',
       color: 'white',
       mode: 'center',
       text: '施工管理'}]},
+      
       {title:'通知',index:4,array:[{
       src: '/image/notice.png',
       color: 'white',

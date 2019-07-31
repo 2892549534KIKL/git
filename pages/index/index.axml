@@ -21,7 +21,7 @@
       <view class="box_text">
         <text >{{item.text}}<text class="{{item.number>0?'box_text_number':''}}" >{{item.number}}</text></text>
       </view>
-         <view class="divLine"></view>
+         <!-- <view class="divLine"></view> -->
     </view>
 </view></view>
     

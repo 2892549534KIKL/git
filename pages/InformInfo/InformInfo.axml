@@ -1,4 +1,5 @@
-<view  style="position: fixed; width: 100%;height: 100px;margin-top:-2px">
+<view class="mainBackground">
+<view style="position: fixed; width: 100%;height: 100px;margin-top:-2px">
   <view class="weui-search-bar">
     <view class="weui-search-bar__form">
       <!-- 搜索框 -->
@@ -11,7 +12,8 @@
     <view class="weui-search-bar__cancel-btn" onTap='search'>搜索</view>
   </view>
 </view>
-<view style="margin-top: 50px;"></view>
+<view style="margin-top:48px"></view>
+<view style="background-color:rgb(242,242,242)">
 
 <block a:for="{{Inform}}">
   <!-- 开始循环读取js中的数组 -->
@@ -31,10 +33,11 @@
       <!-- 通知时间 -->
       </view>
     </view>
-    <view class="divLine"></view>
+    <!-- <view class="divLine"></view> -->
   <!-- 读取结束 -->
 </block>
 <view class="over_box {{showView?'block':'none'}}">
   已加载全部数据
 </view>
-
+</view>
+</view>
