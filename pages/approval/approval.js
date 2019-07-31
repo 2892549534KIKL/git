@@ -207,13 +207,6 @@ Page({
               })
             }
           }
-          //一秒后再启动流加载
-          setTimeout(() => {
-            that.setData({
-              loaderSign: false,
-            })
-          }, 1000);
-          console.log(that.data.approvalData);
         }, fail: function(res) {
           console.log({ content: '无法连接数据,请查看控制台' });
           console.log("错误:" + res);
