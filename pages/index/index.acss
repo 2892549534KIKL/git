@@ -88,26 +88,19 @@
 }
 
 .divLine{
-  position: relative;
- background: red;
- width: 100%;
- height: 5rpx;
+  margin-top: 12rpx;
+ background: grey;
+ width: 1111rpx;
+ height: 2rpx;
 }
-
-.headImage{
-  width: 100%;
-  height: 300rpx;
-  margin-left:0 22rpx;
-}
-
-.headImageTwo{
-  position: absolute;
-  margin-top: 88rpx;
-}
-
-
 
 .icon{
   width: 88rpx;
   height: 88rpx;
 }
+
+.swiperImg{
+  width: 100%;
+  height: 366rpx;
+}
+
