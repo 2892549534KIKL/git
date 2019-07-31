@@ -34,7 +34,7 @@
 .box_text_number {
   border-radius: 5px;
   margin-bottom:48rpx; 
-  padding: 2px;
+  padding:6rpx;
   font-size: 14px;
   background-color: red;
   color: white;
