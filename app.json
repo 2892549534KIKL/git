@@ -1,6 +1,6 @@
 {
   "pages": [
-        "pages/approval/approval",
+    "pages/approval/approval",
     "pages/login/login",
     "pages/index/index",
     "pages/approval/approval",

@@ -22,11 +22,11 @@
     <view class="box_txt">
       <text class="box_title">{{approvalData[index].title}}\n
         <!-- 标题 -->
-        <text a:if="{{buttonText=='未审批'}}">{{approvalData[index].content}}\n
+        <text a:if="{{buttonText!='未审批'}}">{{approvalData[index].content}}\n
           <!-- 内容 -->
         </text>
       </text>
-      <text a:if="{{buttonText=='已审批'}}">审批意见:{{approvalData[index].text}}\n</text>
+      <text a:if="{{buttonText!='已审批'}}">审批意见:{{approvalData[index].text}}\n</text>
       <!-- 审批意见 -->
       <text >申请人:{{approvalData[index].senderName}}\n</text>
       <!-- 申请人 -->
