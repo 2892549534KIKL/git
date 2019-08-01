@@ -12,7 +12,7 @@
 </swiper> -->
 
   <view class="swiperView">
-    <swiper style="height:120px;width: 100%;" class="swiperClass" autoplay="{{true}}" indicator-dots="{{true}}" indicator-color="white" indicator-active-color="palevioletred">
+    <swiper  class="swiperClass" autoplay="{{true}}" indicator-dots="{{true}}" indicator-color="white" indicator-active-color="palevioletred">
       <swiper-item a:for="{{background}}" a:index="index">
         <image src="{{item.src}}" />
       </swiper-item>
