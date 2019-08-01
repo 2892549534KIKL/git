@@ -4,15 +4,15 @@ Page({
     photo:"/image/nobody.png",
     array_bottom: [{
       url: '../../pages/myHome/myInformation/myInformation',
-      src: '../../image/wo_my.png',
+      src: '../../image/myHomeWodexinxi.png',
       text: '我的信息',
     }, {
       url: '../../pages/myHome/changePassword/changePassword',
-      src: '../../image/wo_password.png',
+      src: '../../image/myHomeMima.png',
       text: '密码修改',
     }, {
       url: '../../pages/approval/approval',
-      src: '../../image/wo_approval.png',
+      src: '../../image/myHomeShenpi.png',
       text: '我的审批\\审核',
     }],
   },

@@ -1,16 +1,23 @@
 <!-- 头像+名称部分 -->
+<image mode="scaleToFill" src="../../image/myHomeTop.png" class="top_img"/>
 <view class="top_box" style="">
   <view class="top_box_img">
-    <image src="{{photo}}" />
+    <image src="{{photo==null?photo:'../../image/my.png'}}" />
   </view>
-  <view class="top_box_text">
+  <view class="top_box_text_nickName">
     {{nickName}}
   </view>
+  <view class="top_box_text_companyName">
+    江西*******有限公司
+  </view>
+</view>
+<view class="top_box_back">
 </view>
 <!-- 底部导航栏部分 -->
-<view class="" style="margin-top:10px;">
+<view style="width:100%;background-color:rgb(221,221,221);height:1px;"></view>
+<view class="">
   <block a:for="{{array_bottom}}">
-    <navigator url="{{array_bottom[index].url}}" hover-class="none">
+    <navigator url="{{array_bottom[index].url}}" hover-class="none" class="menuView">
       <view class="form-row">
         <view class="form-row-label">
           <image class="box_img" src='{{array_bottom[index].src}}'></image>
@@ -21,16 +28,16 @@
         </view>
       </view>
     </navigator>
-    </block>
-   
-      <view onTap="out" class="form-row">
-        <view class="form-row-label">
-          <image class="box_img" src='../../image/wo_out.png'></image>
-          <text class="box_text">退出登录</text>
-          <view class="form-row-content" style="text-align: right">
-            <view class='arrow'></view>
-          </view>
-        </view>
+    <view class="line"></view>
+  </block>
+  <view onTap="out" class="form-row">
+    <view class="form-row-label">
+      <image class="box_img" src='../../image/myHomeTuichu.png'></image>
+      <text class="box_text">退出登录</text>
+      <view class="form-row-content" style="text-align: right">
+        <view class='arrow'></view>
       </view>
-   
+    </view>
+  </view>
 </view>
+<view style="width:100%;background-color:rgb(221,221,221);height:1px;"></view>

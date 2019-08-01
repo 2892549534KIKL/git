@@ -1,12 +1,13 @@
 .arrow {
-  width: 10px;
-  height: 10px;
-  border-top: 2px solid #999;
-  border-right: 2px solid #999;
+  width: 8px;
+  height: 8px;
+  border-top: 1px solid rgb(50, 50, 50);
+  border-right: 1px solid rgb(50, 50, 50);
   position: absolute;
   right: 20rpx;
   transform: rotate(45deg);
   margin-top: -10rpx;
+  margin-right: 5px;
 }
 
 .form-row-label {
@@ -35,6 +36,12 @@
   height: 30px;
 }
 
+.top_img{
+  height:120px;
+  z-index:1;
+  position:absolute;
+  width:100%;
+}
 .top_box {
   width: 100%;
   height: 4.5rem;
@@ -97,9 +104,9 @@
 }
 
 .top_box_img {
-  width: 100%;
+  /* width: 100%;
   height: 3rem;
-  display: flex;
+  display: flex; */
   /*设置显示样式**/
   align-items: center;
   /**子view垂直居中*/
@@ -108,17 +115,80 @@
   justify-content: center;
   /**内容居中*/
   flex-direction: row;
+  float: right;
+  z-index: 2;
+  position: relative;
+  right: 20px;
+  top: 25px;
 }
 
 .top_box_img image {
-  width: 2rem;
-  height: 2rem;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
+  z-index: 2;
 }
 
-.top_box_text {
+.top_box_text_nickName {
   width: 100%;
   height: 1.5rem;
-  text-align: center;
-  font-size: 50rpx;
+  font-size: 17px;
+  z-index: 2;
+  position: relative;
+  top: 11%;
+  left: 30px;
+  font-weight: bolder;
+}
+
+.top_box_text_companyName {
+  /* width: 100%; */
+  font-size: 12px;
+  z-index: 2;
+  position: relative;
+  top: -13%;
+  left: 30px;
+  color: rgb(114, 114, 114);
+}
+
+.top_box_back{
+  width:85%;
+  height: 96px;
+  position: absolute;
+  background-color: aliceblue;
+  top: 77px;
+  z-index: 5;
+  left: 7.5%;
+  border-radius: 16px;
+
+  background: white;
+  /* border:0.5px solid rgb(193, 193, 193); */
+  box-shadow: rgb(220, 220, 220) 0px 0px 10px 1px;
+}
+
+
+.menuView{
+  /* border-bottom: 0.5px solid rgb(100, 100, 100);
+  border-top: 0.5px solid rgb(100, 100, 100); */
+  height: 56px;
+}
+
+.line{
+  width: 94%;
+  background-color: rgb(233,233,233);
+  height: 1px;
+  margin-left: 3%;
+}
+
+.box_text{
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  padding: 0px;
+  height: 60px;
+  align-items: center;
+  margin-left: 22px;
 }
