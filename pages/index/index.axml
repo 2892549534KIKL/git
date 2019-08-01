@@ -1,5 +1,5 @@
     
-<swiper
+<!-- <swiper
   indicator-dots="{{indicatorDots}}"
   autoplay="{{autoplay}}"
   interval="{{interval}}"
@@ -9,7 +9,16 @@
       <view ><image class="swiperImg"  src="{{item.src}}"/></view>
     </swiper-item>
   </block>
-</swiper>
+</swiper> -->
+
+  <view class="swiperView">
+    <swiper style="height:120px;width: 100%;" class="swiperClass" autoplay="{{true}}" indicator-dots="{{true}}" indicator-color="white" indicator-active-color="palevioletred">
+      <swiper-item a:for="{{background}}" a:index="index">
+        <image src="{{item.src}}" />
+      </swiper-item>
+    </swiper>
+  </view>
+
 <view style='margin-top:12rpx'><view>
        <view a:for="{{title}}" a:for-item="ite" >
       <view class="title">{{ite.title}}</view>
