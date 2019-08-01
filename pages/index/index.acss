@@ -32,7 +32,7 @@
 }
 
 .box_text_number {
-  border-radius: 5px;
+  border-radius:18rpx;
   margin-bottom:48rpx; 
   padding:6rpx;
   font-size: 14px;
