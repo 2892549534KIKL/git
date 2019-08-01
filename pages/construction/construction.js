@@ -26,6 +26,9 @@ Page({
       }),
       dataType: 'json',
       success: function(res) {
+        that.setData({
+          constructionSiteData: res.data.data,
+        })
         if (res.data.data.length < that.data.rowsCount) {
           that.setData({
             page: 1,
@@ -33,10 +36,6 @@ Page({
             loaderSign: false,
           });
         }
-        console.log(res);
-        that.setData({
-          constructionSiteData: res.data.data,
-        })
       }, fail: function(res) {
         dd.alert({ content: '无法连接数据,请查看控制台' });
         console.log("错误:" + res);
