@@ -33,17 +33,16 @@
 
 .box_text_number {
   border-radius: 14px;
-  margin-bottom:48rpx; 
   padding:6rpx;
   font-size: 13px;
   background-color: rgba(255, 50, 50, 0.95);
   color: white;
-  position: relative;
-  top:-7px;
-  right: 11px;
+  position: absolute;
   height: 14px;
   width: 14px;
   text-align: center;
+  margin-top: -20px;
+  margin-left: 20px;
 }
 
 /*横向布局  */
