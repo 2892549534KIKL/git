@@ -33,16 +33,16 @@
 
 .box_text_number {
   border-radius: 14px;
-  margin-bottom:48rpx; 
   padding:6rpx;
   font-size: 13px;
   background-color: rgba(255, 50, 50, 0.95);
   color: white;
-  position: relative;
-  right: -15px;
+  position: absolute;
   height: 14px;
   width: 14px;
   text-align: center;
+  margin-top: -20px;
+  margin-left: 20px;
 }
 
 /*横向布局  */
@@ -84,21 +84,15 @@
   justify-content: center;
   color: #000;
   display: block;
-  height: 30rpx;
+  height: 16rpx;
   align-items: center;
-  max-height: 30rpx;
+  max-height: 16rpx;
 }
 
 .title{
   margin-left:22rpx;
-  font-weight:bold;
   font-family: 'Times New Roman', Times, serif;
-  background-color: rgb(242, 242, 242);
   margin-top: 12px;
-  border-radius: 6px;
-  width: 120%;
-  line-height: 22px;
-  padding-left: 5px;
 }
 
 .divLine{
@@ -126,20 +120,17 @@
 .swiperClass{
   border-radius: 10px;
   overflow: hidden;
-  padding:5px;
 }
 .swiperClass swiper-item{
   width: 100%;
-  height: 200px;
-  margin-left: -5px;
+  height: 266rpx;
 }
 .swiperClass swiper-item image{
   width: 100%;
   /* height: 300px; */
-  height: 200px;
+  height:266rpx;
 }
 .swiperView{
-  height: 130px;
   display: flex;    /*设置显示样式**/
   align-items: center;    /**子view垂直居中*/
   vertical-align: center; /**垂直居中*/
