@@ -103,6 +103,7 @@
 }
 
 .icon{
+  position: absolute;
   width: 88rpx;
   height: 88rpx;
 }
@@ -137,5 +138,5 @@
   flex-direction:row; 
   width: 96%;
   margin-left: 2%;
-
 }
+
