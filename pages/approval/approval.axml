@@ -1,3 +1,4 @@
+<view class="mainBackground">
 <view style="position: fixed; width: 100%;height: 100px;margin-top:-2px">
   <view class="weui-search-bar">
     <view class="weui-search-bar__form">
@@ -12,23 +13,25 @@
     <view class="weui-search-bar__cancel-btn" onTap='cut'>{{buttonText}}</view>
   </view>
 </view>
-<view style="margin-top: 50px;"></view>
+<view style="margin-top:48px"></view>
+<view style="background-color:rgb(242,242,242)">
+<!-- <view style="margin-top: 50px;"></view> -->
 <block a:for="{{approvalData}}">
   <!-- 开始循环读取js中的数组 -->
   <view class="box {{approvalData[index].createTime=='-1'?'none ':'block'}}">
     <view class="box_txt">
       <text class="box_title">{{approvalData[index].title}}\n
         <!-- 标题 -->
-        <text a:if="{{buttonText=='未审批'}}">{{approvalData[index].content}}\n
+        <text a:if="{{buttonText!='未审批'}}">{{approvalData[index].content}}\n
           <!-- 内容 -->
         </text>
       </text>
-      <text a:if="{{buttonText=='已审批'}}">审批意见:{{approvalData[index].text}}\n</text>
+      <text a:if="{{buttonText!='已审批'}}">审批意见:{{approvalData[index].text}}\n</text>
       <!-- 审批意见 -->
       <text >申请人:{{approvalData[index].senderName}}\n</text>
       <!-- 申请人 -->
       <view class="{{approvalData[index].stateName=='审批成功'?'stateSucceed':'stateDefeated'}}">
-        <text>{{approvalData[index].stateName}}\n</text>
+        <!-- <text>{{approvalData[index].stateName}}\n</text> -->
         <!-- 状态 -->
       </view>
       <view class="box_bottom">
@@ -40,7 +43,6 @@
       <!-- 出库时间 -->
     </view>
   </view>
-  <view class="divLine"></view>
   <!-- 读取结束 -->
 </block>
 <view class="over_box {{showView?'block':'none'}}">
@@ -68,4 +70,6 @@
       </view>
     </view>
   </view>
+</view>
+</view>
 </view>

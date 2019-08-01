@@ -32,12 +32,18 @@
 }
 
 .box_text_number {
-  border-radius:18rpx;
+  border-radius: 14px;
   margin-bottom:48rpx; 
   padding:6rpx;
-  font-size: 14px;
-  background-color: red;
+  font-size: 13px;
+  background-color: rgba(255, 50, 50, 0.95);
   color: white;
+  position: relative;
+  top:-7px;
+  right: 11px;
+  height: 14px;
+  width: 14px;
+  text-align: center;
 }
 
 /*横向布局  */
@@ -70,6 +76,8 @@
   /**内容居中*/
   flex-direction: row;
   font-size: 11px;
+  color: rgb(100, 100, 100);
+  margin-top: -6px;
 }
 
 .th-text {
@@ -85,7 +93,13 @@
 .title{
   margin-left:22rpx;
   font-weight:bold;
-  font-family: 'Times New Roman', Times, serif
+  font-family: 'Times New Roman', Times, serif;
+  background-color: rgb(242, 242, 242);
+  margin-top: 12px;
+  border-radius: 6px;
+  width: 120%;
+  line-height: 22px;
+  padding-left: 5px;
 }
 
 .divLine{
@@ -105,3 +119,33 @@
   height: 366rpx;
 }
 
+
+
+
+/* 轮播图 */
+.swiperClass{
+  border-radius: 10px;
+  overflow: hidden;
+  padding:5px;
+}
+.swiperClass swiper-item{
+  width: 100%;
+  height: 200px;
+  margin-left: -5px;
+}
+.swiperClass swiper-item image{
+  width: 100%;
+  /* height: 300px; */
+  height: 200px;
+}
+.swiperView{
+  height: 130px;
+  display: flex;    /*设置显示样式**/
+  align-items: center;    /**子view垂直居中*/
+  vertical-align: center; /**垂直居中*/
+  justify-content: center; /**内容居中*/
+  flex-direction:row; 
+  width: 96%;
+  margin-left: 2%;
+
+}
