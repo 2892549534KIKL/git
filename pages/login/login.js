@@ -40,8 +40,10 @@ Page({
                   dd.alert({
                     content: "免登失败,请登陆后重试"
                   })
-                }else{
-                  dd.navigateTo({ url: '../index/index' });
+                } else {
+                  dd.switchTab({
+                    url: '../index/index',
+                  })
                 }
                 dd.hideLoading();
                 console.log('获取成功userid:  ' + that.data.userid);
