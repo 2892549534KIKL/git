@@ -1,183 +1,174 @@
 Page({
   data: {
-    page: 1,//分页查询(第几页)
-    rowsCount: 10,//分页查询(一页多少条数据)
-    comeOutData: {},
-    loaderSign: true,
-    showView: false,//标记数据是否加载完毕
-    searchText: "",//搜索文本
+    iD: "",
+    name: "",
+    nickName: "",
+    sex: "",
+    status: "",
+    photo: "",
+    photoc: "",
+    phone: "",
+    checkedSex: "true",
+    checkedStatus: "true",
+    imagePath: "",
   },
-  //页面初始化时加载
   onLoad() {
     var that = this;
-    dd.showLoading({
-      content: '加载中...',
-      delay: 100,
-    });
-    dd.httpRequest({
-      url: 'http://39.96.30.233/zjp/product/findByCondition',
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      data: JSON.stringify({
-        page: that.data.page,
-        rowsCount: that.data.rowsCount,
-        condition: that.data.searchText,
-      }),
-      dataType: 'json',
+    dd.getStorage({
+      key: 'user',
       success: function(res) {
-        if (res.data.data.length < that.data.rowsCount) {
-          that.setData({
-            page: 1,
-            showView: true,//显示'已加载全部数据'
-            loaderSign: false,
-          });
-        }
+        console.log(res)
+        if (res.data.user.sex == "女")
+          that.data.checkedSex = false;
+        if (res.data.user.sex == "禁用")
+          that.data.checkedStatus = false;
         that.setData({
-          comeOutData: res.data.data,
+          iD: res.data.user.iD,
+          name: res.data.user.name,
+          nickName: res.data.user.nickName,
+          sex: res.data.user.sex,
+          phone: res.data.user.phone,
+          status: res.data.user.status,
+          imagePath: 'http://39.96.30.233/zjp/' + res.data.user.photo,
+          photo: 'http://39.96.30.233/zjp/' + res.data.user.photo,
+          photoc: res.data.user.photo,
         })
-      }, fail: function(res) {
-        dd.alert({ content: '无法连接数据,请查看控制台' });
-        console.log("错误:" + res);
       },
-      complete: function(res) {
-        dd.hideLoading();
-      }
+      fail: function(res) {
+        dd.alert({ content: res.errorMessage });
+      },
     });
   },
-  //查询搜索的接口方法
-  search() {
+  onSubmit(e) {
     var that = this;
-     dd.showLoading({
-      content: '加载中...',
-      delay: 100,
-    });
-     that.setData({
-      page: 1,
-      showView: false,//显示'已加载全部数据'
-      loaderSign: true,
-    })
-    dd.httpRequest({
-      url: 'http://39.96.30.233/zjp/product/findByCondition',
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      data: JSON.stringify({
-        page: that.data.page,
-        rowsCount: that.data.rowsCount,
-        condition: that.data.searchText,
-      }),
-      dataType: 'json',
-      success: function(res) {
-        if (res.data.data.length < that.data.rowsCount) {
-          that.setData({
-            page: 1,
-            showView: true,//显示'已加载全部数据'
-            loaderSign: false,
-          });
-        }
-        that.setData({
-          comeOutData: res.data.data,
-        })
-      }, fail: function(res) {
-        dd.alert({ content: '无法连接数据,请查看控制台' });
-        console.log("错误:" + res);
-      },
-      complete: function(res) {
-        dd.hideLoading();
-      }
-    });
-  },
-  //保存搜索值
-  save(e) {
-    this.setData({ searchText: e.detail.value });
-  },
-  //点击删除
-  del(e) {
-    console.log(e.currentTarget.dataset.id);
-    var that = this;
-    dd.httpRequest({
-      url: 'http://39.96.30.233/zjp/product/deleteLarge',
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      data: JSON.stringify(new Array(e.currentTarget.dataset.id)),
-      dataType: 'json',
-      success: function(res) {
-        var index = e.currentTarget.dataset.index;
-        that.data.comeOutData[index].createTime = "-1";
-        that.setData({//啥也不做,只触发渲染就OK
-          comeOutData: that.data.comeOutData,
-        })
-      }, fail: function(res) {
-        dd.alert({ content: '无法连接数据,请查看控制台' });
-        console.log("错误:" + JSON.stringify(res));
-      },
-      complete: function(res) {
-        // dd.hideLoading();
-      }
-    });
-  },
-  //流加载
-  onReachBottom: function() {
-    var that = this;
-    if (this.data.loaderSign) {
+    if (e.detail.value.name == "") {
+      dd.showToast({ content: '请输入账号', duration: 2000 });
+      return;
+    } else if (e.detail.value.nickName == "") {
+      dd.showToast({
+        content: '请输入姓名',
+        duration: 2000,
+      });
+      return;
+    } else if (e.detail.value.phone == "") {
+      dd.showToast({
+        content: '请输入联系电话',
+        duration: 2000,
+      });
+      return;
+    }
+    setTimeout(() => {
       dd.showLoading({
-      content: '加载中...',
-      delay: 100,
-    });
-      that.setData({
-        page: that.data.page + 1
-      })
-      dd.httpRequest({
-        url: 'http://39.96.30.233/zjp/product/findByCondition',
-        method: 'POST',
+        content: '加载中...',
+        delay: 100,
+      });
+      if(that.data.photo==that.data.imagePath){
+        dd.httpRequest({
         headers: {
           "Content-Type": "application/json"
         },
+        url: 'http:/39.96.30.233/zjp/users/editUsers',
+        method: 'POST',
         data: JSON.stringify({
-          page: that.data.page,
-          rowsCount: that.data.rowsCount,
-          condition: that.data.searchText,
+          iD: that.data.iD,
+          name: e.detail.value.name,
+          nickName: e.detail.value.nickName,
+          phone: e.detail.value.phone,
+          sex: e.detail.value.sex,
+          status: e.detail.value.status,
         }),
         dataType: 'json',
         success: function(res) {
-          //如果没查到数据就重置page页码
-          if (res.data.data.length < that.data.rowsCount) {
-            for (var i = 0; i < res.data.data.length; i++) {
-              that.setData({
-                comeOutData: that.data.comeOutData.concat(res.data.data[i]),
-              })
-            }
-            that.setData({
-              page: that.data.page - 1,
-              showView: true,//显示'已加载全部数据'
-              loaderSign: false,
-            });
-          } else {
-            for (var i = 0; i < res.data.data.length; i++) {
-              that.setData({
-                comeOutData: that.data.comeOutData.concat(res.data.data[i]),
-              })
-            }
+          dd.showToast({ content: '修改成功', duration: 2000 });
+          res.data.data.photo=that.data.photoc;
+          console.log(res)
+          if (res.data.code > 0) {
+             dd.setStorage({
+              key: 'user',
+              data: {
+                 user: res.data.data
+              }
+              });
+              dd.hideLoading();
+          } 
+          else {
+            dd.showToast({ content: '修改失败', duration: 2000 });
+            dd.hideLoading();
+            dd.showToast({content: res.data.msg,duration: 3000,});
           }
-          //一秒后再启动流加载
-          setTimeout(() => {
-            that.setData({
-              loaderSign: false,
+        },
+      });
+      }
+      else{
+        dd.uploadFile({
+        header: {
+          "Content-Type": "multipart/form-data"
+        },
+        method: 'POST',
+        url: 'http://39.96.30.233/zjp/users/editUser',
+        fileType: 'image',
+        fileName: 'enclosure.files',
+        filePath: that.data.imagePath,
+        dataType: 'json',
+        formData: {
+          iD: that.data.iD,
+          name: e.detail.value.name,
+          nickName: e.detail.value.nickName,
+          phone: e.detail.value.phone,
+          sex: e.detail.value.sex,
+          status: e.detail.value.status,
+          'enclosure.photo':that.data.photoc
+        },
+        success: res => {
+        console.log(res);
+        dd.showToast({ content: '修改成功', duration: 2000 });
+        // var obj = JSON.parse(res.data);
+        //  dd.setStorage({
+        //       key: 'user',
+        //       data: {
+        //          user: obj.data
+        //       }
+        //   });
+        dd.httpRequest({
+          headers: {
+            "Content-Type": "application/json"
+          },
+          url: 'http://39.96.30.233/zjp/users/deleteSession',
+          method: 'POST',
+          dataType: 'json',
+          success: function(res) {
+            dd.reLaunch({
+              url: '../../login/login',
             })
-          }, 1000);
-        }, fail: function(res) {
-          dd.alert({ content: '无法连接数据,请查看控制台' });
-          console.log("错误:" + res);
+          },
+        });
+        },
+        fail: function(res) {
+          dd.showToast({ content: '修改失败', duration: 2000 });
+           console.log('上传失败');
         },
         complete: function(res) {
           dd.hideLoading();
         }
       });
-    }
+      }
+    });
+  },
+  //图片上传
+  uploadFile() {
+    var that = this;
+    dd.chooseImage({
+      sourceType: ['camera', 'album'],
+      count: 1,
+      success: res => {
+        const path = (res.filePaths && res.filePaths[0]) || (res.apFilePaths && res.apFilePaths[0]);
+        that.setData({
+          imagePath: path,
+        })
+        console.log("updataImg:" + that.data.imagePath);
+
+      },
+
+    });
   },
 });

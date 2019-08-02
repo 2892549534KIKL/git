@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/daily/daily",
      "pages/index/index",
-        "pages/ComeOutIndex/out/out",
-        "pages/ComeOutIndex/in/in",
-        "pages/index/index",
+     "pages/ComeOutIndex/out/out",
+    "pages/ComeOutIndex/in/in",
+    "pages/login/login",
     "pages/approval/approval",
     "pages/InformInfo/InformInfo",
     "pages/daily/daily",
