@@ -1,33 +1,37 @@
 <view class="head">
-  <button class="head_button" onTap="saoMa" size="default" type="primary">点击扫码</button>
-  <view class="table">
-    <view class="tr">
-      <view class="th">名称</view>
-      <view class="th">剩余量</view>
-      <view class="th">使用量</view>
-      <view class="th">单位</view>
-    </view>
-    <form onSubmit="up" onReset="">
-    <block a:for="{{arrayList}}">
-      <view class="tr">
-        <view class="td">{{arrayList[index].name}}</view>
-        <view class="td">{{arrayList[index].surplus}}</view>
-        <view class="td"><input name="id{{index+1}}"/></view>
-        <view class="td">{{arrayList[index].unit}}</view>
-      </view>
-    </block>
-    <view class="page-section">
-    <picker onChange="bindPickerChange"  range="{{constructionSiteList}}">
+  <view>
+    <picker onChange="bindPickerChange" range="{{constructionSiteList}}">
       <view class="row">
-        <view class="row-title">仓库选择器</view>
+        <view class="row-title">地点选择器</view>
         <view class="row-extra">当前选择：{{constructionSiteList[index]}}</view>
         <image class="row-arrow" src="/image/arrowright.png" mode="aspectFill" />
       </view>
     </picker>
   </view>
-    <view class="btn-area">
-    <button formType="submit">提交</button>
+  <view class="table">
+    <view class="tr">
+      <view class="th" style="width:60%;text-align:left;">名称</view>
+      <view class="th" style="width:15%">剩余量</view>
+      <view class="th" style="width:15%">使用量</view>
+      <view class="th" style="width:10%">单位</view>
     </view>
-    </form>
+    <view class="tr" style="height:150px">
+          
+    </view>
+      <form onSubmit="up" onReset="">
+        <block a:for="{{arrayList}}">
+          <view class="tr">
+            <view class="td" style="width:60%;text-align:left;">{{arrayList[index].name}}</view>
+            <view class="td" style="width:15%;">{{arrayList[index].surplus}}</view>
+            <view class="td" style="width:15%;background-color:rgb(255,255,255);">
+              <input name="id{{index+1}}"/></view>
+            <view class="td" style="width:10%;">{{arrayList[index].unit}}</view>
+          </view>
+        </block>
+        <view class="btn-area">
+          <button class="head_button" onTap="saoMa" size="default" type="primary" style="bottom:60px;">点击扫码</button>
+          <button formType="submit" style="bottom:0px;">提交</button>
+        </view>
+      </form>
+    </view>
   </view>
-</view>
