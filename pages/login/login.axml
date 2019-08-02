@@ -5,24 +5,24 @@
         <image src="../images/logo.png"/>
         <text>\n</text>
       </label>
-      <view class="form-line" />
+
       <text>\n</text>
-      <view class="form-row">
-        <view class="form-row-label">账号</view>
-        <view class="form-row-content">
-          <input name="name" class="input" placeholder="请输入账号.." />
+      <view class="form-row" style="margin-top:30px;">
+        <!-- <view class="form-row-label">账号</view> -->
+        <view class="form-row-content login_input_border">
+          <input name="name" class="input login_input" placeholder="请输入账号.." />
         </view>
       </view>
       <text>\n</text>
       <view class="form-row">
-        <view class="form-row-label">密码</view>
-        <view class="form-row-content">
-          <input name="password" class="input" password="true" placeholder="请输入密码.." />
+        <!-- <view class="form-row-label">密码</view> -->
+        <view class="form-row-content login_input_border">
+          <input name="password" class="input login_input" password="true" placeholder="请输入密码.." />
         </view>
       </view>
       <text>\n</text>
       <view class="page-section-demo">
-        <button type="primary" formType="submit">绑定钉钉</button>
+        <button type="primary" formType="submit" class="login_btn">绑定钉钉</button>
       </view>
     </view>
   </form>
