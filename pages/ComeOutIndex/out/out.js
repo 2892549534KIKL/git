@@ -87,7 +87,10 @@ Page({
     listID: 0,
     listArr: [],
     productList: [],
-    outBarcode:0
+    outBarcode:0,
+    touchX:300,
+    touchY:500,
+    css_addBtnBC:"rgb(50, 150, 250)",
   },
   bindPickerChange(e) {
     let that = this;
@@ -168,4 +171,22 @@ Page({
       },
     });
   },
+  addBtnTouchMove:function(e){
+    let tempX = e.touches[0].clientX - 20;
+    let tempY = e.touches[0].clientY - 20;
+    this.setData({
+      touchX:tempX,
+      touchY:tempY,
+    });
+  },
+  addBtnTouchStart:function(e){
+    this.setData({
+      css_addBtnBC:"rgba(150, 150, 150, 0.5)",
+    });
+  },
+  addBtnTouchEnd:function(e){
+    this.setData({
+      css_addBtnBC:"rgb(50, 150, 250)",
+    });
+  }
 });

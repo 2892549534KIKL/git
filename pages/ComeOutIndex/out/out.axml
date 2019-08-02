@@ -1,12 +1,13 @@
 <view class="head" >
-  <button  class="head_button"  onTap="saoMa" size="default" type="primary">点击扫码</button>
+  <!-- <button  class="head_button"  onTap="saoMa" size="default" type="primary">点击扫码</button> -->
+  <view class="addBtn" onTap="saoMa" onLongTap="longTap" onTouchMove="addBtnTouchMove" style="top:{{touchY}}px;left:{{touchX}}px;background-color:{{css_addBtnBC}}" onTouchStart="addBtnTouchStart" onTouchEnd="addBtnTouchEnd">-</view>
   <!-- 表格 -->
     <!-- 状态  仓库  出库人  商品编号  出库时间 -->
     <!-- <text>{{msg}}</text>
     <text>{{name}}</text>
     <text>{{id}}</text>
     <text>{{time}}</text> -->
-    <view class="page-section">
+    <view class="">
     <picker onChange="bindPickerChange" value="0" range="{{selectNameList}}">
       <view class="row">
         <view class="row-title">审批单选择</view>
@@ -17,15 +18,15 @@
   </view>
     <view class="table">
         <view class="tr">
-           <view class="th">产品名称</view>
-           <view class="th">审批数量</view>
-           <view class="th">未出库数量</view>
+           <view class="th" style="width:54%;">产品名称</view>
+           <view class="th" style="width:23%;text-align: center;">审批数量</view>
+           <view class="th" style="width:23%;text-align: center;">未出库数量</view>
         </view>
         <block a:for="{{productList}}">
         <view class="tr">
-            <view class="td">{{productList[index].goodsName}}</view>
-            <view class="td">{{productList[index].quantity}}</view>
-            <view class="td">{{productList[index].unreleased}}</view>
+            <view class="td" style="width:54%;">{{productList[index].goodsName}}</view>
+            <view class="td" style="width:23%;">{{productList[index].quantity}}</view>
+            <view class="td" style="width:23%;">{{productList[index].unreleased}}</view>
         </view>
         </block>
     </view>

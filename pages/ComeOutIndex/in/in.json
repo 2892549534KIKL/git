@@ -1,3 +1,5 @@
 {
-  "defaultTitle": "扫码入库"   
+  "defaultTitle": "扫码入库",
+  "enablePullDownRefresh":true,
+  "disableScroll": true
 }

@@ -1,6 +1,7 @@
 {
   "pages": [
-    
+        "pages/ComeOutIndex/out/out",
+        "pages/ComeOutIndex/in/in",
     "pages/login/login",
         "pages/index/index",
     "pages/approval/approval",
@@ -24,7 +25,8 @@
     "pages/alert/alert"
   ],
   "window": {
-    "defaultTitle": "中江鹏欢迎您"
+    "defaultTitle": "中江鹏欢迎您",
+    "allowsBounceVertical":"NO"
   },
   "tabBar": {
     "textColor": "#404040",

@@ -1,37 +1,49 @@
 
-
 .head{
   width: 100%;
 }
-.head_button{
-  width: 70%;
+.addBtn{
+  width: 40px;
+  height: 40px;
   margin: 0 auto;
+  position: fixed;
+  line-height: 30px;
+  border-radius: 20px;
+  font-size: 52px;
+  font-weight: 800;
+  color: white;
+  text-align: center;
+  /* transition: 400ms; */
 }
+
 page {
-　　font-size: 14px;
-　　color: #333
+  font-size: 14px;
+  color: #333
 }
 .table {
-   margin-top: 10px;
-　　border:1px solid #dadada;
-　　border-right: 0;
-　　border-bottom: 0;
-   width: 100%;
+  margin-top: 10px;
+  border:1px solid #dadada;
+  border-right: 0;
+  border-bottom: 0;
+  width: 100%;
 }
 .tr {
-　　width: 100%;
-　　display: flex;
-　　justify-content: space-between;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
-.th,.td {
-　　border-bottom: 1px solid #dadada;
-　　border-right: 1px solid #dadada;
-　　text-align: center;
-　　width:100%
+.td {
+  border-bottom: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+  /* text-align: center; */
+  width:100%;
+  word-break: break-all;
 }
 .th {
-　　font-weight: 400;
-　　background-color: #dadada
+  padding: 6px;
+  font-weight: 400;
+  background-color: #dadada;
+  word-break: break-all;
 }
 
 .page-section {

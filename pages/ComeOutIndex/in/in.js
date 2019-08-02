@@ -71,6 +71,9 @@ Page({
     userID: -1,
     number: "",//数量
     unit: "",//单位
+    touchX:300,
+    touchY:500,
+    css_addBtnBC:"rgb(50, 150, 250)",
   },
   saoMa() {
     dd.scan({
@@ -100,7 +103,6 @@ Page({
           }),
           dataType: 'json',
           success: function(res) {
-            console.log(res.data);
             if (res.data.code == 1) {
               that.setData({
                 msg: "入库成功",
@@ -110,8 +112,7 @@ Page({
                 msg: "入库成功,但无法找到对应商品信息",
               });
             }
-            //{"code":1,"count":0,"data":{"createTime":"Mon Jul 15 15:36:14 CST 2019","id":"6940159412054","name":"李四",
-            //"number":500,"supplier":"百事可乐饮料有限公司","unit":"毫升"},"is":true,"msg":"入库成功","tip":"操作成功"}
+            let tempTime = JSON.parse(JSON.stringify(res.data.data.createTime));
             that.setData({
               name: res.data.data.name,//产品名称
               storeHouseName: res.data.data.storeHouseName,
@@ -123,11 +124,12 @@ Page({
             that.setData({
               arrayTest: that.data.arrayTest.concat({
                 name: res.data.data.name,//产品名称
+                fullName:res.data.data.name+"  ["+ res.data.data.number+res.data.data.unit+"]",
                 msg: that.data.msg,//返回结果
                 userName: res.data.data.userName,//出库人姓名
                 storeHouseName: res.data.data.storeHouseName,//地名
                 id: res.data.data.name,//扫码获取的id
-                time: res.data.data.createTime,//出库时间
+                time: tempTime.substring(tempTime.indexOf(":")-2,tempTime.indexOf(":")+6),//出库时间
                 unit: res.data.data.unit,//扫码获取的id
                 number: res.data.data.number,//出库时间
               }),
@@ -140,4 +142,22 @@ Page({
       },
     });
   },
+  addBtnTouchMove:function(e){
+    let tempX = e.touches[0].clientX - 20;
+    let tempY = e.touches[0].clientY - 20;
+    this.setData({
+      touchX:tempX,
+      touchY:tempY,
+    });
+  },
+  addBtnTouchStart:function(e){
+    this.setData({
+      css_addBtnBC:"rgba(150, 150, 150, 0.5)",
+    });
+  },
+  addBtnTouchEnd:function(e){
+    this.setData({
+      css_addBtnBC:"rgb(50, 150, 250)",
+    });
+  }
 });
