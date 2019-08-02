@@ -2,7 +2,7 @@
 <image mode="scaleToFill" src="../../image/myHomeTop.png" class="top_img"/>
 <view class="top_box" style="">
   <view class="top_box_img">
-    <image src="{{photo==null?photo:'../../image/my.png'}}" />
+    <image src="{{photo==null?'../../image/my.png':photo}}" />
   </view>
   <view class="top_box_text_nickName">
     {{nickName}}
