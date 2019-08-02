@@ -9,34 +9,37 @@
   margin: 0 auto;
 }
 page {
-　　font-size: 14px;
-　　color: #333
+  font-size: 14px;
+  color: #333
 }
 .table {
    margin-top: 10px;
-　　border:1px solid #dadada;
-　　border-right: 0;
-　　border-bottom: 0;
+  border:1px solid #dadada;
+  border-right: 0;
+  border-bottom: 0;
    width: 100%;
 }
 .tr {
-　　width: 100%;
-　　display: flex;
-　　justify-content: space-between;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 .th,.td {
-　　padding: 10px;
-　　border-bottom: 1px solid #dadada;
-　　border-right: 1px solid #dadada;
-　　text-align: center;
-　　width:100%
+  padding: 10px;
+  border-bottom: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+  text-align: center;
+  width:100%;
+  word-break: break-all;
 }
 .th {
-　　font-weight: 400;
-　　background-color: #dadada
+  font-weight: 400;
+  background-color: #dadada
 }
 button{
-  margin-top: 20px
+  position: fixed;
+  width: 70%;
+  left: 15%;
 }
 input{
   width: 100%;
@@ -93,11 +96,6 @@ page {
 
 .page-section{
   margin-top: 50px;
-}
-
-button {
-  margin-top:20rpx;
-  margin-bottom:20rpx;
 }
 
 .bc_blue {
@@ -175,4 +173,14 @@ button {
   width: 32rpx;
   height: 32rpx;
   margin-left: 16rpx;
+}
+
+.btn-area{
+  background-color: rgb(242,242,242);
+  width: 100%;
+  height: 120px;
+  position: fixed;
+  bottom: 0px;
+  box-shadow: rgb(160,160,160) 0px 0px 10px 1px;
+  left: 0px;
 }

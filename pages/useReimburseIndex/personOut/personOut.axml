@@ -15,23 +15,22 @@
       <view class="th" style="width:15%">使用量</view>
       <view class="th" style="width:10%">单位</view>
     </view>
-    <view class="tr" style="height:150px">
-          
-    </view>
-      <form onSubmit="up" onReset="">
-        <block a:for="{{arrayList}}">
-          <view class="tr">
-            <view class="td" style="width:60%;text-align:left;">{{arrayList[index].name}}</view>
-            <view class="td" style="width:15%;">{{arrayList[index].surplus}}</view>
-            <view class="td" style="width:15%;background-color:rgb(255,255,255);">
-              <input name="id{{index+1}}"/></view>
-            <view class="td" style="width:10%;">{{arrayList[index].unit}}</view>
-          </view>
-        </block>
-        <view class="btn-area">
-          <button class="head_button" onTap="saoMa" size="default" type="primary" style="bottom:60px;">点击扫码</button>
-          <button formType="submit" style="bottom:0px;">提交</button>
+    <form onSubmit="up" onReset="">
+      <block a:for="{{arrayList}}">
+        <view class="tr">
+          <view class="td" style="width:60%;text-align:left;">{{arrayList[index].name}}</view>
+          <view class="td" style="width:15%;">{{arrayList[index].surplus}}</view>
+          <view class="td" style="width:15%;background-color:rgb(255,255,255);">
+            <input name="id{{index+1}}"/></view>
+          <view class="td" style="width:10%;">{{arrayList[index].unit}}</view>
         </view>
-      </form>
-    </view>
+      </block>
+      <view class="tr" style="height:150px">
+      </view>
+      <view class="btn-area">
+        <button class="head_button" onTap="saoMa" size="default" type="primary" style="bottom:60px;">点击扫码</button>
+        <button formType="submit" style="bottom:0px;">提交</button>
+      </view>
+    </form>
   </view>
+</view>
