@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/daily/daily",
+    "pages/myHome/myHome",
      "pages/index/index",
      "pages/ComeOutIndex/out/out",
     "pages/ComeOutIndex/in/in",
@@ -48,8 +48,8 @@
       },
       {
         "pagePath": "pages/daily/daily",
-        "icon": "image/outIn.png",
-        "activeIcon": "image/outInTouch.png",
+        "icon": "image/daily.png",
+        "activeIcon": "image/daily_active.png",
         "name": "写日报"
       },
       {

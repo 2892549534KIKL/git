@@ -1,6 +1,6 @@
 <view class="page">
   <form onSubmit="onSubmit" onReset="onReset">
-    <view class="page-section">
+    <view>
       <view>
         <view class="form-row-label">今日工作</view>
         <view class="login_input_border">
