@@ -1,6 +1,10 @@
+.mainBackground{
+  background-color: rgb(242, 242, 242)
+}
+
 .weui-search-bar {
   position: relative;
-  padding: 8px 10px;
+  padding: 3px 10px;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -8,6 +12,7 @@
   background-color: #EFEFF4;
   border-top: 1rpx solid #D7D6DC;
   border-bottom: 1rpx solid #D7D6DC;
+  margin-top: -41px;
 }
 
 .weui-icon-search_in-box {
@@ -51,11 +56,18 @@
 }
 
 .box {
-  width: 100%;
-  height: 100px;
+  width: 95%;
+  height: 85px;
   /* border-radius: 10px; */
   /* border: 1px solid #70bcf6; */
   margin-top: 5px;
+  border: 1px solid rgb(248, 248, 248);
+  background-color: rgb(255, 255, 255);
+  font-size: 12px;
+  line-height: 19px;
+  padding-top: 12px;
+  padding-left: 4px;
+  margin-left: 1%;
 }
 
 
@@ -76,8 +88,9 @@
 }
 
 .box_title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
+  margin-top: 12px;
 }
 
 .stateSucceed {
@@ -113,8 +126,8 @@
 
 .box_bottom button {
   float: right;
-  margin-top: -20px;
-  margin-right: 5px;
+  margin-top: -22px;
+  margin-right: 10px;
 }
 
 .over_box {

@@ -13,7 +13,7 @@
     <view class="weui-search-bar__cancel-btn" onTap='cut'>{{buttonText}}</view>
   </view>
 </view>
-<view style="margin-top:48px"></view>
+<view style="margin-top:38px"></view>
 <view style="background-color:rgb(242,242,242)">
 <!-- <view style="margin-top: 50px;"></view> -->
 <block a:for="{{approvalData}}">
