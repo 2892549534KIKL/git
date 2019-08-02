@@ -5,6 +5,7 @@
 }
 
 .logo {
+  margin-top: 200px;
   display: flex;
   /*设置显示样式**/
   align-items: center;

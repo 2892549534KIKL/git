@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/myHome/myHome",
+        "pages/login/login",
      "pages/index/index",
      "pages/ComeOutIndex/out/out",
     "pages/ComeOutIndex/in/in",
@@ -26,7 +27,7 @@
     "pages/alert/alert"
   ],
   "window": {
-    "defaultTitle": "中江鹏欢迎您",
+    "defaultTitle": "业务汇报管理系统欢迎您",
     "allowsBounceVertical":"NO"
   },
   "tabBar": {
