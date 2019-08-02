@@ -1,48 +1,43 @@
-<view class="mainBackground">
-<view style="position: fixed; width: 100%;height: 100px">
-  <view class="weui-search-bar">
-    <view class="weui-search-bar__form">
-      <!-- 搜索框 -->
-      <view class="weui-search-bar__box">
-        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-        <input onInput='save' type="text" class="weui-search-bar__input" placeholder="请输入搜索内容"/>
+<view class="page">
+  <form onSubmit="onSubmit" onReset="onReset">
+    <view class="page-section">
+      <view>
+        <view class="form-row-label">今日工作</view>
+        <view class="login_input_border">
+          <textarea class="detailText" auto-height='true' onInput='savedetails' placeholder="请输入今日工作" bindblur="bindTextAreaBlur" value="{{details}}"></textarea>
+        </view>
+      </view>
+      <text>\n</text>
+      <view>
+        <view class="form-row-label">明日计划</view>
+        <view class="login_input_border">
+          <textarea class="detailText" auto-height='true' onInput='savedetails' placeholder="请输入明日计划" bindblur="bindTextAreaBlur" value="{{details}}"></textarea>
+        </view>
+      </view>
+      <text>\n</text>
+      <view>
+        <view class="form-row-label">需协调工作</view>
+        <view class="login_input_border">
+          <textarea class="detailText" auto-height='true' onInput='savedetails' placeholder="请输入需协调工作" bindblur="bindTextAreaBlur" value="{{details}}"></textarea>
+        </view>
+      </view>
+      <text>\n</text>
+      <view>
+        <view class="form-row-label">备注</view>
+        <view class="login_input_border">
+           <textarea class="detailText" auto-height='true' onInput='savedetails' placeholder="请输入备注" bindblur="bindTextAreaBlur" value="{{details}}"></textarea>
+        </view>
+      </view>
+      <text>\n</text>
+      <view>
+        <view onTap="uploadFile" class="form-row-label">图片
+          <image style="width: 180rpx;height: 180rpx;border-radius: 10px;" src="{{imagePath}}" />
+        </view>
+      </view>
+      <text>\n</text>
+      <view class="page-section-demo">
+        <button type="primary" formType="submit">提交</button>
       </view>
     </view>
-    <!-- 搜索按钮,调用搜索查询方法 -->
-    <view class="weui-search-bar__cancel-btn" onTap='search'>搜索</view>
-  </view>
-</view>
-<view style="margin-top:40px"></view>
-<view style="background-color:rgb(242,242,242)">
-
-<block a:for="{{comeOutData}}">
-  <!-- 开始循环读取js中的数组 -->
-    <view  class="box {{comeOutData[index].createTime=='-1'?'none ':'block'}}" >
-      <view class="box_txt">
-        <text class="box_title">{{comeOutData[index].name}}:
-          <text class="">{{comeOutData[index].number}}
-            <text>{{comeOutData[index].unit}}\n</text>
-          </text>
-        </text>
-        <!-- 商品名称 -->
-        <text class="">{{comeOutData[index].storeHouseName}}\n</text>
-        <!-- 仓库 -->
-        <text class="">操作人:{{comeOutData[index].userName}}\n</text>
-        <!-- 出库人 -->
-        <view class="{{comeOutData[index].state=='正常'?'stateSucceed':'stateDefeated'}}">
-          <text>{{comeOutData[index].state}}\n</text>
-        </view>
-        <view class="box_bottom">
-          <text class="">出库时间:{{comeOutData[index].createTime}}\n</text>
-          <button onTap="del" size="mini" data-id="{{comeOutData[index].id}}" data-index="{{index}}" type="warn">删除</button>
-        </view>
-        <!-- 出库时间 -->
-      </view>
-    </view>
-  <!-- 读取结束 -->
-</block>
-<view class="over_box {{showView?'block':'none'}}">
-  已加载全部数据
-</view>
-</view>
+  </form>
 </view>
