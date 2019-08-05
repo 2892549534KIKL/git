@@ -136,8 +136,6 @@ Page({
     });
   },
   selectDate(e){
-    console.log(e.target.id);
-    console.log(e);
     dd.datePicker({
   format: 'yyyy-MM-dd',
   currentDate: '2019-08-04',
@@ -146,8 +144,9 @@ Page({
    else  {
      var startDate=new Date(this.data.startDate).getTime();
      var endDate=new Date(res.date).getTime();
+     console.log(res.date)
      if(startDate<endDate) this.setData({ 'endDate':res.date }) 
-     else dd.alert({content: '结束时间不能早于或等于开始时间',});
+     else if(res.date!=undefined) dd.alert({content: '结束时间不能早于或等于开始时间',});
      } 
   },
   
