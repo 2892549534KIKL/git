@@ -20,8 +20,6 @@ page {
 .page-section {
   background: #fff;
   margin-bottom: 32rpx;
-  padding-top: 10%;
-  padding-bottom: 10%;
 }
 
 .page-section-title {

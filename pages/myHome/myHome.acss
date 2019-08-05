@@ -176,7 +176,6 @@
   width: 94%;
   background-color: rgb(233,233,233);
   height: 1px;
-  margin-left: 3%;
 }
 
 .vertical_line{

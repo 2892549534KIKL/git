@@ -14,10 +14,7 @@ Page({
   },
   //页面初始化时加载
   onLoad() {
-       let manager = dd.getBackgroundAudioManager()
-        manager.title = this.data.title
-        manager.coverImgUrl = this.data.coverImgUrl
-        manager.src = this.data.src
+
         // this.department();
     var that = this;
     dd.showLoading({

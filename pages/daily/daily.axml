@@ -1,43 +1,37 @@
 <view class="page">
   <form onSubmit="onSubmit" onReset="onReset">
-    <view>
-      <view>
-        <view class="form-row-label">今日工作</view>
-        <view class="login_input_border">
-          <textarea class="detailText" auto-height='true' onInput='savedetails' placeholder="请输入今日工作" bindblur="bindTextAreaBlur" value="{{details}}"></textarea>
-        </view>
-      </view>
-      <text>\n</text>
-      <view>
-        <view class="form-row-label">明日计划</view>
-        <view class="login_input_border">
-          <textarea class="detailText" auto-height='true' onInput='savedetails' placeholder="请输入明日计划" bindblur="bindTextAreaBlur" value="{{details}}"></textarea>
-        </view>
-      </view>
-      <text>\n</text>
-      <view>
-        <view class="form-row-label">需协调工作</view>
-        <view class="login_input_border">
-          <textarea class="detailText" auto-height='true' onInput='savedetails' placeholder="请输入需协调工作" bindblur="bindTextAreaBlur" value="{{details}}"></textarea>
-        </view>
-      </view>
-      <text>\n</text>
-      <view>
-        <view class="form-row-label">备注</view>
-        <view class="login_input_border">
-           <textarea class="detailText" auto-height='true' onInput='savedetails' placeholder="请输入备注" bindblur="bindTextAreaBlur" value="{{details}}"></textarea>
-        </view>
-      </view>
-      <text>\n</text>
-      <view>
-        <view onTap="uploadFile" class="form-row-label">图片
-          <image style="width: 180rpx;height: 180rpx;border-radius: 10px;" src="{{imagePath}}" />
-        </view>
-      </view>
-      <text>\n</text>
+    <view class="page-section">
+      <view class="page-section-title">今日工作</view>
       <view class="page-section-demo">
-        <button type="primary" formType="submit">提交</button>
+        <textarea class="detailText" auto-height='true' onInput='savedetails' placeholder="请输入今日工作" bindblur="bindTextAreaBlur" value="{{details}}"></textarea>
       </view>
+    </view>
+    <view class="page-section">
+      <view class="page-section-title">明日计划</view>
+      <view class="page-section-demo">
+        <textarea class="detailText" auto-height='true' onInput='savedetails' placeholder="请输入明日计划" bindblur="bindTextAreaBlur" value="{{details}}"></textarea>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="page-section-title">需协调工作</view>
+      <view class="page-section-demo">
+        <textarea class="detailText" auto-height='true' onInput='savedetails' placeholder="请输入需协调工作" bindblur="bindTextAreaBlur" value="{{details}}"></textarea>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="page-section-title">备注</view>
+      <view class="page-section-demo">
+        <textarea class="detailText" auto-height='true' onInput='savedetails' placeholder="请输入备注" bindblur="bindTextAreaBlur" value="{{details}}"></textarea>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="page-section-title">图片</view>
+      <view class="page-section-demo" style="padding-left:0.32rem;">
+        <image style="width: 180rpx;height: 180rpx;border-radius: 10px;" src="{{imagePath}}" />
+      </view>
+    </view>
+    <view class="page-section-demo">
+      <button type="primary" formType="submit">提交</button>
     </view>
   </form>
 </view>

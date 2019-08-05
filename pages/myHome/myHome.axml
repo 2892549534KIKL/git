@@ -12,13 +12,20 @@
   </view>
 </view>
 <view class="top_box_back">
-  <block a:for="{{array_bottom}}">
     <navigator url="{{array_bottom[index].url}}" class="tab_top" hover-class="none">
-      <image class="box_img" style="margin-left:10px;" src='{{array_bottom[index].src}}'></image>
+      <image class="box_img" style="margin-left:10px;" src='../../image/alreadyRead.png'></image>
       <text class="box_text">xxx</text>
     </navigator>
     <view class="vertical_line"></view>
-  </block>
+    <navigator url="{{array_bottom[index].url}}" class="tab_top" hover-class="none">
+      <image class="box_img" style="margin-left:10px;" src='../../image/alreadyRead.png'></image>
+      <text class="box_text">xxx</text>
+    </navigator>
+    <view class="vertical_line"></view>
+    <navigator url="{{array_bottom[index].url}}" class="tab_top" hover-class="none">
+      <image class="box_img" style="margin-left:10px;" src='../../image/alreadyRead.png'></image>
+      <text class="box_text">xxx</text>
+    </navigator>
 </view>
 
      <view class="line" style="width:100%;"></view>
