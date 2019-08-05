@@ -19,14 +19,14 @@
           <!-- 搜索框 -->
           <view class="weui-search-bar__box">
             <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-            <input onFocus='selectDate' type="text" value="{{endDate}}" id='1' class="weui-search-bar__input" placeholder="请选择结束时间"/>
+            <input onFocus='selectDate' type="text" value="{{startDate}}" id='0'  class="weui-search-bar__input" placeholder="请选择开始时间"/>
           </view>
         </view>
         <view class="weui-search-bar__form">
           <!-- 搜索框 -->
           <view class="weui-search-bar__box">
             <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-            <input onFocus='selectDate' type="text" value="{{startDate}}" id='0' class="weui-search-bar__input" placeholder="请选择开始时间"/>
+            <input onFocus='selectDate' type="text"  value="{{endDate}}" id='1' class="weui-search-bar__input" placeholder="请选择结束时间"/>
           </view>
         </view>
       </view>
