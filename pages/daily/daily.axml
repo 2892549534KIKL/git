@@ -26,8 +26,8 @@
     </view>
     <view class="page-section">
       <view class="page-section-title">图片</view>
-      <view class="page-section-demo" style="padding-left:0.32rem;">
-        <image style="width: 180rpx;height: 180rpx;border-radius: 10px;" src="{{imagePath}}" />
+      <view class="page-section-demo" onTap="uploadFile" style="padding-left:0.32rem;">
+        <image style="width: 90rpx;height: 90rpx;border-radius: 10px;" src="{{imagePath}}" />
       </view>
     </view>
     <view class="page-section-demo">
