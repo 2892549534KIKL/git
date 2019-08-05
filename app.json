@@ -2,6 +2,7 @@
   "pages": [
     "pages/myHome/myHome",
         "pages/login/login",
+      "pages/department/department",
      "pages/index/index",
      "pages/ComeOutIndex/out/out",
     "pages/ComeOutIndex/in/in",
@@ -42,7 +43,7 @@
         "name": "首页"
       },
       {
-        "pagePath": "pages/department/index",
+        "pagePath": "pages/department/department",
         "icon": "image/department.png",
         "activeIcon": "image/departmentTouch.png",
         "name": "员工"
