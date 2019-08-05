@@ -15,6 +15,32 @@
   margin-top: -41px;
 }
 
+.weui-search-barTwo {
+  position: relative;
+  padding: 3px 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #EFEFF4;
+  border-top: 1rpx solid #D7D6DC;
+  border-bottom: 1rpx solid #D7D6DC;
+  margin-top: -82px;
+}
+
+.weui-search-barThree {
+  position: relative;
+  padding: 3px 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #EFEFF4;
+  border-top: 1rpx solid #D7D6DC;
+  border-bottom: 1rpx solid #D7D6DC;
+  margin-top: -123px;
+}
+
 .weui-icon-search_in-box {
   position: absolute;
   left: 10px;

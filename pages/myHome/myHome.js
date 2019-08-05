@@ -4,17 +4,17 @@ Page({
     photo:"/image/nobody.png",
     array_bottom: [{
       url: '../../pages/myHome/myInformation/myInformation',
+      src: '../../image/alreadyRead.png',
+      text: '今日已待阅日报6',
+    },{
+      url: '../../pages/myHome/myInformation/myInformation',
+      src: '../../image/notRead.png',
+      text: '今日待阅日报8',
+    },{
+      url: '../../pages/myHome/myInformation/myInformation',
       src: '../../image/myHomeWodexinxi.png',
       text: '我的信息',
-    }, {
-      url: '../../pages/myHome/changePassword/changePassword',
-      src: '../../image/myHomeMima.png',
-      text: '密码修改',
-    }, {
-      url: '../../pages/approval/approval',
-      src: '../../image/myHomeShenpi.png',
-      text: '我的审批\\审核',
-    }],
+    },],
   },
   onShow(){
     var that=this;
