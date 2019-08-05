@@ -104,8 +104,9 @@ Page({
     this.setData({ searchText: e.detail.value });
   },
   logRead(){
-    console.log(123);
-        dd.reLaunch({url: '../../pages/logShow/index'});
+    dd.navigateTo({ url: '../../pages/logShow/index' });
+    // console.log(123);
+    //     dd.reLaunch({url: '../../pages/logShow/index'});
   },
   //点击删除
   del(e) {
@@ -152,7 +153,7 @@ Page({
   
 });
   },
-  //流加载
+  //流加载   
   onReachBottom: function() {
     var that = this;
     if (this.data.loaderSign) {

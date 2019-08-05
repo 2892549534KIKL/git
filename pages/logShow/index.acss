@@ -30,6 +30,11 @@ margin-left: 2%;
  height: 2rpx;
 }
 
+.enclosures{
+  width: 96%;
+  margin-left: 2%;
+}
+
 .enclosures image{
   margin-top: -6rpx;
   margin-right: 22rpx;
