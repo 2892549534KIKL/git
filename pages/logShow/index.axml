@@ -7,6 +7,17 @@
   <text>{{todayPlan}}</text>
     <text>{{tomorrowPlan}}</text>
  </view>
-  
-
+ <view class="content">
+  <text  a:for="{{content}}" >
+   <text class="sonTitle">\n{{item.sonTitle}}\n</text>
+    <text class="sonContent">{{item.sonContent}}\n</text>
+  </text>
+  <text>\n</text>
+   <image class="contentImgs" a:for="{{contentImgs}}" src="{{contentImgs[index]}}">
+  </view>
+  <view class="enclosures" a:for="{{enclosures}}">
+   <view class="level" ></view>
+       <view><image  src="{{item.typePlus}}"></view>
+       <text>{{item.fileName}}\n{{item.size}}</text>
+   <view>
 

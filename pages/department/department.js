@@ -3,6 +3,8 @@ Page({
   data: {
     page: 1,//分页查询(第几页)
     rowsCount: 10,//分页查询(一页多少条数据)
+    startDate:'',
+    endDate:'',
     comeOutData: [{name:'骆佳明',createTime:'2019-08-02 17:20:00',logType:'日报'},{name:'闵雄文',createTime:'2019-08-01 19:20:00',logType:'周报'}
     ,{name:'朱冰晔',createTime:'2019-08-02 17:20:00',logType:'月报'},{name:'游旺',createTime:'2019-08-01 19:20:00',logType:'年报'}],
     loaderSign: true,
@@ -134,6 +136,24 @@ Page({
         // dd.hideLoading();
       }
     });
+  },
+  selectDate(e){
+    console.log(e.target.id);
+    console.log(e);
+    dd.datePicker({
+  format: 'yyyy-MM-dd',
+  currentDate: '2019-08-04',
+  success: (res) => {
+  if(e.target.id=='0') this.setData({ 'startDate':res.date })
+   else  {
+     var startDate=new Date(this.data.startDate).getTime();
+     var endDate=new Date(res.date).getTime();
+     if(startDate<endDate) this.setData({ 'endDate':res.date }) 
+     else dd.alert({content: '结束时间不能早于或等于开始时间',});
+     } 
+  },
+  
+});
   },
   //流加载
   onReachBottom: function() {

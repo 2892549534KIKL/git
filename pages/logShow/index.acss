@@ -1,7 +1,40 @@
 .headView{
  text-align: center;
 }
+
 .personImg{
   width: 88rpx;
   height: 88rpx;
 }
+
+.sonTitle{
+  font-weight: 888;
+font-size:larger;
+}
+
+.content{
+width: 96%;
+margin-left: 2%;
+}
+
+.contentImgs{
+ width: 166rpx;
+ height: 166rpx;
+ margin-right: 6rpx;
+}
+
+.level{
+  margin:36rpx 0;
+ background:#DDDDDD;
+ width: 100%;
+ height: 2rpx;
+}
+
+.enclosures image{
+  margin-top: -6rpx;
+  margin-right: 22rpx;
+  float: left;
+  width:88rpx;
+  height: 88rpx;
+}
+

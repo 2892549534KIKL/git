@@ -3,6 +3,7 @@
     "pages/myHome/myHome",
         "pages/login/login",
       "pages/department/department",
+       "pages/logShow/index",
      "pages/index/index",
      "pages/ComeOutIndex/out/out",
     "pages/ComeOutIndex/in/in",
