@@ -6,7 +6,7 @@ Page({
     var that = this;
     //1:获取token
     dd.httpRequest({
-      url: 'http://39.96.30.233/zjp/BusinessReport_DD_API/getAccess_token',
+      url: 'http://localhost:8022/brms/DD_API/getAccess_token',
       method: 'get',
       dataType: 'json',
       success: function(res) {
@@ -27,7 +27,7 @@ Page({
               headers: {
                 "Content-Type": "application/string"
               },
-              url: 'http://39.96.30.233/zjp/BusinessReport_DD_API/getDDUser',
+              url: 'http://localhost:8022/brms/DD_API/getDDUser',
               method: 'POST',
               data: (that.data.authCode),
               success: function(res) {

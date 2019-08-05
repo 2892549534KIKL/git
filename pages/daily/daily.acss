@@ -1,38 +1,97 @@
-.logo image {
-  width: 170px;
-  height: 170px;
-  margin-top: -50px;
+page {
+  background-color: #F7F7F7;
+  border: 1px solid rgba(0,0,0,0);
+  box-sizing: border-box;
 }
 
-.logo {
+.page {
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+  font-size: 24rpx;
+  padding: 32rpx;
+  flex: 1;
+}
+
+.page-description {
+  margin-bottom: 32rpx;
+}
+
+.page-section {
+  background: #fff;
+  margin-bottom: 32rpx;
+}
+
+.page-section-title {
+  padding: 16rpx 32rpx;
+}
+
+.page-section-demo {
+  padding: 0;
+  padding-left: 0.12rem;
+}
+
+.page-section-btns {
+  border-top: 1px solid #ddd;
   display: flex;
-  /*设置显示样式**/
+  justify-content: space-around;
   align-items: center;
-  /**子view垂直居中*/
-  vertical-align: center;
-  /**垂直居中*/
-  justify-content: center;
-  /**内容居中*/
-  flex-direction: row;
 }
 
-.login_input_border{
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 10px;
-  padding: 10px;
+.page-section-btns > view {
+  flex: 1;
+  height: 84rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #49a9ee;
+}
+.page-section-btns > view + view {
+  border-left: 1px solid #ddd;
 }
 
-.login_input{
-  margin-left: 10px;
-  margin-right: 10px;
-  font-size: 20px;
-  font-weight: 400;
+button {
+  margin-top:20rpx;
+  margin-bottom:20rpx;
 }
 
-.login_btn{
-  border-radius: 30px;
-  background-color: rgb(75,75,75);
-  font-size: 16px;
-  box-shadow: rgb(245,245,245) 0px 0px 20px 1px;
-  border: 0px;
+.bc_blue {
+  background-color: #49A9EE;
+}
+
+.bc_red {
+  background-color: #F04134;
+}
+
+.bc_yellow {
+  background-color: #FFBF00;
+}
+
+.bc_green {
+  background-color: #00A854;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  height: 88rpx;
+  align-items: center;
+}
+
+.form-row-label {
+  width: 180rpx;
+  font-size: 34rpx;
+  margin-right: 10rpx;
+  text-align: left;
+  color: #000;
+}
+
+.form-row-content {
+  flex: 1;
+  font-size: 34rpx;
+}
+
+.form-line {
+  height: 1px;
+  background-color: #ddd;
+  margin-left: 30rpx;
 }
