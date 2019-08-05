@@ -7,47 +7,45 @@ Page({
     interval: 3000,
     userID:"",
     title:[
-      {title:'出入库',index:0,array: [{
-      src: '/image/outInData.png',
+      {title:'日报',index:0,array: [{
+      src: '/image/dayPaperW.png',
       color: 'white',
       mode: 'center',
-      text: '出入库数据'},{
-      src: '/image/InScan.png',
+      text: '写日报'},{
+      src: '/image/dayPaperR.png',
       color: 'white',
       mode: 'center',
-      text: '扫码入库' },{
-      src: '/image/outScan.png',
-      color: 'white',
-      mode: 'center',
-      text: '扫码出库' }]},
+      text: '查阅日报' }]},
 
-      {title:'使用或报销',index:1,array:[{
-      src: '/image/use.png',
+      {title:'周报',index:1,array:[{
+      src: '/image/weekPaperW.png',
       color: 'white',
       mode: 'center',
-      text: '扫码使用' },{
-      src: '/image/expense.png',
+      text: '写周报' },{
+      src: '/image/weekPaperR.png',
       color: 'white',
       mode: 'center',
-      text: '扫码报销' }]},
+      text: '查阅周报' }]},
 
-      {title:'申请/审批',index:2,array:[{
-      src: '/image/approval.png',
+      {title:'月报',index:1,array:[{
+      src: '/image/monthPaperW.png',
       color: 'white',
       mode: 'center',
-      text: '申请/审批' }]},
+      text: '写月报' },{
+      src: '/image/monthPaperR.png',
+      color: 'white',
+      mode: 'center',
+      text: '查阅月报' }]},
 
-      {title:'施工管理',index:3,array:[{
-      src: '/image/construction.png',
+    {title:'年报',index:1,array:[{
+      src: '/image/yearPaperW.png',
       color: 'white',
       mode: 'center',
-      text: '施工管理'}]},
-      
-      {title:'通知',index:4,array:[{
-      src: '/image/notice.png',
+      text: '写年报' },{
+      src: '/image/yearPaperR.png',
       color: 'white',
       mode: 'center',
-      text: '通知' }]}],
+      text: '查阅年报' }]}],
     src: './2.png'
   },
   onLoad() {
@@ -59,7 +57,7 @@ Page({
           var actorName=res.data.user.actorName;
           var approval='申请';
          if(actorName=='管理员'||actorName=='老板') approval='审批';
-         that.setData({ 'title[2].array[0].text':approval})
+         that.setData({ 'title[2].array[0].text':'写月报'})
          console.log(actorName+approval);
           },
        fail: function(res){
@@ -138,19 +136,16 @@ Page({
        console.log(inde);
     switch (inde) {
       case 0:
-       index==0?dd.reLaunch({url: '../../pages/comeOut/comeOut'}):index==1?dd.navigateTo({url: '../../pages/ComeOutIndex/ComeOutIndex'}):dd.navigateTo({url: '../../pages/ComeOutIndex/out/out'});
+       index==0?dd.reLaunch({url: '../../pages/comeOut/comeOut'}):dd.reLaunch({url: '../../pages/department/index'});
         break;
       case 1:
-        index==0?dd.navigateTo({ url: '../../pages/useReimburseIndex/personOut/personOut'}):dd.navigateTo({ url: '../../pages/useReimburseIndex/return/return'});
+        index==0?dd.reLaunch({url: '../../pages/comeOut/comeOut'}):dd.reLaunch({url: '../../pages/department/index'});
         break;
       case 2:
-        dd.navigateTo({url: '../../pages/approval/approval'});
+        index==0?dd.reLaunch({url: '../../pages/comeOut/comeOut'}):dd.reLaunch({url: '../../pages/department/index'});
         break;
       case 3:
-        dd.reLaunch({ url: '../../pages/construction/construction', })
-        break;
-      case 4:
-           dd.navigateTo({   url: '../../pages/InformInfo/InformInfo',  });
+        index==0?dd.reLaunch({url: '../../pages/comeOut/comeOut'}):dd.reLaunch({url: '../../pages/department/index'});
         break;
       default:
         dd.alert({

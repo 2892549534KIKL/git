@@ -1,15 +1,3 @@
-    
-<!-- <swiper
-  indicator-dots="{{indicatorDots}}"
-  autoplay="{{autoplay}}"
-  interval="{{interval}}"
->
-  <block a:for="{{background}}">
-    <swiper-item>
-      <view ><image class="swiperImg"  src="{{item.src}}"/></view>
-    </swiper-item>
-  </block>
-</swiper> -->
 
   <view class="swiperView">
     <swiper  class="swiperClass" autoplay="{{true}}" indicator-dots="{{true}}" indicator-color="white" indicator-active-color="palevioletred">

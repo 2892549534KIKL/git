@@ -1,0 +1,12 @@
+<view class="headView"><image class="personImg" src="{{personSrc}}">
+  </view>
+  <view class="headView">
+    <text>{{name}}\n</text>
+  <text>{{createTime}}</text></view>
+  <view>
+  <text>{{todayPlan}}</text>
+    <text>{{tomorrowPlan}}</text>
+ </view>
+  
+
+

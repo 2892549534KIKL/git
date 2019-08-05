@@ -10,34 +10,34 @@ Page({
     phone: "",
     checkedSex: "true",
     checkedStatus: "true",
-    imagePath: "",
+    imagePath: "../../image/imagePath.png",
   },
   onLoad() {
     var that = this;
-    dd.getStorage({
-      key: 'user',
-      success: function(res) {
-        console.log(res)
-        if (res.data.user.sex == "女")
-          that.data.checkedSex = false;
-        if (res.data.user.sex == "禁用")
-          that.data.checkedStatus = false;
-        that.setData({
-          iD: res.data.user.iD,
-          name: res.data.user.name,
-          nickName: res.data.user.nickName,
-          sex: res.data.user.sex,
-          phone: res.data.user.phone,
-          status: res.data.user.status,
-          imagePath: 'http://39.96.30.233/zjp/' + res.data.user.photo,
-          photo: 'http://39.96.30.233/zjp/' + res.data.user.photo,
-          photoc: res.data.user.photo,
-        })
-      },
-      fail: function(res) {
-        dd.alert({ content: res.errorMessage });
-      },
-    });
+    // dd.getStorage({
+    //   key: 'user',
+    //   success: function(res) {
+    //     console.log(res)
+    //     if (res.data.user.sex == "女")
+    //       that.data.checkedSex = false;
+    //     if (res.data.user.sex == "禁用")
+    //       that.data.checkedStatus = false;
+    //     that.setData({
+    //       iD: res.data.user.iD,
+    //       name: res.data.user.name,
+    //       nickName: res.data.user.nickName,
+    //       sex: res.data.user.sex,
+    //       phone: res.data.user.phone,
+    //       status: res.data.user.status,
+    //       imagePath: 'http://39.96.30.233/zjp/' + res.data.user.photo,
+    //       photo: 'http://39.96.30.233/zjp/' + res.data.user.photo,
+    //       photoc: res.data.user.photo,
+    //     })
+    //   },
+    //   fail: function(res) {
+    //     dd.alert({ content: res.errorMessage });
+    //   },
+    // });
   },
   onSubmit(e) {
     var that = this;

@@ -1,6 +1,8 @@
 {
   "pages": [
+    "pages/myHome/myHome",
         "pages/login/login",
+      "pages/department/department",
      "pages/index/index",
      "pages/ComeOutIndex/out/out",
     "pages/ComeOutIndex/in/in",
@@ -41,15 +43,15 @@
         "name": "首页"
       },
       {
-        "pagePath": "pages/construction/construction",
-        "icon": "image/build.png",
-        "activeIcon": "image/buildTouch.png",
-        "name": "施工管理"
+        "pagePath": "pages/department/department",
+        "icon": "image/department.png",
+        "activeIcon": "image/departmentTouch.png",
+        "name": "员工"
       },
       {
         "pagePath": "pages/daily/daily",
-        "icon": "image/outIn.png",
-        "activeIcon": "image/outInTouch.png",
+        "icon": "image/daily.png",
+        "activeIcon": "image/daily_active.png",
         "name": "写日报"
       },
       {
