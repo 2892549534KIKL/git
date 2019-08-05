@@ -1,14 +1,14 @@
 {
   "pages": [
-     "pages/login/login",
-       "pages/logShow/index",
-     "pages/department/index",
-        "pages/ComeOutIndex/out/out",
-        "pages/ComeOutIndex/in/in",
-        "pages/index/index",
+    "pages/myHome/myHome",
+        "pages/login/login",
+     "pages/index/index",
+     "pages/ComeOutIndex/out/out",
+    "pages/ComeOutIndex/in/in",
+    "pages/login/login",
     "pages/approval/approval",
     "pages/InformInfo/InformInfo",
-    "pages/comeOut/comeOut",
+    "pages/daily/daily",
     "pages/form2/form2",
     "pages/myHome/changePassword/changePassword",
     "pages/myHome/myInformation/myInformation",
@@ -27,7 +27,7 @@
     "pages/alert/alert"
   ],
   "window": {
-    "defaultTitle": "中江鹏欢迎您",
+    "defaultTitle": "业务汇报管理系统欢迎您",
     "allowsBounceVertical":"NO"
   },
   "tabBar": {
@@ -48,10 +48,10 @@
         "name": "员工"
       },
       {
-        "pagePath": "pages/comeOut/comeOut",
-        "icon": "image/outIn.png",
-        "activeIcon": "image/outInTouch.png",
-        "name": "出入库数据"
+        "pagePath": "pages/daily/daily",
+        "icon": "image/daily.png",
+        "activeIcon": "image/daily_active.png",
+        "name": "写日报"
       },
       {
         "pagePath": "pages/myHome/myHome",

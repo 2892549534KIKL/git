@@ -12,31 +12,49 @@
   </view>
 </view>
 <view class="top_box_back">
-</view>
-<!-- 底部导航栏部分 -->
-<view style="width:100%;background-color:rgb(221,221,221);height:1px;"></view>
-<view class="">
   <block a:for="{{array_bottom}}">
-    <navigator url="{{array_bottom[index].url}}" hover-class="none" class="menuView">
-      <view class="form-row">
-        <view class="form-row-label">
-          <image class="box_img" src='{{array_bottom[index].src}}'></image>
-          <text class="box_text">{{array_bottom[index].text}}</text>
-          <view class="form-row-content" style="text-align: right">
-            <view class='arrow'></view>
-          </view>
+    <navigator url="{{array_bottom[index].url}}" class="tab_top" hover-class="none">
+      <image class="box_img" style="margin-left:10px;" src='{{array_bottom[index].src}}'></image>
+      <text class="box_text">xxx</text>
+    </navigator>
+    <view class="vertical_line"></view>
+  </block>
+</view>
+
+     <view class="line" style="width:100%;"></view>
+    <navigator url="{{array_bottom[0].url}}" class="tab_top1" hover-class="none">
+      <image class="box_img" style="margin-left:10px;" src='../../image/alreadyRead.png'></image>
+      <text class="box_text">今日待阅日报：80</text>
+    </navigator>
+     <view class="line" style="width:100%;"></view>
+    <navigator url="{{array_bottom[1].url}}" class="tab_top1" hover-class="none">
+      <image class="box_img" style="margin-left:10px;" src='../../image/notRead.png'></image>
+      <text class="box_text">今日已阅日报：80</text>
+    </navigator>
+     <view class="line" style="width:100%;"></view>
+
+<!-- 底部导航栏部分 -->
+<view style="width:100%;background-color:rgb(221,221,221);height:1px;margin-top:25px;"></view>
+<block a:for="{{array_bottom}}">
+  <navigator url="{{array_bottom[index].url}}" hover-class="none" class="menuView">
+    <view class="form-row">
+      <view class="form-row-label">
+        <image class="box_img" src='{{array_bottom[index].src}}'></image>
+        <text class="box_text">{{array_bottom[index].text}}</text>
+        <view class="form-row-content" style="text-align: right">
+          <view class='arrow'></view>
         </view>
       </view>
-    </navigator>
-    <view class="line"></view>
-  </block>
-  <view onTap="out" class="form-row">
-    <view class="form-row-label">
-      <image class="box_img" src='../../image/myHomeTuichu.png'></image>
-      <text class="box_text">退出登录</text>
-      <view class="form-row-content" style="text-align: right">
-        <view class='arrow'></view>
-      </view>
+    </view>
+  </navigator>
+  <view class="line"></view>
+</block>
+<view onTap="out" class="form-row">
+  <view class="form-row-label">
+    <image class="box_img" src='../../image/myHomeTuichu.png'></image>
+    <text class="box_text">退出登录</text>
+    <view class="form-row-content" style="text-align: right">
+      <view class='arrow'></view>
     </view>
   </view>
 </view>

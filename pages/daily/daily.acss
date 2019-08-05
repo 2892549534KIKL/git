@@ -5,7 +5,6 @@
 }
 
 .logo {
-  margin-top: 200px;
   display: flex;
   /*设置显示样式**/
   align-items: center;
@@ -18,14 +17,15 @@
 }
 
 .login_input_border{
-  border: 1px solid rgb(240, 240, 240);
-  border-radius: 30px;
-  box-shadow: rgb(245,245,245) 0px 0px 20px 1px;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .login_input{
-  margin-left: 18px;
-  font-size: 14px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 20px;
   font-weight: 400;
 }
 
