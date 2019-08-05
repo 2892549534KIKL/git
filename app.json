@@ -1,6 +1,8 @@
 {
   "pages": [
      "pages/login/login",
+       "pages/logShow/index",
+     "pages/department/index",
         "pages/ComeOutIndex/out/out",
         "pages/ComeOutIndex/in/in",
         "pages/index/index",
@@ -40,10 +42,10 @@
         "name": "首页"
       },
       {
-        "pagePath": "pages/construction/construction",
-        "icon": "image/build.png",
-        "activeIcon": "image/buildTouch.png",
-        "name": "施工管理"
+        "pagePath": "pages/department/index",
+        "icon": "image/department.png",
+        "activeIcon": "image/departmentTouch.png",
+        "name": "员工"
       },
       {
         "pagePath": "pages/comeOut/comeOut",

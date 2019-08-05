@@ -1,0 +1,43 @@
+<view class="mainBackground">
+<view style="position: fixed; width: 100%;height: 100px">
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <!-- 搜索框 -->
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input onInput='save' type="text" class="weui-search-bar__input" placeholder="请输入搜索内容"/>
+      </view>
+    </view>
+    <!-- 搜索按钮,调用搜索查询方法 -->
+    <view class="weui-search-bar__cancel-btn" onTap='search'>搜索</view>
+  </view>
+</view>
+<view style="margin-top:40px"></view>
+<view style="background-color:rgb(242,242,242)">
+
+<block a:for="{{comeOutData}}">
+  <!-- 开始循环读取js中的数组 -->
+    <view  class="box {{comeOutData[index].createTime=='-1'?'none ':'block'}}" >
+      <!-- 日志类型-->
+      <view class="box_txt">
+        <text class="box_title">{{comeOutData[index].logType}}\n\n
+        </text>
+        <!-- 员工 -->
+        <text class="">员工:{{comeOutData[index].name}}\n\n</text>
+        </view>
+        <view class="box_bottom">
+          <text class="">提交时间:{{comeOutData[index].createTime}}\n</text>
+          <button onTap="logRead" size="mini" data-id="{{comeOutData[index].id}}" data-index="{{index}}" type="primary">查看</button>
+        </view>
+        <!-- 出库时间 -->
+      </view>
+    </view>
+  <!-- 读取结束 -->
+</block>
+<view class="over_box {{showView?'block':'none'}}">
+  已加载全部数据
+</view>
+</view>
+</view>
+  
+

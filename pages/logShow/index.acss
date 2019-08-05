@@ -1,0 +1,7 @@
+.headView{
+ text-align: center;
+}
+.personImg{
+  width: 88rpx;
+  height: 88rpx;
+}
