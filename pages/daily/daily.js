@@ -11,6 +11,14 @@ Page({
     checkedSex: "true",
     checkedStatus: "true",
     imagePath: "../../image/imagePath.png",
+    reportDate: "",
+    contentTitle: ['汇报日期', '门店名称', '日总营业额', '客户数', '订单数', '今日主要工作及问题', '备注'],
+    contentTitleC: [{style:'contentTitleC'},{style:'contentTitleC'},{style:'contentTitleC'} ,{style:'contentTitleC'},{style:'contentTitleC'},{style:'contentTitleC'},{style:'contentTitleC'}],
+    placeholder: '',
+    placeholderTwo: '',
+    placeholderThree: '',
+    image:'/image/image.png',
+    file:'/image/file.png'
   },
   onLoad() {
     var that = this;
@@ -62,95 +70,95 @@ Page({
         content: '加载中...',
         delay: 100,
       });
-      if(that.data.photo==that.data.imagePath){
-        dd.httpRequest({
-        headers: {
-          "Content-Type": "application/json"
-        },
-        url: 'http:/39.96.30.233/zjp/users/editUsers',
-        method: 'POST',
-        data: JSON.stringify({
-          iD: that.data.iD,
-          name: e.detail.value.name,
-          nickName: e.detail.value.nickName,
-          phone: e.detail.value.phone,
-          sex: e.detail.value.sex,
-          status: e.detail.value.status,
-        }),
-        dataType: 'json',
-        success: function(res) {
-          dd.showToast({ content: '修改成功', duration: 2000 });
-          res.data.data.photo=that.data.photoc;
-          console.log(res)
-          if (res.data.code > 0) {
-             dd.setStorage({
-              key: 'user',
-              data: {
-                 user: res.data.data
-              }
-              });
-              dd.hideLoading();
-          } 
-          else {
-            dd.showToast({ content: '修改失败', duration: 2000 });
-            dd.hideLoading();
-            dd.showToast({content: res.data.msg,duration: 3000,});
-          }
-        },
-      });
-      }
-      else{
-        dd.uploadFile({
-        header: {
-          "Content-Type": "multipart/form-data"
-        },
-        method: 'POST',
-        url: 'http://39.96.30.233/zjp/users/editUser',
-        fileType: 'image',
-        fileName: 'enclosure.files',
-        filePath: that.data.imagePath,
-        dataType: 'json',
-        formData: {
-          iD: that.data.iD,
-          name: e.detail.value.name,
-          nickName: e.detail.value.nickName,
-          phone: e.detail.value.phone,
-          sex: e.detail.value.sex,
-          status: e.detail.value.status,
-          'enclosure.photo':that.data.photoc
-        },
-        success: res => {
-        console.log(res);
-        dd.showToast({ content: '修改成功', duration: 2000 });
-        // var obj = JSON.parse(res.data);
-        //  dd.setStorage({
-        //       key: 'user',
-        //       data: {
-        //          user: obj.data
-        //       }
-        //   });
+      if (that.data.photo == that.data.imagePath) {
         dd.httpRequest({
           headers: {
             "Content-Type": "application/json"
           },
-          url: 'http://39.96.30.233/zjp/users/deleteSession',
+          url: 'http:/39.96.30.233/zjp/users/editUsers',
           method: 'POST',
+          data: JSON.stringify({
+            iD: that.data.iD,
+            name: e.detail.value.name,
+            nickName: e.detail.value.nickName,
+            phone: e.detail.value.phone,
+            sex: e.detail.value.sex,
+            status: e.detail.value.status,
+          }),
           dataType: 'json',
           success: function(res) {
-            dd.reLaunch({
-              url: '../../login/login',
-            })
+            dd.showToast({ content: '修改成功', duration: 2000 });
+            res.data.data.photo = that.data.photoc;
+            console.log(res)
+            if (res.data.code > 0) {
+              dd.setStorage({
+                key: 'user',
+                data: {
+                  user: res.data.data
+                }
+              });
+              dd.hideLoading();
+            }
+            else {
+              dd.showToast({ content: '修改失败', duration: 2000 });
+              dd.hideLoading();
+              dd.showToast({ content: res.data.msg, duration: 3000, });
+            }
           },
         });
-        },
-        fail: function(res) {
-          dd.showToast({ content: '修改失败', duration: 2000 });
-           console.log('上传失败');
-        },
-        complete: function(res) {
-          dd.hideLoading();
-        }
-      });
+      }
+      else {
+        dd.uploadFile({
+          header: {
+            "Content-Type": "multipart/form-data"
+          },
+          method: 'POST',
+          url: 'http://39.96.30.233/zjp/users/editUser',
+          fileType: 'image',
+          fileName: 'enclosure.files',
+          filePath: that.data.imagePath,
+          dataType: 'json',
+          formData: {
+            iD: that.data.iD,
+            name: e.detail.value.name,
+            nickName: e.detail.value.nickName,
+            phone: e.detail.value.phone,
+            sex: e.detail.value.sex,
+            status: e.detail.value.status,
+            'enclosure.photo': that.data.photoc
+          },
+          success: res => {
+            console.log(res);
+            dd.showToast({ content: '修改成功', duration: 2000 });
+            // var obj = JSON.parse(res.data);
+            //  dd.setStorage({
+            //       key: 'user',
+            //       data: {
+            //          user: obj.data
+            //       }
+            //   });
+            dd.httpRequest({
+              headers: {
+                "Content-Type": "application/json"
+              },
+              url: 'http://39.96.30.233/zjp/users/deleteSession',
+              method: 'POST',
+              dataType: 'json',
+              success: function(res) {
+                dd.reLaunch({
+                  url: '../../login/login',
+                })
+              },
+            });
+          },
+          fail: function(res) {
+            dd.showToast({ content: '修改失败', duration: 2000 });
+            console.log('上传失败');
+          },
+          complete: function(res) {
+            dd.hideLoading();
+          }
+        });
       }
     });
   },
@@ -171,4 +179,34 @@ Page({
 
     });
   },
+
+  onFocus(e) {
+    var id = e.target.id;
+   var  style='contentTitleC['+id+'].style';
+    this.setData({ [style]: 'contentTitleF' });
+    console.log(this.data.contentTitleC);
+    //时间选择器
+    if (e.target.id == '0') dd.datePicker({
+      format: 'yyyy-MM-dd',
+      currentDate: '2019-08-04',
+      success: (res) => {
+        this.setData({ 'reportDate': res.date })
+      },
+    });
+    else if (e.detail.value == '' && e.target.id == '2') this.setData({ 'placeholder': '请输入数字' })
+    else if (e.detail.value == '' && e.target.id == '3') this.setData({ 'placeholderTwo': '请输入数字' })
+    else if (e.detail.value == '' && e.target.id == '4') this.setData({ 'placeholderThree': '请输入数字' })
+  },
+  onBlur(e) {
+    var id = e.target.id;
+    var  style='contentTitleC['+id+'].style';
+    if (e.detail.value != "") this.setData({ [style]: 'contentTitle' });
+    else this.setData({ [style]: 'contentTitleC' });
+    if (e.target.id == '2') this.setData({ 'placeholder': '' })
+    else if (e.target.id == '3') this.setData({ 'placeholderTwo': '' })
+    else if (e.target.id == '4') this.setData({ 'placeholderThree': '' })
+  }
+
+
+
 });

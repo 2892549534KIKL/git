@@ -1,37 +1,31 @@
 <view class="page">
   <form onSubmit="onSubmit" onReset="onReset">
-    <view class="page-section">
-      <view class="page-section-title">今日工作</view>
-      <view class="page-section-demo">
-        <textarea class="detailText" auto-height='true' onInput='savedetails' placeholder="请输入今日工作" bindblur="bindTextAreaBlur" value="{{details}}"></textarea>
-      </view>
+    <view class="content">
+     <view class="contentPart"><text class="need">*</text><text class="{{contentTitleC[0].style}}">{{contentTitle[0]}}</text></view>
+     <input  placeholder="@TA" onFocus="onFocus"   onBlur="onBlur" value="{{reportDate}}" id="0"/>
+         <view class="contentPart"><text class="need">*</text><text class="{{contentTitleC[1].style}}">{{contentTitle[1]}}</text></view>
+     <input   onFocus="onFocus"   onBlur="onBlur"  id="1"/>
+          <view class="contentPart"><text class="need">*</text><text class="{{contentTitleC[2].style}}">{{contentTitle[2]}}</text></view>
+     <input  placeholder="{{placeholder}}" id="2"   onFocus="onFocus"   onBlur="onBlur" />
+     <view class="contentPart"><text class="needTwo"></text><text class="{{contentTitleC[3].style}}">{{contentTitle[3]}}</text></view>
+     <input  placeholder="{{placeholderTwo}}" id="3"  onFocus="onFocus"   onBlur="onBlur" />
+      <view class="contentPart"><text class="needTwo"></text><text class="{{contentTitleC[4].style}}">{{contentTitle[4]}}</text></view>
+     <input placeholder="{{placeholderThree}}"     id="4" onFocus="onFocus"   onBlur="onBlur" />
+        <view class="contentPart"><text class="needTwo"></text><text class="{{contentTitleC[5].style}}">{{contentTitle[5]}}</text></view>
+     <textarea auto-height='true' maxlength='-1' id="5" onFocus="onFocus"   onBlur="onBlur" ></textarea>     
+      <view class="contentPart"><text class="needTwo"></text><text class="{{contentTitleC[6].style}}">{{contentTitle[6]}}</text></view>
+     <input    id="6" onFocus="onFocus"   onBlur="onBlur" />
     </view>
-    <view class="page-section">
-      <view class="page-section-title">明日计划</view>
-      <view class="page-section-demo">
-        <textarea class="detailText" auto-height='true' onInput='savedetails' placeholder="请输入明日计划" bindblur="bindTextAreaBlur" value="{{details}}"></textarea>
-      </view>
+    <text>\n</text>
+  
+     <view class="content">
+   <text class="needTwo"></text> <text class="contentTitleC">图片</text><image class='image'  src="{{image}}"/>
+   <view class="level"></view>
+   <text class="needTwo"></text> <text class="contentTitleC">附件</text><image class='image'  src="{{file}}"/>
     </view>
-    <view class="page-section">
-      <view class="page-section-title">需协调工作</view>
-      <view class="page-section-demo">
-        <textarea class="detailText" auto-height='true' onInput='savedetails' placeholder="请输入需协调工作" bindblur="bindTextAreaBlur" value="{{details}}"></textarea>
-      </view>
-    </view>
-    <view class="page-section">
-      <view class="page-section-title">备注</view>
-      <view class="page-section-demo">
-        <textarea class="detailText" auto-height='true' onInput='savedetails' placeholder="请输入备注" bindblur="bindTextAreaBlur" value="{{details}}"></textarea>
-      </view>
-    </view>
-    <view class="page-section">
-      <view class="page-section-title">图片</view>
-      <view class="page-section-demo" onTap="uploadFile" style="padding-left:0.32rem;">
-        <image style="width: 90rpx;height: 90rpx;border-radius: 10px;" src="{{imagePath}}" />
-      </view>
-    </view>
-    <view class="page-section-demo">
+        <text>\n</text>
+    <view class="button">
       <button type="primary" formType="submit">提交</button>
-    </view>
+      </view>
   </form>
 </view>
