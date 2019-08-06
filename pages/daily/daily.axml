@@ -2,7 +2,7 @@
   <form onSubmit="onSubmit" onReset="onReset">
     <view class="content">
      <view class="contentPart"><text class="need">*</text><text class="{{contentTitleC[0].style}}">{{contentTitle[0]}}</text></view>
-     <input  placeholder="@TA" onFocus="onFocus"   onBlur="onBlur" value="{{reportDate}}" id="0"/>
+     <input  placeholder="" onFocus="onFocus"   onBlur="onBlur" value="{{reportDate}}" id="0"/>
          <view class="contentPart"><text class="need">*</text><text class="{{contentTitleC[1].style}}">{{contentTitle[1]}}</text></view>
      <input   onFocus="onFocus"   onBlur="onBlur"  id="1"/>
           <view class="contentPart"><text class="need">*</text><text class="{{contentTitleC[2].style}}">{{contentTitle[2]}}</text></view>

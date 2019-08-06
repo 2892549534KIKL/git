@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/index/index",
-        "pages/login/login",
-      "pages/department/department",
-       "pages/logShow/index",
-     "pages/index/index",
-     "pages/ComeOutIndex/out/out",
+    "pages/department/department",
+    "pages/logShow/index",
+    "pages/index/index",
+    "pages/ComeOutIndex/out/out",
     "pages/ComeOutIndex/in/in",
     "pages/login/login",
     "pages/approval/approval",
@@ -30,7 +30,7 @@
   ],
   "window": {
     "defaultTitle": "业务汇报管理系统欢迎您",
-    "allowsBounceVertical":"NO"
+    "allowsBounceVertical": "NO"
   },
   "tabBar": {
     "textColor": "#404040",

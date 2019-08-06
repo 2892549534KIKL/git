@@ -169,3 +169,10 @@
 .none{
   display: none;
 }
+.searchPerson{
+  margin-bottom:-1.2rem;
+  height: 35px;
+  line-height: 35px;
+  margin-top: 0rem;
+  margin-bottom: none;
+}
