@@ -140,11 +140,14 @@ button {
 
 input{
   border:0;border-bottom:1rpx solid #DDDDDD;
-  width: 100%;
+  width:92%;
+  margin-left:32rpx;
 }
 
 textarea{
   border:0;border-bottom:1rpx solid #DDDDDD;
+  width:92%;
+  margin-left:32rpx;
 }
 
 .button{
