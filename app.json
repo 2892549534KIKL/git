@@ -1,0 +1,41 @@
+{
+  "pages": [
+        "pages/index/index",
+
+        "pages/select/select",
+
+    "pages/login/login",
+    "pages/myHome/myHome",
+    "pages/myHome/myInformation/myInformation",
+    "pages/myHome/changePassword/changePassword"
+  ],
+  "window": {
+    "defaultTitle": "安全眼",
+    "allowsBounceVertical": "NO"
+  },
+  "tabBar": {
+    "textColor": "#404040",
+    "selectedColor": "#108ee9",
+    "backgroundColor": "#F5F5F9",
+    "items": [
+      {
+        "pagePath": "pages/index/index",
+        "icon": "pages/images/home1.png",
+        "activeIcon": "pages/images/home2.png",
+        "name": "首页"
+      },
+      {
+        "pagePath": "pages/select/select",
+        "icon": "pages/images/select1.png",
+        "activeIcon": "pages/images/select2.png",
+        "name": "查询"
+      },
+      {
+        "pagePath": "pages/myHome/myHome",
+        "icon": "pages/images/my1.png",
+        "activeIcon": "pages/images/my2.png",
+        "name": "我的"
+      }
+    ]
+  }
+}

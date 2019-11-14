@@ -1,0 +1,33 @@
+<view class="page">
+  <form onSubmit="onSubmit" onReset="onReset">
+    <view class="page-section">
+      <label class="logo">
+        <image src="../images/logo.png"/>
+        <text>\n</text>
+      </label>
+
+      <text>\n</text>
+      <view class="form-row" style="margin-top:30px;">
+        <!-- <view class="form-row-label">账号</view> -->
+        <view class="form-row-content login_input_border">
+          <input name="name" class="input login_input" placeholder="请输入账号.." />
+        </view>
+      </view>
+      <text>\n</text>
+      <view class="form-row">
+        <!-- <view class="form-row-label">密码</view> -->
+        <view class="form-row-content login_input_border">
+          <input name="password" class="input login_input" password="true" placeholder="请输入密码.." />
+        </view>
+      </view>
+      <text>\n</text>
+      <view class="page-section-demo">
+        <button type="primary" formType="submit" class="login_btn">绑定钉钉</button>
+      </view>
+    </view>
+  </form>
+</view>
+<view>
+  <text>系统提示:{{userData.errmsg}}\n</text>
+  <text>本人数据:\n{{userName}}\nid:{{userid}}\n</text>
+</view>

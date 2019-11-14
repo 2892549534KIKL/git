@@ -1,0 +1,74 @@
+<view class="mainBackground">
+  <view style="position: fixed; width: 100%;height: 35px;">
+    <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+        <!-- 搜索框 -->
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" onBlur="save" placeholder="请输入搜索内容"/>
+        </view>
+        <view class="select_view">
+          <button class="select_but" size="mini" type="primary" onTap="datePicker">日期查询</button>
+          <button class="select_but" size="mini" type="primary" onTap="getPeopleAndDepartment">员工\部门查询</button>
+          <button class="select_but" size="mini" type="primary" onTap="getExceptions">异常查询</button>
+        </view>
+      </view>
+      <!-- 搜索按钮,调用搜索查询方法 -->
+      <view class="weui-search-bar__cancel-btn" onTap='search'>搜索</view>
+    </view>
+  </view>
+  <view style="margin-top: 34px;"></view>
+  <view style="background-color:rgb(242,242,242)">
+    <block a:for="{{sign}}">
+      <!--<block a:for="{{hideViewId}}" key=""> -->
+      <!-- 开始循环读取js中的数组 -->
+      <view class="box {{sign[index].createTime=='-1'?'none ':'block'}}">
+        <!-- 如果等于-1就表示已删除,界面隐藏此记录 -->
+        <view class="box_txt">
+          <text class="box_title">{{sign[index].name}}\n
+          </text>
+          </text>
+          <!-- 签到地址 -->
+          <text class="">({{sign[index].address}})\n</text>
+          <!-- 签到状态 -->
+          <text class="">状态:{{sign[index].state}}\n</text>
+          <!-- 签到时间 -->
+          <view class="box_bottom">
+            <text class="">签到时间:{{sign[index].createTime}}\n</text>
+            <!--<button onTap="alter" size="mini" data-id="{{sign[index].id}}" data-index="{{index}}" type="primary">修改</button> -->
+            <button onTap="show" size="mini" data-id="{{sign[index].id}}" data-index="{{index}}" type="primary">修改</button>
+          </view>
+        </view>
+      </view>
+      <!-- 读取结束 -->
+      <!--</block> -->
+    </block>
+    <text style='position:fixed;width:100%;bottom:0' class="over_box  {{showView?'block':'none'}}">已加载全部数据</text>
+    <!-- 弹窗 -->
+    <view class='toast-box' a:if="{{isShowWindow}}">
+      <view onTap="hide" class='toastbg'></view>
+      <view class='showToast'>
+        <view class='toast-title'>
+          <text>请选择状态</text>
+        </view>
+        <view class='toast-main'>
+          <view class='toast-input'>
+            <radio-group class="radio-group" onChange="radioChange">
+              <label class="radio" a:for="{{items}}">
+                <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+              </label>
+            </radio-group>
+          </view>
+        </view>
+        <view class='toast-button'>
+          <view class='button1'>
+            <button onTap='check' data-value='yes'>确认</button>
+          </view>
+          <view class='button2'>
+            <button onTap='check' data-value='no'>取消</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

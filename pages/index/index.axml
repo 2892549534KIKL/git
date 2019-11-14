@@ -1,0 +1,39 @@
+<view>
+  <view class="top">可视化图形(饼状图)</view>
+  <view class="centre">
+    <button type="primary">已签到:{{checkedIn}}</button>
+    <button type="default">未签到:{{NoCheckedIn}}</button>
+    <button type="warn">异常:{{exceptions}}</button>
+  </view>
+  <view class="bottom1">
+    签到排名
+    <block a:for="{{topThreeSign}}">
+      <view>
+        <image mode="" src="{{topThreeImage[index]}}"/>
+        <text class="peopleName">{{topThreeSign[index].name}}</text>
+        <text class="time">{{topThreeSign[index].time}}</text>
+      </view>
+    </block>
+  </view>
+  实时签到数据(名字--签到时间)
+  <block a:for="{{signData}}">
+    <view class="bottom2">
+      <view class="bottom2_view1">
+        <view>
+          <view class="bottom2_view1_photo">
+            {{signData[index].name}}
+          </view>
+          <text style="font-weight: bold;font-size: 30rpx;">{{signData[index].name}}</text>
+        </view>
+        <view class="bottom2_view2">
+          <text style="font-size: 20rpx;">{{signData[index].time}} 今日已签到{{signData[index].number}}次</text>
+        </view>
+        <view style="margin-top:5px;">
+          <text class="bottom2_view3" style="font-size: 25rpx;">
+            {{signData[index].site}}
+          </text>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
