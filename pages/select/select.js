@@ -225,7 +225,7 @@ Page({
       },
     });
   },
-  //获取员工id 或 部门id
+  //获取员工id 或 部门id(但获取不了子部门)
   getPeopleAndDepartment() {
     dd.complexChoose({
       title: "测试标题",            //标题
@@ -259,7 +259,48 @@ Page({
   //获取签到异常记录
   getExceptions(){
     dd.showToast({ content: '获取签到异常记录', duration: 2000 });
-  }
+  },
+  //获取部门签到(可以获取子部门)
+  getDepartment() {
+    dd.chooseDepartments({
+      title: "测试标题",            //标题
+      multiple: true,            //是否多选
+      limitTips: "超出了",          //超过限定人数返回提示
+      maxDepartments: 100,            //最大选择部门数量
+      pickedDepartments: [],          //已选部门
+      disabledDepartments: [],        //不可选部门
+      requiredDepartments: [],        //必选部门（不可取消选中状态）
+      permissionType: "xxx",          //选人权限，目前只有GLOBAL这个参数
+      success: function(res) {
+        dd.alert({
+          content: `选取的部门信息:${JSON.stringify(res)}`,
+        });
+        /**
+        {
+            userCount:1,                              //选择人数
+            departmentsCount:1，//选择的部门数量
+            departments:[{"id":,"name":"","number":}]//返回已选部门列表，列表中每个对象包含id（部门id）、name（部门名称）、number（部门人数）
+        }
+        */
+      },
+      fail: function(err) {
+      }
+    });
+  },
+  //打开与某个用户的聊天页面
+   postMessage2(e) {
+    dd.openChatByUserId({
+      userId: '266301101526061205',//e.target.dataset.value, // 用户的工号
+      success: res => {
+
+      },
+      fail: err => {
+        dd.alert({
+          content: `调用失败后返回数据:${JSON.stringify(err)}`,
+        });
+      }
+    })
+  },
   
 
 });
