@@ -1,0 +1,9 @@
+<view>
+  <view class='imagesize'>
+    <image src="../images/temp.png" class='in-image'   >
+    </image>
+  </view>
+  <view>
+    <text class="text_temp">手机端开发中...</text>
+  </view>
+</view>
