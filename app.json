@@ -1,10 +1,9 @@
 {
   "pages": [
-        "pages/select/select",
-
-            "pages/login/login",
+        "pages/index/index",
+    "pages/login/login",
+    "pages/select/select",
     "pages/temp/temp",
-    "pages/index/index",
     "pages/myHome/myHome",
     "pages/myHome/myInformation/myInformation",
     "pages/myHome/changePassword/changePassword"

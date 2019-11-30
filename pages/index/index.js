@@ -1,7 +1,7 @@
 Page({
   data: {
-    checkedIn: 199,//已签到人数
-    NoCheckedIn: 30,//已签到人数
+    checkedIn: 30,//已签到人数
+    NoCheckedIn: 120,//未签到人数
     exceptions: 5,//异常人数
     topThreeImage: ['../images/no1.png', '../images/no2.png', '../images/no3.png'],//前三签到图标
     topThreeSign: [//前三签到数据

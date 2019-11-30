@@ -6,7 +6,7 @@ Page({
     var that = this;
     //1:获取token
     dd.httpRequest({
-      url: 'http://192.168.137.1:8080/sign/DD_API/getAccess_token',
+      url: 'http://222.216.30.107:8080/sign/DD_API/getAccess_token',
       method: 'get',
       dataType: 'json',
       success: function(res) {
@@ -27,11 +27,11 @@ Page({
               headers: {
                 "Content-Type": "application/string"
               },
-              url: 'http://192.168.137.1:8080/sign/DD_API/getDDUser',
+              url: 'http://222.216.30.107:8080/sign/DD_API/getDDUser',
               method: 'POST',
               data: (that.data.authCode),
               success: function(res) {
-                // console.log('userid:' + JSON.parse(res.data).userid);
+                console.log('userid:' + JSON.parse(res.data).userid);
                 that.setData({
                   userid: JSON.parse(res.data).userid,
                   userName: JSON.parse(res.data).name,
@@ -42,7 +42,7 @@ Page({
                   headers: {
                     "Content-Type": "application/json"
                   },
-                  url: 'http://192.168.137.1:8080/sign/users/findByDdUserId',
+                  url: 'http://222.216.30.107:8080/sign/users/findByDdUserId',
                   method: 'POST',
                   data: (
                     that.data.userid
@@ -118,7 +118,7 @@ Page({
         headers: {
           "Content-Type": "application/json"
         },
-        url: 'http://192.168.137.1:8080/sign/users/login',
+        url: 'http://222.216.30.107:8080/sign/users/login',
         method: 'POST',
         data: JSON.stringify({
           name: e.detail.value.name,

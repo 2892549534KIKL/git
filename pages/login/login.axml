@@ -27,7 +27,7 @@
     </view>
   </form>
 </view>
-<view>
+<!-- <view>
   <text>系统提示:{{userData.errmsg}}\n</text>
   <text>本人数据:\n{{userName}}\nid:{{userid}}\n</text>
-</view>
+</view> -->

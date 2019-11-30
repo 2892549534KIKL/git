@@ -1,12 +1,54 @@
 <view>
-  <view class="top">可视化图形(饼状图)</view>
+  <view class="title">签到统计</view>
+  <view class="treeMap">
+    <view class="site_name">江西:</view>
+    <text class="type1">归属范围内签到:30</text>
+    <text class="type2">超出归属地签到:40</text>
+    <text class="type3">超出省范围签到:30</text>
+  </view>
+  <view class='section'>
+    <view class='jx_tree1'>30</view>
+    <view class='jx_tree2'>40</view>
+    <view class='jx_tree3'>30</view>
+  </view>
+  <view class="treeMap">
+    <view class="site_name">福建:</view>
+    <text class="type1">归属范围内签到:30</text>
+    <text class="type2">超出归属地签到:20</text>
+    <text class="type3">超出省范围签到:50</text>
+  </view>
+  <view class='section'>
+    <view class='fj_tree1'>30</view>
+    <view class='fj_tree2'>20</view>
+    <view class='fj_tree3'>50</view>
+  </view>
+  <view class="treeMap">
+    <view class="site_name">浙江:</view>
+    <text class="type1">归属范围内签到:10</text>
+    <text class="type2">超出归属地签到:40</text>
+    <text class="type3">超出省范围签到:50</text>
+  </view>
+  <view class='section'>
+    <view class='zj_tree1'>10</view>
+    <view class='zj_tree2'>40</view>
+    <view class='zj_tree3'>50</view>
+  </view>
+  <view class="treeMap">
+    <text class="sign_yes">已到岗30</text>
+    <text class="sign_no">未到岗120</text></view>
+  <view class='section'>
+    <view class='tree1'>30</view>
+    <view class='tree2'>120</view>
+  </view>
+  <view class="centre">
+  </view>
   <view class="centre">
     <button type="primary">已签到:{{checkedIn}}</button>
     <button type="default">未签到:{{NoCheckedIn}}</button>
     <button type="warn">异常:{{exceptions}}</button>
   </view>
+  <view class="title">签到排名</view>
   <view class="bottom1">
-    签到排名
     <block a:for="{{topThreeSign}}">
       <view>
         <image mode="" src="{{topThreeImage[index]}}"/>
@@ -15,7 +57,7 @@
       </view>
     </block>
   </view>
-  实时签到数据(名字--签到时间)
+  <view class="title">实时签到数据</view>
   <block a:for="{{signData}}">
     <view class="bottom2">
       <view class="bottom2_view1">
