@@ -6,7 +6,7 @@ Page({
     var that = this;
     //1:获取token
     dd.httpRequest({
-      url: 'http://192.168.137.1:8080/sign/DD_API/getAccess_token',
+      url: 'http://localhost:8081/sign/DD_API/getAccess_token',
       method: 'get',
       dataType: 'json',
       success: function(res) {
@@ -27,7 +27,7 @@ Page({
               headers: {
                 "Content-Type": "application/string"
               },
-              url: 'http://192.168.137.1:8080/sign/DD_API/getDDUser',
+              url: 'http://localhost:8081/sign/DD_API/getDDUser',
               method: 'POST',
               data: (that.data.authCode),
               success: function(res) {
@@ -42,7 +42,7 @@ Page({
                   headers: {
                     "Content-Type": "application/json"
                   },
-                  url: 'http://192.168.137.1:8080/sign/users/findByDdUserId',
+                  url: 'http://localhost:8081/sign/users/findByDdUserId',
                   method: 'POST',
                   data: (
                     that.data.userid
@@ -118,7 +118,7 @@ Page({
         headers: {
           "Content-Type": "application/json"
         },
-        url: 'http://192.168.137.1:8080/sign/users/login',
+        url: 'http://localhost:8081/sign/users/login',
         method: 'POST',
         data: JSON.stringify({
           name: e.detail.value.name,
@@ -127,6 +127,7 @@ Page({
         }),
         dataType: 'json',
         success: function(res) {
+          console.log(res);
           if (res.data.code > 0) {
             dd.setStorage({
               key: 'user',

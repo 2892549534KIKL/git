@@ -1,10 +1,10 @@
 Page({
   data: {
+    user:"",
     iD: "",
     name: "",
     nickName: "",
     sex: "",
-    status: "",
     photo: "",
     photoc: "",
     phone: "",
@@ -23,14 +23,14 @@ Page({
         if (res.data.user.sex == "禁用")
           that.data.checkedStatus = false;
         that.setData({
+          user:res.data,
           iD: res.data.user.iD,
           name: res.data.user.name,
           nickName: res.data.user.nickName,
           sex: res.data.user.sex,
           phone: res.data.user.phone,
-          status: res.data.user.status,
-          imagePath: 'http://172.16.103.20:8080/sign/' + res.data.user.photo,
-          photo: 'http://172.16.103.20:8080/sign/' + res.data.user.photo,
+          imagePath: 'http://localhost:8081/sign/' + res.data.user.photo,
+          photo: 'http://localhost:8081/sign/' + res.data.user.photo,
           photoc: res.data.user.photo,
         })
       },
@@ -62,12 +62,11 @@ Page({
         content: '加载中...',
         delay: 100,
       });
-      if(that.data.photo==that.data.imagePath){
         dd.httpRequest({
         headers: {
           "Content-Type": "application/json"
         },
-        url: 'http:/172.16.103.20:8080/sign/users/editUsers',
+        url: 'http://localhost:8081/sign/users/editUsers',
         method: 'POST',
         data: JSON.stringify({
           iD: that.data.iD,
@@ -75,100 +74,31 @@ Page({
           nickName: e.detail.value.nickName,
           phone: e.detail.value.phone,
           sex: e.detail.value.sex,
-          status: e.detail.value.status,
         }),
         dataType: 'json',
         success: function(res) {
+          that.data.user.name=e.detail.value.name;
+          that.data.user.nickName=e.detail.value.nickName;
+          that.data.user.phone=e.detail.value.phone;
+          that.data.user.sex=e.detail.value.sex;
+          that.data.user.status=e.detail.value.status;
           dd.showToast({ content: '修改成功', duration: 2000 });
-          res.data.data.photo=that.data.photoc;
-          console.log(res)
           if (res.data.code > 0) {
              dd.setStorage({
               key: 'user',
               data: {
-                 user: res.data.data
+                 user: that.data.user
               }
               });
-              dd.hideLoading();
+        
           } 
           else {
             dd.showToast({ content: '修改失败', duration: 2000 });
-            dd.hideLoading();
+       
             dd.showToast({content: res.data.msg,duration: 3000,});
           }
-        },
-      });
-      }
-      else{
-        dd.uploadFile({
-        header: {
-          "Content-Type": "multipart/form-data"
-        },
-        method: 'POST',
-        url: 'http://172.16.103.20:8080/sign/users/editUser',
-        fileType: 'image',
-        fileName: 'enclosure.files',
-        filePath: that.data.imagePath,
-        dataType: 'json',
-        formData: {
-          iD: that.data.iD,
-          name: e.detail.value.name,
-          nickName: e.detail.value.nickName,
-          phone: e.detail.value.phone,
-          sex: e.detail.value.sex,
-          status: e.detail.value.status,
-          'enclosure.photo':that.data.photoc
-        },
-        success: res => {
-        console.log(res);
-        dd.showToast({ content: '修改成功', duration: 2000 });
-        // var obj = JSON.parse(res.data);
-        //  dd.setStorage({
-        //       key: 'user',
-        //       data: {
-        //          user: obj.data
-        //       }
-        //   });
-        dd.httpRequest({
-          headers: {
-            "Content-Type": "application/json"
-          },
-          url: 'http://172.16.103.20:8080/sign/users/deleteSession',
-          method: 'POST',
-          dataType: 'json',
-          success: function(res) {
-            dd.reLaunch({
-              url: '../../login/login',
-            })
-          },
-        });
-        },
-        fail: function(res) {
-          dd.showToast({ content: '修改失败', duration: 2000 });
-           console.log('上传失败');
-        },
-        complete: function(res) {
-          dd.hideLoading();
         }
       });
-      }
-    });
-  },
-  //图片上传
-  uploadFile() {
-    var that = this;
-    dd.chooseImage({
-      sourceType: ['camera', 'album'],
-      count: 1,
-      success: res => {
-        const path = (res.filePaths && res.filePaths[0]) || (res.apFilePaths && res.apFilePaths[0]);
-        that.setData({
-          imagePath: path,
-        })
-        console.log("updataImg:" + that.data.imagePath);
-
-      },
-
     });
   },
 });

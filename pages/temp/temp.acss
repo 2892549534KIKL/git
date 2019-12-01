@@ -1,0 +1,22 @@
+.temp{
+  width: 100px;
+  height: 100px;
+ display:flex;                  
+ justify-content: center;    
+}    
+.imagesize{
+ display:flex;
+ height: 600px;                    
+ justify-content: center;        
+ align-items:center;                
+ 
+}
+.imagesize image { 
+  width:300rpx;
+  height:300rpx;
+}
+.text_temp{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

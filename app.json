@@ -1,12 +1,14 @@
 {
   "pages": [
-        "pages/login/login",
-
+   "pages/login/login",
+    "pages/temp/temp",
+    "pages/login/login",
     "pages/select/select",
     "pages/index/index",
     "pages/myHome/myHome",
     "pages/myHome/myInformation/myInformation",
     "pages/myHome/changePassword/changePassword"
+    
   ],
   "window": {
     "defaultTitle": "安全眼",
