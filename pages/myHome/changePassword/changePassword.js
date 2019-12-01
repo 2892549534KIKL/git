@@ -49,7 +49,7 @@ Page({
         headers: {
           "Content-Type": "application/json"
         },
-        url: 'http://39.96.30.233/zjp/users/editPass',
+        url: 'http://localhost:8081/sign/users/editPass',
         method: 'POST',
         data: JSON.stringify({
              iD:that.data.iD,
@@ -70,7 +70,7 @@ Page({
                         headers: {
                           "Content-Type": "application/json"
                         },
-                        url: 'http://39.96.30.233/zjp/users/deleteSession',
+                        url: 'http://localhost:8081/sign/users/deleteSession',
                         method: 'POST',
                         dataType: 'json',
                         success: function(res) {
