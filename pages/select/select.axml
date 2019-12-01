@@ -28,14 +28,13 @@
         <view class="box_txt">
           <text class="box_title">{{sign[index].name}}\n
           </text>
-          </text>
           <!-- 签到地址 -->
-          <text class="">({{sign[index].address}})\n</text>
+          <text class="">({{sign[index].detailPlace}})\n</text>
           <!-- 签到状态 -->
-          <text class="">状态:{{sign[index].state}}\n</text>
+          <text class="">状态:{{sign[index].type}}\n</text>
           <!-- 签到时间 -->
           <view class="box_bottom">
-            <text class="">签到时间:{{sign[index].createTime}}\n</text>
+            <text class="">签到时间:{{sign[index].timestamp}}\n</text>
             <!--<button onTap="alter" size="mini" data-id="{{sign[index].id}}" data-index="{{index}}" type="primary">修改</button> -->
             <button onTap="show" size="mini" data-id="{{sign[index].id}}" data-index="{{index}}" type="primary">修改</button>
           </view>

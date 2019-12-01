@@ -21,7 +21,7 @@ Page({
       delay: 100,
     });
     dd.httpRequest({
-      url: 'http://39.96.30.233/zjp/constructionSite/findByCondition',
+      url: 'http://localhost:8081/sign/signin/findByConditionTwo',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -29,9 +29,11 @@ Page({
       data: JSON.stringify({
         page: that.data.page,
         rowsCount: that.data.rowsCount,
+        sort:'倒序',
       }),
       dataType: 'json',
       success: function(res) {
+        console.log(res);
         that.setData({
           sign: res.data.data,
         })
@@ -43,6 +45,7 @@ Page({
           });
         }
       }, fail: function(res) {
+        console.log(res);
         dd.alert({ content: '无法连接数据,请查看控制台' });
         console.log("错误:" + res);
       },
@@ -64,7 +67,7 @@ Page({
       delay: 100,
     });
     dd.httpRequest({
-      url: 'http://39.96.30.233/zjp/constructionSite/findByCondition',
+      url: 'http://localhost:8081/sign/signin/findByConditionTwo',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -73,6 +76,7 @@ Page({
         page: that.data.page,
         rowsCount: that.data.rowsCount,
         condition: that.data.searchText,
+        sort:'倒序',
       }),
       dataType: 'json',
       success: function(res) {
@@ -133,7 +137,7 @@ Page({
         page: that.data.page + 1
       })
       dd.httpRequest({
-        url: 'http://39.96.30.233/zjp/constructionSite/findByCondition',
+        url: 'http://localhost:8081/sign/signin/findByConditionTwo',
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
@@ -142,11 +146,13 @@ Page({
           page: that.data.page,
           rowsCount: that.data.rowsCount,
           condition: that.data.searchText,
+          sort:'倒序',
         }),
         dataType: 'json',
         success: function(res) {
           //如果没查到数据就重置page页码
           if (res.data.data.length < that.data.rowsCount) {
+            console.log("结束")
             for (var i = 0; i < res.data.data.length; i++) {
               that.setData({
                 sign: that.data.sign.concat(res.data.data[i]),
@@ -164,12 +170,6 @@ Page({
               })
             }
           }
-          //一秒后再启动流加载
-          setTimeout(() => {
-            that.setData({
-              loaderSign: false,
-            })
-          }, 1000);
         }, fail: function(res) {
           dd.alert({ content: '无法连接数据,请查看控制台' });
           console.log("错误:" + res);
