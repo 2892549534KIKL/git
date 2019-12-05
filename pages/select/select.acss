@@ -316,7 +316,7 @@
 
 .toast-button {
   display: flex;
-  margin-top: -9px;
+  margin-top: -13px;
 }
 
 .button1 {

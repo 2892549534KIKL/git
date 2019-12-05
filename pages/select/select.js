@@ -12,8 +12,9 @@ Page({
     dateEnd:null,//结束时间
     list:null,
     items: [
-      { name: '正常', value: '正常' },
-      { name: '异常', value: '异常' },
+      { name: '归属范围内签到', value: '归属范围内签到' },
+      { name: '超出归属地签到', value: '超出归属地签到' },
+      { name: '超出省范围签到', value: '超出省范围签到' },
     ]
   },
   //页面初始化时加载
@@ -213,6 +214,7 @@ Page({
     this.setData({ isShowWindow: false, });
   },
   show(e) {
+    console.log(e);
     this.setData({ isShowWindow: true, id: e.currentTarget.dataset.id, index: e.currentTarget.dataset.index });
   },
   //弹窗的确认\取消点击事件

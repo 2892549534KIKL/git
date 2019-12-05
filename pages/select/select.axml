@@ -34,7 +34,7 @@
           <view class="box_bottom">
             <text class="">签到时间:{{sign[index].timestamp}}\n</text>
             <!--<button onTap="alter" size="mini" data-id="{{sign[index].id}}" data-index="{{index}}" type="primary">修改</button> -->
-            <button onTap="show" size="mini" data-id="{{sign[index].id}}" data-index="{{index}}" type="primary">修改</button>
+            <button onTap="show()" size="mini" data-id="{{sign[index].id}}" data-index="{{index}}" type="primary">修改</button>
           </view>
         </view>
       </view>
