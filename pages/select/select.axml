@@ -9,9 +9,7 @@
         </view>
         <view class="select_view">
           <button class="select_but" size="mini" type="primary" onTap="datePicker">日期查询</button>
-          <button class="select_but" size="mini" type="primary" onTap="getPeopleAndDepartment">员工查询</button>
           <button class="select_but" size="mini" type="primary" onTap="getDepartment">部门查询</button>
-          <button class="select_but" size="mini" type="primary" onTap="getExceptions">异常查询</button>
         </view>
       </view>
       <!-- 搜索按钮,调用搜索查询方法 -->

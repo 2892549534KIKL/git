@@ -8,6 +8,9 @@ Page({
     searchText: null,//搜索文本
     isShowWindow: false,//弹窗
     changeValue: '',//选中的值
+    date:null,//开始时间
+    dateEnd:null,//结束时间
+    list:null,
     items: [
       { name: '正常', value: '正常' },
       { name: '异常', value: '异常' },
@@ -54,6 +57,21 @@ Page({
       }
     });
   },
+  //获取今天
+  today(){
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    if (month < 10) {
+        month = "0" + month;
+    }
+    if (day < 10) {
+        day = "0" + day;
+    }
+    var nowDate = year + '-'+ month + '-' + day; 
+    return nowDate;
+  },
   //查询搜索的接口方法
   search() {
     var that = this;
@@ -75,7 +93,10 @@ Page({
       data: JSON.stringify({
         page: that.data.page,
         rowsCount: that.data.rowsCount,
-        condition: that.data.searchText,
+        projectCondition: that.data.searchText,
+        date:that.data.date,
+        dateEnd:that.data.dateEnd,
+        list:that.data.list,
         sort:'倒序',
       }),
       dataType: 'json',
@@ -145,7 +166,10 @@ Page({
         data: JSON.stringify({
           page: that.data.page,
           rowsCount: that.data.rowsCount,
-          condition: that.data.searchText,
+          projectCondition: that.data.searchText,
+          date:that.data.date,
+          dateEnd:that.data.dateEnd,
+          list:that.data.list,
           sort:'倒序',
         }),
         dataType: 'json',
@@ -206,22 +230,23 @@ Page({
     that.setData({ changeValue: e.detail.value, });
   },
   datePicker() {
+    var that = this;
     dd.datePicker({
       format: 'yyyy-MM-dd',
-      currentDate: '2012-12-12',
+      currentDate: that.today(),
       success: (res) => {
-        dd.showToast({ content: '请再选择结束时间', duration: 2000 });
-        var startTime = res.date;
-        dd.datePicker({
-          format: 'yyyy-MM-dd',
-          currentDate: '2012-12-12',
-          success: (res) => {
-            dd.alert({
-              content: startTime + '-->' + res.date,
-            });
-          },
-        });
-
+        if(res.date!=null){
+          dd.showToast({ content: '请再选择结束时间', duration: 2000 });
+          var startTime = res.date;
+          dd.datePicker({
+            format: 'yyyy-MM-dd',
+            currentDate: that.today(),
+            success: (res) => {
+              that.setData({ date: startTime,dateEnd: res.date});
+              that.search();
+            },
+          });
+        }
       },
     });
   },
@@ -241,9 +266,7 @@ Page({
       permissionType: "xxx",          //可添加权限校验，选人权限，目前只有GLOBAL这个参数
       responseUserOnly: false,        //返回人，或者返回人和部门
       success: function(res) {
-        dd.alert({
-          content: `选取的部门或人员信息:${JSON.stringify(res)}`,
-        });
+        console.log(res)
         /**
         {
             selectedCount:1,                              //选择人数
@@ -262,6 +285,7 @@ Page({
   },
   //获取部门签到(可以获取子部门)
   getDepartment() {
+    var that= this;
     dd.chooseDepartments({
       title: "测试标题",            //标题
       multiple: true,            //是否多选
@@ -272,9 +296,14 @@ Page({
       requiredDepartments: [],        //必选部门（不可取消选中状态）
       permissionType: "xxx",          //选人权限，目前只有GLOBAL这个参数
       success: function(res) {
-        dd.alert({
-          content: `选取的部门信息:${JSON.stringify(res)}`,
-        });
+        console.log(res);
+        var list = [];
+        for(var i = 0;i<res.departmentsCount;i++){
+          if(res.departments[i].id==-1) list[i]=1;
+          else list[i]=res.departments[i].id;
+        }
+        if(list[0]!=1) that.setData({ list: list});;
+        that.search();
         /**
         {
             userCount:1,                              //选择人数
