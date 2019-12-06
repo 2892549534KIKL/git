@@ -215,7 +215,7 @@ Page({
   },
   show(e) {
     console.log(e);
-    this.setData({ isShowWindow: true, id: e.currentTarget.dataset.id, index: e.currentTarget.dataset.index });
+    // this.setData({ isShowWindow: true, id: e.currentTarget.dataset.id, index: e.currentTarget.dataset.index });
   },
   //弹窗的确认\取消点击事件
   check(e) {
