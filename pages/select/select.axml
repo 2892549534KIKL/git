@@ -28,7 +28,6 @@
         <view class="box_txt">
           <text class="box_title">{{sign[index].name}}\n
           </text>
-          </text>
           <!-- 签到地址 -->
           <text class="">({{sign[index].address}})\n</text>
           <!-- 签到状态 -->

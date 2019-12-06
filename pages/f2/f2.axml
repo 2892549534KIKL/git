@@ -1,0 +1,3 @@
+<view class="container">
+  <canvas id="column-dom" canvas-id="column" opts="{{ opts }}"></canvas>
+</view>
