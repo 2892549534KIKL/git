@@ -1,38 +1,10 @@
 <view>
   <view class="title">签到统计</view>
-  <view class="treeMap">
-    <view class="site_name">江西:</view>
-    <text class="type1">归属范围内签到:30</text>
-    <text class="type2">超出归属地签到:40</text>
-    <text class="type3">超出省范围签到:30</text>
+  <view class="bigData">
+    <canvas id="pie" disable-scroll=true onTouchStart="touchStart" onTouchMove="touchMove" onTouchEnd="touchEnd" width="{{width}}" height="{{height}}" />
+    <canvas id="stackBar" disable-scroll=true onTouchStart="touchStart" onTouchMove="touchMove" onTouchEnd="touchEnd" width="{{width}}" height="{{height}}" />
   </view>
-  <view class='section'>
-    <view class='jx_tree1'>30</view>
-    <view class='jx_tree2'>40</view>
-    <view class='jx_tree3'>30</view>
-  </view>
-  <view class="treeMap">
-    <view class="site_name">福建:</view>
-    <text class="type1">归属范围内签到:30</text>
-    <text class="type2">超出归属地签到:20</text>
-    <text class="type3">超出省范围签到:50</text>
-  </view>
-  <view class='section'>
-    <view class='fj_tree1'>30</view>
-    <view class='fj_tree2'>20</view>
-    <view class='fj_tree3'>50</view>
-  </view>
-  <view class="treeMap">
-    <view class="site_name">浙江:</view>
-    <text class="type1">归属范围内签到:10</text>
-    <text class="type2">超出归属地签到:40</text>
-    <text class="type3">超出省范围签到:50</text>
-  </view>
-  <view class='section'>
-    <view class='zj_tree1'>10</view>
-    <view class='zj_tree2'>40</view>
-    <view class='zj_tree3'>50</view>
-  </view>
+
   <view class="treeMap">
     <text class="sign_yes">已到岗30</text>
     <text class="sign_no">未到岗120</text></view>
