@@ -165,7 +165,7 @@ Page({
   getNewSignList(id){
     var that=this;
     dd.httpRequest({
-      url: 'http://localhost:8081/sign/signin/getNewSignInListTwo',
+      url: 'http://222.216.30.107:8080/sign/signin/getNewSignInListTwo',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -239,7 +239,7 @@ Page({
   search(){
     var that=this;
     dd.httpRequest({
-      url: 'http://localhost:8081/sign/signin/findByCondition',
+      url: 'http://222.216.30.107:8080/sign/signin/findByCondition',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -313,7 +313,7 @@ Page({
   searchTwo(){
     var that=this;
     dd.httpRequest({
-      url: 'http://localhost:8081/sign/signin/findByCondition',
+      url: 'http://222.216.30.107:8080/sign/signin/findByCondition',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -334,7 +334,7 @@ Page({
   Count(){
     var that=this;
     dd.httpRequest({
-      url: 'http://localhost:8081/sign/staff/getCount',
+      url: 'http://222.216.30.107:8080/sign/staff/getCount',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -354,7 +354,7 @@ Page({
   rank(){
     var that = this;
     dd.httpRequest({
-      url: 'http://localhost:8081/sign/signin/findByConditionTwo',
+      url: 'http://222.216.30.107:8080/sign/signin/findByConditionTwo',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"

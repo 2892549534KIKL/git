@@ -25,7 +25,7 @@ Page({
       delay: 100,
     });
     dd.httpRequest({
-      url: 'http://localhost:8081/sign/signin/findByConditionTwo',
+      url: 'http://222.216.30.107:8080/sign/signin/findByConditionTwo',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -86,7 +86,7 @@ Page({
       delay: 100,
     });
     dd.httpRequest({
-      url: 'http://localhost:8081/sign/signin/findByConditionTwo',
+      url: 'http://222.216.30.107:8080/sign/signin/findByConditionTwo',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -159,7 +159,7 @@ Page({
         page: that.data.page + 1
       })
       dd.httpRequest({
-        url: 'http://localhost:8081/sign/signin/findByConditionTwo',
+        url: 'http://222.216.30.107:8080/sign/signin/findByConditionTwo',
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
@@ -228,7 +228,7 @@ Page({
     this.setData({ isShowWindow: false, });
     if (e.target.dataset.value != "no") {
       dd.httpRequest({
-        url: 'http://localhost:8081/sign/signin/edit',
+        url: 'http://222.216.30.107:8080/sign/signin/edit',
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
