@@ -6,18 +6,13 @@
   </view>
 
   <view class="treeMap">
-    <text class="sign_yes">已到岗30</text>
-    <text class="sign_no">未到岗120</text></view>
+    <text class="sign_yes">已到岗{{num1}}</text>
+    <text class="sign_no">未到岗{{num2}}</text></view>
   <view class='section'>
-    <view class='tree1'>30</view>
-    <view class='tree2'>120</view>
+    <view class='tree1'>{{num1}}</view>
+    <view class='tree2'>{{num2}}</view>
   </view>
   <view class="centre">
-  </view>
-  <view class="centre">
-    <button type="primary">已签到:{{checkedIn}}</button>
-    <button type="default">未签到:{{NoCheckedIn}}</button>
-    <button type="warn">异常:{{exceptions}}</button>
   </view>
   <view class="title">签到排名</view>
   <view class="bottom1">
@@ -25,7 +20,7 @@
       <view>
         <image mode="" src="{{topThreeImage[index]}}"/>
         <text class="peopleName">{{topThreeSign[index].name}}</text>
-        <text class="time">{{topThreeSign[index].time}}</text>
+        <text class="time">{{topThreeSign[index].timestamp.slice(11)}}</text>
       </view>
     </block>
   </view>
@@ -40,11 +35,11 @@
           <text style="font-weight: bold;font-size: 30rpx;">{{signData[index].name}}</text>
         </view>
         <view class="bottom2_view2">
-          <text style="font-size: 20rpx;">{{signData[index].time}} 今日已签到{{signData[index].number}}次</text>
+          <text style="font-size: 20rpx;">{{signData[index].timestamp.slice(11)}}</text>
         </view>
         <view style="margin-top:5px;">
           <text class="bottom2_view3" style="font-size: 25rpx;">
-            {{signData[index].site}}
+            {{signData[index].detailPlace}}
           </text>
         </view>
       </view>

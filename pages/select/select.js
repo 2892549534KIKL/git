@@ -12,9 +12,9 @@ Page({
     dateEnd:null,//结束时间
     list:null,
     items: [
-      { name: '归属范围内签到', value: '归属范围内签到' },
-      { name: '超出归属地签到', value: '超出归属地签到' },
-      { name: '超出省范围签到', value: '超出省范围签到' },
+      { name: '归属范围内签到', value: '归属范围内签到' ,checked:false},
+      { name: '超出归属地签到', value: '超出归属地签到' ,checked:false},
+      { name: '超出省范围签到', value: '超出省范围签到' ,checked:false},
     ]
   },
   //页面初始化时加载
@@ -214,15 +214,35 @@ Page({
     this.setData({ isShowWindow: false, });
   },
   show(e) {
-    console.log(e);
-    // this.setData({ isShowWindow: true, id: e.currentTarget.dataset.id, index: e.currentTarget.dataset.index });
+    for(var i = 0;i < this.data.items.length;i++){
+       this.data.items[i].checked=false;
+      if(this.data.items[i].name==e.currentTarget.dataset.type){
+         this.data.items[i].checked=true;
+      }
+    }
+    this.setData({ isShowWindow: true, id: e.currentTarget.dataset.id, index: e.currentTarget.dataset.index,changeValue:e.currentTarget.dataset.type ,items:this.data.items});
   },
   //弹窗的确认\取消点击事件
   check(e) {
     var that = this;
     this.setData({ isShowWindow: false, });
     if (e.target.dataset.value != "no") {
-      dd.alert({ content: '确认' + that.data.changeValue });
+      dd.httpRequest({
+        url: 'http://localhost:8081/sign/signin/edit',
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: JSON.stringify({
+          id: that.data.id,
+          type: that.data.changeValue
+        }),
+        dataType: 'json',
+        success: function(res) {
+          that.data.sign[that.data.index].type=that.data.changeValue;
+          that.setData({sign:that.data.sign})
+        }
+      });
     } else {
       dd.alert({ content: '取消' });
     }

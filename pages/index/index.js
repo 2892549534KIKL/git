@@ -3,23 +3,8 @@ const app = getApp();
 
 let chart = null;//饼状图
 let chart_bar = null;//条形图
-function drawChart(canvas, width, height) {
-  const map = {
-    '芳华': '40%',
-    '妖猫传': '20%',
-    '机器之血': '18%',
-    '心理罪': '15%',
-    '寻梦环游记': '5%',
-    '其他': '2%',
-  };
-  const data = [
-    { name: '芳华', percent: 0.4, a: '1' },
-    { name: '妖猫传', percent: 0.2, a: '1' },
-    { name: '机器之血', percent: 0.18, a: '1' },
-    { name: '心理罪', percent: 0.15, a: '1' },
-    { name: '寻梦环游记', percent: 0.05, a: '1' },
-    { name: '其他', percent: 0.02, a: '1' }
-  ];
+function drawChart(data,canvas, width, height) {
+  var data = data;
   chart = new F2.Chart({
     el: canvas,
     width,
@@ -35,7 +20,11 @@ function drawChart(canvas, width, height) {
   chart.legend({
     position: 'right',
     itemFormatter(val) {
-      return val + '  ' + map[val];
+      var name='';
+      for(var i=0;i<data.length;i++){
+        if(val==data[i].name) name=data[i].percent*100
+      }
+      return val + '  ' +name+'%';
     }
   });
   chart.tooltip(false);
@@ -64,24 +53,8 @@ function drawChart(canvas, width, height) {
   chart.render();
   return chart;
 }
-function drawChart_bar(canvas, width, height) {
-  var data = [
-    { State: 'WY', 年龄段: '小于5岁', 人口数量: 25635 },
-    { State: 'WY', 年龄段: '5至13岁', 人口数量: 1890 },
-    { State: 'WY', 年龄段: '14至17岁', 人口数量: 9314 },
-    { State: 'DC', 年龄段: '小于5岁', 人口数量: 30352 },
-    { State: 'DC', 年龄段: '5至13岁', 人口数量: 20439 },
-    { State: 'DC', 年龄段: '14至17岁', 人口数量: 10225 },
-    { State: 'VT', 年龄段: '小于5岁', 人口数量: 38253 },
-    { State: 'VT', 年龄段: '5至13岁', 人口数量: 42538 },
-    { State: 'VT', 年龄段: '14至17岁', 人口数量: 15757 },
-    { State: 'ND', 年龄段: '小于5岁', 人口数量: 51896 },
-    { State: 'ND', 年龄段: '5至13岁', 人口数量: 67358 },
-    { State: 'ND', 年龄段: '14至17岁', 人口数量: 18794 },
-    { State: 'AK', 年龄段: '小于5岁', 人口数量: 72083 },
-    { State: 'AK', 年龄段: '5至13岁', 人口数量: 85640 },
-    { State: 'AK', 年龄段: '14至17岁', 人口数量: 22153 }
-  ];
+function drawChart_bar(data,canvas, width, height) {
+  var data = data;
   var chart_bar = new F2.Chart({
     el: canvas,
     width,
@@ -89,7 +62,7 @@ function drawChart_bar(canvas, width, height) {
   });
 
   chart_bar.source(data, {
-    '人口数量': {
+    '数量': {
       tickCount: 5
     }
   });
@@ -100,12 +73,12 @@ function drawChart_bar(canvas, width, height) {
     line: F2.Global._defaultAxis.line,
     grid: null
   });
-  chart_bar.axis('人口数量', {
+  chart_bar.axis('数量', {
     line: null,
     grid: F2.Global._defaultAxis.grid,
     label: function (text, index, total) {
       var textCfg = {
-        text: text / 1000 + ' k'
+        text: text + ' 人'
       };
       if (index === 0) {
         textCfg.textAlign = 'left';
@@ -139,7 +112,7 @@ function drawChart_bar(canvas, width, height) {
       legend.setItems(chart_bar.getLegendItems().country);
     }
   });
-  chart_bar.interval().position('State*人口数量').color('年龄段').adjust('stack');
+  chart_bar.interval().position('State*数量').color('状态').adjust('stack');
 
   chart_bar.render();
   return chart_bar;
@@ -147,22 +120,81 @@ function drawChart_bar(canvas, width, height) {
 
 Page({
   data: {
-    checkedIn: 30,//已签到人数
-    NoCheckedIn: 120,//未签到人数
-    exceptions: 5,//异常人数
+    num1:1,
+    num2:2,
+    count:null,
+    list:null,
+    Data:[
+    { State: '福建', 状态: '归属范围内签到', 数量: 0 },
+    { State: '福建', 状态: '超出归属地签到', 数量: 0 },
+    { State: '福建', 状态: '超出省范围签到', 数量: 0 },
+    { State: '江西', 状态: '归属范围内签到', 数量: 0 },
+    { State: '江西', 状态: '超出归属地签到', 数量: 0 },
+    { State: '江西', 状态: '超出省范围签到', 数量: 0 },
+    { State: '浙江', 状态: '归属范围内签到', 数量: 0 },
+    { State: '浙江', 状态: '超出归属地签到', 数量: 0 },
+    { State: '浙江', 状态: '超出省范围签到', 数量: 0 },
+    ],
+    DataTwo:[
+    { name: '归属范围内签到', percent: 0.4},
+    { name: '超出归属地签到', percent: 0.4},
+    { name: '超出省范围签到', percent: 0.1},
+    { name: '未到岗', percent: 0.1},
+    ],  
     topThreeImage: ['../images/no1.png', '../images/no2.png', '../images/no3.png'],//前三签到图标
-    topThreeSign: [//前三签到数据
-      { name: '张三', time: '08:35' },
-      { name: '李四', time: '08:36' },
-      { name: '王五', time: '08:37' },
-    ],
-    signData: [
-      { name: '张三', time: '08:35', number: 2, site: '福建省福州市鼓楼区安泰街道福州鼓楼新高达教育培训中心(南门校区)新兴大厦(斗西路)' },
-      { name: '李四', time: '08:36', number: 1, site: '江西省赣州市章贡区黄金岭街道迎宾大道辅路赣州富翔斯巴鲁汽车销售服务有限公司' },
-      { name: '王五', time: '08:37', number: 3, site: '福建省福州市鼓楼区湖东路140号' },
-    ],
+    topThreeSign: [],//前三签到数据
+    signData: null
   },
-  onReady() {
+  onLoad() {
+    var that = this;
+    dd.getStorage({
+      key: 'user',
+      success: function(res) {
+        if (res.data.user.department != null && res.data.user.department != "") {
+          that.setData({list : res.data.user.department.split(",")})
+          that.searchTwo();
+          that.rank();
+          that.Count();
+          setInterval(function(){
+            that.getNewSignList(res.data.user.iD);
+        },5000);
+        }
+      }
+    });
+  },
+  getNewSignList(id){
+    var that=this;
+    dd.httpRequest({
+      url: 'http://localhost:8081/sign/signin/getNewSignInListTwo',
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      data:JSON.stringify({
+        id:id
+      }),
+      dataType: 'json',
+      success: function(res) {
+        var temp=0;
+        if(res.data.data!=null){
+          for(var i=0;i<res.data.data.length;i++){
+            if(that.data.list.indexOf(res.data.data[i].groups)>-1){
+              temp++;
+              that.setData({
+                signData: that.data.signData.reverse().concat(res.data.data[i]).reverse(),
+              })
+            }
+          }
+        }
+        if(temp>0){
+          that.rank();
+          that.Count();
+        }
+      }
+    });
+  },
+  chart() {
+    var that=this;
     //饼状图
     my.createSelectorQuery()
       .select('#pie')
@@ -181,7 +213,7 @@ Page({
         myCtx.scale(pixelRatio, pixelRatio); // 必要！按照设置的分辨率进行放大
         const canvas = new F2.Renderer(myCtx);
         this.canvas = canvas;
-        drawChart(canvas, res[0].width, res[0].height);
+        drawChart(that.data.DataTwo,canvas, res[0].width, res[0].height);
       });
     //条形图
     my.createSelectorQuery()
@@ -201,8 +233,161 @@ Page({
         myCtx.scale(pixelRatio, pixelRatio); // 必要！按照设置的分辨率进行放大
         const canvas = new F2.Renderer(myCtx);
         this.canvas = canvas;
-        drawChart_bar(canvas, res[0].width, res[0].height);
+        drawChart_bar(that.data.Data,canvas, res[0].width, res[0].height);
       });
+  },
+  search(){
+    var that=this;
+    dd.httpRequest({
+      url: 'http://localhost:8081/sign/signin/findByCondition',
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      data: JSON.stringify({
+        date:that.today(),
+        projectParameter: '去重',
+        sort:'倒序',
+        list:that.data.list
+      }),
+      dataType: 'json',
+      success: function(res) {
+        var x=0;
+        var y=0;
+        var z=0;
+        for(var i = 0;i<res.data.length;i++){
+          if(res.data[i].signAdders!=null){
+                if(res.data[i].signAdders.substr(0,2)=="江西"){
+                    if(res.data[i].type=="归属范围内签到"){
+                        that.data.Data[3].数量++;
+                    }else if(res.data[i].type=="超出归属地签到"){
+                        that.data.Data[4].数量++;
+                    }else if(res.data[i].type=="超出省范围签到"){
+                        that.data.Data[5].数量++;
+                    }
+                }
+                else if(res.data[i].signAdders.substr(0,2)=="福建"){
+                    if(res.data[i].type=="归属范围内签到"){
+                        that.data.Data[0].数量++;
+                    }else if(res.data[i].type=="超出归属地签到"){
+                        that.data.Data[1].数量++;
+                    }else if(res.data[i].type=="超出省范围签到"){
+                        that.data.Data[2].数量++;
+                    }
+                }
+                else if(res.data[i].signAdders.substr(0,2)=="浙江"){
+                    if(res.data[i].type=="归属范围内签到"){
+                        that.data.Data[6].数量++;
+                    }else if(res.data[i].type=="超出归属地签到"){
+                        that.data.Data[7].数量++;
+                    }else if(res.data[i].type=="超出省范围签到"){
+                        that.data.Data[8].数量++;
+                    }
+                }
+            }
+
+            if(res.data[i].type=="归属范围内签到"){
+                x++;
+            }else if(res.data[i].type=="超出归属地签到"){
+                y++;
+            }else if(res.data[i].type=="超出省范围签到"){
+                z++;
+            }
+        }
+
+        that.data.DataTwo[0].percent=Math.floor(x/that.data.count * 10000) / 10000;
+        that.data.DataTwo[1].percent=Math.floor(y/that.data.count * 10000) / 10000;
+        that.data.DataTwo[2].percent=Math.floor(z/that.data.count * 10000) / 10000;
+        that.data.DataTwo[3].percent=Math.floor((that.data.count-x-y-z)/that.data.count * 10000) / 10000;
+
+        that.setData({
+          num1:x+y+z,
+          num2:(that.data.count-x-y-z),
+          Data: that.data.Data,
+          DataTwo:that.data.DataTwo
+        })
+        that.chart();
+      }
+    });
+  },
+  searchTwo(){
+    var that=this;
+    dd.httpRequest({
+      url: 'http://localhost:8081/sign/signin/findByCondition',
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      data: JSON.stringify({
+        date:that.today(),
+        sort:'倒序',
+        list:that.data.list
+      }),
+      dataType: 'json',
+      success: function(res) {
+        that.setData({
+          signData:res.data
+        })
+      }
+    });
+  },
+  Count(){
+    var that=this;
+    dd.httpRequest({
+      url: 'http://localhost:8081/sign/staff/getCount',
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      data: JSON.stringify({
+        list:that.data.list
+      }),
+      dataType: 'json',
+      success: function(res) {
+        that.setData({
+          count: res.data
+        })
+        that.search();
+      }
+    });
+  },
+  rank(){
+    var that = this;
+    dd.httpRequest({
+      url: 'http://localhost:8081/sign/signin/findByConditionTwo',
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      data: JSON.stringify({
+        page: 1,
+        rowsCount: 3,
+        date:that.today(),
+        list:that.data.list
+      }),
+      dataType: 'json',
+      success: function(res) {
+        that.setData({
+          topThreeSign: res.data.data,
+        })
+ 
+      }
+    });
+  },
+  //获取今天
+  today(){
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    if (month < 10) {
+        month = "0" + month;
+    }
+    if (day < 10) {
+        day = "0" + day;
+    }
+    var nowDate = year + '-'+ month + '-' + day; 
+    return nowDate;
   },
   touchStart(e) {
     if (this.canvas) {
