@@ -6,11 +6,7 @@ Page({
     var that = this;
     //1:获取token
     dd.httpRequest({
-<<<<<<< HEAD
       url: 'http://222.216.30.107:8080/sign/DD_API/getAccess_token',
-=======
-      url: 'http://localhost:8081/sign/DD_API/getAccess_token',
->>>>>>> e52ca21450753e81958c324e56f3f3e665f57aa1
       method: 'get',
       dataType: 'json',
       success: function(res) {
@@ -31,11 +27,7 @@ Page({
               headers: {
                 "Content-Type": "application/string"
               },
-<<<<<<< HEAD
               url: 'http://222.216.30.107:8080/sign/DD_API/getDDUser',
-=======
-              url: 'http://localhost:8081/sign/DD_API/getDDUser',
->>>>>>> e52ca21450753e81958c324e56f3f3e665f57aa1
               method: 'POST',
               data: (that.data.authCode),
               success: function(res) {
@@ -50,11 +42,7 @@ Page({
                   headers: {
                     "Content-Type": "application/json"
                   },
-<<<<<<< HEAD
                   url: 'http://222.216.30.107:8080/sign/users/findByDdUserId',
-=======
-                  url: 'http://localhost:8081/sign/users/findByDdUserId',
->>>>>>> e52ca21450753e81958c324e56f3f3e665f57aa1
                   method: 'POST',
                   data: (
                     that.data.userid
@@ -130,11 +118,7 @@ Page({
         headers: {
           "Content-Type": "application/json"
         },
-<<<<<<< HEAD
         url: 'http://222.216.30.107:8080/sign/users/login',
-=======
-        url: 'http://localhost:8081/sign/users/login',
->>>>>>> e52ca21450753e81958c324e56f3f3e665f57aa1
         method: 'POST',
         data: JSON.stringify({
           name: e.detail.value.name,
