@@ -252,7 +252,7 @@
 }
 
 .block{
-  padding-top: 52px;
+  /* padding-top: 52px; */
   display: block;
 }
 .none{

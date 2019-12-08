@@ -101,7 +101,7 @@ background-color: #3296FA;
 width: 70%;
 height: 40px;
 margin-right: 5%;
-background-color: #C0C0C08C;
+background-color:  	#FACC14;
 }
 .bg_green {
 background: greenye l low;

@@ -18,10 +18,11 @@
   </view>
   <view style="margin-top: 34px;"></view>
   <view style="background-color:rgb(242,242,242)">
+    <view style="height:52px"></view>
     <block a:for="{{sign}}">
       <!--<block a:for="{{hideViewId}}" key=""> -->
       <!-- 开始循环读取js中的数组 -->
-      <view class="box {{sign[index].createTime=='-1'?'none ':'block'}}" data-id="{{sign[index].id}}" onTap="postMessage2">
+      <view class="box {{sign[index].createTime=='-1'?'none ':'block'}}" data-id="{{sign[index].userId}}" onTap="postMessage2">
         <!-- 如果等于-1就表示已删除,界面隐藏此记录 -->
         <view class="box_txt">
           <text class="box_title">{{sign[index].name}}\n

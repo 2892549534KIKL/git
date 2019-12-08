@@ -341,7 +341,7 @@ Page({
   //打开与某个用户的聊天页面
    postMessage2(e) {
     dd.openChatByUserId({
-      userId: '266301101526061205',//e.target.dataset.value, // 用户的工号
+      userId: e.target.dataset.id, // 用户的工号
       success: res => {
 
       },
