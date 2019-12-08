@@ -30,20 +30,6 @@
         </view>
       </view>
       <text>\n</text>
-      <view class="form-row">
-        <view class="form-row-label">状态</view>
-        <radio-group name="status">
-          <label><radio value="启用" checked="{{checkedSex}}"/>启用</label>
-          <label><radio value="禁用" checked="{{!checkedSex}}"/>禁用</label>
-        </radio-group>
-      </view>
-      <text>\n</text>
-      <view class="form-row">
-        <view class="form-row-label">头像</view>
-        <image style="width: 180rpx;height: 180rpx;border-radius:50%" src="{{imagePath}}" />
-        <button type="primary"  onTap="uploadFile">上传图片</button>
-      </view>
-      <text>\n</text>
       <view class="page-section-demo">
         <button type="primary" formType="submit">确认修改</button>
       </view>

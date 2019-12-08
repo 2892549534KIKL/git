@@ -9,9 +9,7 @@
         </view>
         <view class="select_view">
           <button class="select_but" size="mini" type="primary" onTap="datePicker">日期查询</button>
-          <button class="select_but" size="mini" type="primary" onTap="getPeopleAndDepartment">员工查询</button>
           <button class="select_but" size="mini" type="primary" onTap="getDepartment">部门查询</button>
-          <button class="select_but" size="mini" type="primary" onTap="getExceptions">异常查询</button>
         </view>
       </view>
       <!-- 搜索按钮,调用搜索查询方法 -->
@@ -29,14 +27,14 @@
           <text class="box_title">{{sign[index].name}}\n
           </text>
           <!-- 签到地址 -->
-          <text class="">({{sign[index].address}})\n</text>
+          <text class="">({{sign[index].detailPlace}})\n</text>
           <!-- 签到状态 -->
-          <text class="">状态:{{sign[index].state}}\n</text>
+          <text class="">状态:{{sign[index].type}}\n</text>
           <!-- 签到时间 -->
           <view class="box_bottom">
-            <text class="">签到时间:{{sign[index].createTime}}\n</text>
+            <text class="">签到时间:{{sign[index].timestamp}}\n</text>
             <!--<button onTap="alter" size="mini" data-id="{{sign[index].id}}" data-index="{{index}}" type="primary">修改</button> -->
-            <button onTap="show" size="mini" data-id="{{sign[index].id}}" data-index="{{index}}" type="primary">修改</button>
+            <button onTap="show()" size="mini" data-id="{{sign[index].id}}" data-index="{{index}}" type="primary">修改</button>
           </view>
         </view>
       </view>

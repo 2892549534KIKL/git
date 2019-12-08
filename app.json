@@ -1,5 +1,13 @@
 {
   "pages": [
+<<<<<<< HEAD
+=======
+     "pages/select/select",
+        "pages/select/select",
+
+            "pages/login/login",
+    "pages/temp/temp",
+>>>>>>> e52ca21450753e81958c324e56f3f3e665f57aa1
     "pages/index/index",
     "pages/login/login",
     "pages/select/select",
