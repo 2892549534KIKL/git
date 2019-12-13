@@ -2,7 +2,7 @@
   <form onSubmit="onSubmit" onReset="onReset">
     <view class="page-section">
       <label class="logo">
-        <image src="../images/logo.png"/>
+        <image class="logo_img" src="../images/logo.png"/>
         <text>\n</text>
       </label>
 

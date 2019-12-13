@@ -30,7 +30,7 @@
           <!-- 签到地址 -->
           <text class="">({{sign[index].detailPlace}})\n</text>
           <!-- 签到状态 -->
-          <text class="">状态:{{sign[index].type}}\n</text>
+          状态:<text class="{{sign[index].type=='超出省范围签到'?'ccsfw':sign[index].type=='超出归属地签到'?'ccgsd':sign[index].type=='归属范围内签到'?'gsfwn':'wszgsd'}}">{{sign[index].type}}\n</text>
           <!-- 签到时间 -->
           <view class="box_bottom">
             <text class="">签到时间:{{sign[index].timestamp}}\n</text>

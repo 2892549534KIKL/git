@@ -93,12 +93,10 @@ canvas {
 }
 .tree1 {
 margin-left: 5%;
-width: 20%;
 height: 40px;
 background-color: #3296FA;
 }
 .tree2 {
-width: 70%;
 height: 40px;
 margin-right: 5%;
 background-color:  	#FACC14;

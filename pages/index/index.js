@@ -120,10 +120,12 @@ function drawChart_bar(data,canvas, width, height) {
 
 Page({
   data: {
-    num1:1,
-    num2:2,
+    num1:1,//已到岗
+    num2:2,//未到岗
     count:null,
     list:null,
+    width:null,
+    height:null,
     Data:[
     { State: '福建', 状态: '归属范围内签到', 数量: 0 },
     { State: '福建', 状态: '超出归属地签到', 数量: 0 },
@@ -143,7 +145,9 @@ Page({
     ],  
     topThreeImage: ['../images/no1.png', '../images/no2.png', '../images/no3.png'],//前三签到图标
     topThreeSign: [],//前三签到数据
-    signData: null
+    signData: null,
+    workNumber:'50%',//已到岗的图形占比
+    noWorkNumber:'50%',//已到岗的图形占比
   },
   onLoad() {
     var that = this;
@@ -189,6 +193,7 @@ Page({
         if(temp>0){
           that.rank();
           that.Count();
+          that.chart();
         }
       }
     });
@@ -213,6 +218,14 @@ Page({
         myCtx.scale(pixelRatio, pixelRatio); // 必要！按照设置的分辨率进行放大
         const canvas = new F2.Renderer(myCtx);
         this.canvas = canvas;
+        console.log(res[0].width);
+        console.log(res[0].height);
+        that.setData({
+          width:res[0].width,
+          height:res[0].height,
+        })
+        console.log(that.data.width);
+        console.log(that.data.height);
         drawChart(that.data.DataTwo,canvas, res[0].width, res[0].height);
       });
     //条形图
@@ -305,6 +318,12 @@ Page({
           num2:(that.data.count-x-y-z),
           Data: that.data.Data,
           DataTwo:that.data.DataTwo
+        })
+        let workNumber= that.data.num1/(that.data.num1+that.data.num2)*100
+        let noWorkNumber= that.data.num2/(that.data.num1+that.data.num2)*100
+        that.setData({
+          workNumber:workNumber+"%",
+          noWorkNumber:noWorkNumber+"%",
         })
         that.chart();
       }

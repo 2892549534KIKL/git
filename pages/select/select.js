@@ -8,13 +8,13 @@ Page({
     searchText: null,//搜索文本
     isShowWindow: false,//弹窗
     changeValue: '',//选中的值
-    date:null,//开始时间
-    dateEnd:null,//结束时间
-    list:null,
+    date: null,//开始时间
+    dateEnd: null,//结束时间
+    list: null,
     items: [
-      { name: '归属范围内签到', value: '归属范围内签到' ,checked:false},
-      { name: '超出归属地签到', value: '超出归属地签到' ,checked:false},
-      { name: '超出省范围签到', value: '超出省范围签到' ,checked:false},
+      { name: '归属范围内签到', value: '归属范围内签到', checked: false },
+      { name: '超出归属地签到', value: '超出归属地签到', checked: false },
+      { name: '超出省范围签到', value: '超出省范围签到', checked: false },
     ]
   },
   //页面初始化时加载
@@ -25,7 +25,7 @@ Page({
       delay: 100,
     });
     dd.httpRequest({
-      url: 'http://222.216.30.107:8080/sign/signin/findByConditionTwo',
+      url: 'http://192.168.137.240:8080/sign/signin/findByConditionTwo',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -33,10 +33,10 @@ Page({
       data: JSON.stringify({
         page: that.data.page,
         rowsCount: that.data.rowsCount,
-        sort:'倒序',
+        sort: '倒序',
       }),
       dataType: 'json',
-      success: function(res) {
+      success: function (res) {
         console.log(res);
         that.setData({
           sign: res.data.data,
@@ -48,29 +48,29 @@ Page({
             loaderSign: false,
           });
         }
-      }, fail: function(res) {
+      }, fail: function (res) {
         console.log(res);
-        dd.alert({ content: '无法连接数据,请查看控制台' });
+        dd.alert({ content: '无法连接数据,请稍后重试' });
         console.log("错误:" + res);
       },
-      complete: function(res) {
+      complete: function (res) {
         dd.hideLoading();
       }
     });
   },
   //获取今天
-  today(){
+  today() {
     var date = new Date();
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
     var day = date.getDate();
     if (month < 10) {
-        month = "0" + month;
+      month = "0" + month;
     }
     if (day < 10) {
-        day = "0" + day;
+      day = "0" + day;
     }
-    var nowDate = year + '-'+ month + '-' + day; 
+    var nowDate = year + '-' + month + '-' + day;
     return nowDate;
   },
   //查询搜索的接口方法
@@ -86,7 +86,7 @@ Page({
       delay: 100,
     });
     dd.httpRequest({
-      url: 'http://222.216.30.107:8080/sign/signin/findByConditionTwo',
+      url: 'http://192.168.137.240:8080/sign/signin/findByConditionTwo',
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -95,13 +95,13 @@ Page({
         page: that.data.page,
         rowsCount: that.data.rowsCount,
         projectCondition: that.data.searchText,
-        date:that.data.date,
-        dateEnd:that.data.dateEnd,
-        list:that.data.list,
-        sort:'倒序',
+        date: that.data.date,
+        dateEnd: that.data.dateEnd,
+        list: that.data.list,
+        sort: '倒序',
       }),
       dataType: 'json',
-      success: function(res) {
+      success: function (res) {
         if (res.data.data.length < that.data.rowsCount) {
           that.setData({
             page: 1,
@@ -112,11 +112,11 @@ Page({
         that.setData({
           sign: res.data.data,
         })
-      }, fail: function(res) {
-        dd.alert({ content: '无法连接数据,请查看控制台' });
+      }, fail: function (res) {
+        dd.alert({ content: '无法连接数据,请稍后重试' });
         console.log("错误:" + res);
       },
-      complete: function(res) {
+      complete: function (res) {
         dd.hideLoading();
       }
     });
@@ -152,14 +152,14 @@ Page({
     // });
   },
   //流加载
-  onReachBottom: function() {
+  onReachBottom: function () {
     var that = this;
     if (this.data.loaderSign) {
       that.setData({
         page: that.data.page + 1
       })
       dd.httpRequest({
-        url: 'http://222.216.30.107:8080/sign/signin/findByConditionTwo',
+        url: 'http://192.168.137.240:8080/sign/signin/findByConditionTwo',
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
@@ -168,13 +168,13 @@ Page({
           page: that.data.page,
           rowsCount: that.data.rowsCount,
           projectCondition: that.data.searchText,
-          date:that.data.date,
-          dateEnd:that.data.dateEnd,
-          list:that.data.list,
-          sort:'倒序',
+          date: that.data.date,
+          dateEnd: that.data.dateEnd,
+          list: that.data.list,
+          sort: '倒序',
         }),
         dataType: 'json',
-        success: function(res) {
+        success: function (res) {
           //如果没查到数据就重置page页码
           if (res.data.data.length < that.data.rowsCount) {
             console.log("结束")
@@ -195,11 +195,11 @@ Page({
               })
             }
           }
-        }, fail: function(res) {
-          dd.alert({ content: '无法连接数据,请查看控制台' });
+        }, fail: function (res) {
+          dd.alert({ content: '无法连接数据,请稍后重试' });
           console.log("错误:" + res);
         },
-        complete: function(res) {
+        complete: function (res) {
           dd.hideLoading();
         }
       });
@@ -214,13 +214,13 @@ Page({
     this.setData({ isShowWindow: false, });
   },
   show(e) {
-    for(var i = 0;i < this.data.items.length;i++){
-       this.data.items[i].checked=false;
-      if(this.data.items[i].name==e.currentTarget.dataset.type){
-         this.data.items[i].checked=true;
+    for (var i = 0; i < this.data.items.length; i++) {
+      this.data.items[i].checked = false;
+      if (this.data.items[i].name == e.currentTarget.dataset.type) {
+        this.data.items[i].checked = true;
       }
     }
-    this.setData({ isShowWindow: true, id: e.currentTarget.dataset.id, index: e.currentTarget.dataset.index,changeValue:e.currentTarget.dataset.type ,items:this.data.items});
+    this.setData({ isShowWindow: true, id: e.currentTarget.dataset.id, index: e.currentTarget.dataset.index, changeValue: e.currentTarget.dataset.type, items: this.data.items });
   },
   //弹窗的确认\取消点击事件
   check(e) {
@@ -228,7 +228,7 @@ Page({
     this.setData({ isShowWindow: false, });
     if (e.target.dataset.value != "no") {
       dd.httpRequest({
-        url: 'http://222.216.30.107:8080/sign/signin/edit',
+        url: 'http://192.168.137.240:8080/sign/signin/edit',
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
@@ -238,13 +238,13 @@ Page({
           type: that.data.changeValue
         }),
         dataType: 'json',
-        success: function(res) {
-          that.data.sign[that.data.index].type=that.data.changeValue;
-          that.setData({sign:that.data.sign})
+        success: function (res) {
+          that.data.sign[that.data.index].type = that.data.changeValue;
+          that.setData({ sign: that.data.sign })
         }
       });
     } else {
-      dd.alert({ content: '取消' });
+      // dd.alert({ content: '取消' });
     }
   },
   radioChange(e) {
@@ -257,14 +257,14 @@ Page({
       format: 'yyyy-MM-dd',
       currentDate: that.today(),
       success: (res) => {
-        if(res.date!=null){
+        if (res.date != null) {
           dd.showToast({ content: '请再选择结束时间', duration: 2000 });
           var startTime = res.date;
           dd.datePicker({
             format: 'yyyy-MM-dd',
             currentDate: that.today(),
             success: (res) => {
-              that.setData({ date: startTime,dateEnd: res.date});
+              that.setData({ date: startTime, dateEnd: res.date });
               that.search();
             },
           });
@@ -287,7 +287,7 @@ Page({
       requiredDepartments: [],        //必选部门（不可取消选中状态）
       permissionType: "xxx",          //可添加权限校验，选人权限，目前只有GLOBAL这个参数
       responseUserOnly: false,        //返回人，或者返回人和部门
-      success: function(res) {
+      success: function (res) {
         console.log(res)
         /**
         {
@@ -297,17 +297,17 @@ Page({
         }
         */
       },
-      fail: function(err) {
+      fail: function (err) {
       }
     })
   },
   //获取签到异常记录
-  getExceptions(){
+  getExceptions() {
     dd.showToast({ content: '获取签到异常记录', duration: 2000 });
   },
   //获取部门签到(可以获取子部门)
   getDepartment() {
-    var that= this;
+    var that = this;
     dd.chooseDepartments({
       title: "测试标题",            //标题
       multiple: true,            //是否多选
@@ -317,14 +317,14 @@ Page({
       disabledDepartments: [],        //不可选部门
       requiredDepartments: [],        //必选部门（不可取消选中状态）
       permissionType: "xxx",          //选人权限，目前只有GLOBAL这个参数
-      success: function(res) {
+      success: function (res) {
         console.log(res);
         var list = [];
-        for(var i = 0;i<res.departmentsCount;i++){
-          if(res.departments[i].id==-1) list[i]=1;
-          else list[i]=res.departments[i].id;
+        for (var i = 0; i < res.departmentsCount; i++) {
+          if (res.departments[i].id == -1) list[i] = 1;
+          else list[i] = res.departments[i].id;
         }
-        if(list[0]!=1) that.setData({ list: list});;
+        if (list[0] != 1) that.setData({ list: list });;
         that.search();
         /**
         {
@@ -334,16 +334,19 @@ Page({
         }
         */
       },
-      fail: function(err) {
+      fail: function (err) {
       }
     });
   },
   //打开与某个用户的聊天页面
-   postMessage2(e) {
+  postMessage2(e) {
+    var that = this;
+    if (that.data.isShowWindow) {
+      return;
+    }
     dd.openChatByUserId({
       userId: e.target.dataset.id, // 用户的工号
       success: res => {
-
       },
       fail: err => {
         dd.alert({
@@ -351,7 +354,8 @@ Page({
         });
       }
     })
+
   },
-  
+
 
 });

@@ -29,8 +29,8 @@ Page({
           nickName: res.data.user.nickName,
           sex: res.data.user.sex,
           phone: res.data.user.phone,
-          imagePath: 'http://222.216.30.107:8080/sign/' + res.data.user.photo,
-          photo: 'http://222.216.30.107:8080/sign/' + res.data.user.photo,
+          imagePath: 'http://192.168.137.240:8080/sign/' + res.data.user.photo,
+          photo: 'http://192.168.137.240:8080/sign/' + res.data.user.photo,
           photoc: res.data.user.photo,
         })
       },
@@ -66,7 +66,7 @@ Page({
         headers: {
           "Content-Type": "application/json"
         },
-        url: 'http://222.216.30.107:8080/sign/users/editUsers',
+        url: 'http://192.168.137.240:8080/sign/users/editUsers',
         method: 'POST',
         data: JSON.stringify({
           iD: that.data.iD,

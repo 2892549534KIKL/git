@@ -6,7 +6,7 @@ Page({
     var that = this;
     //1:获取token
     dd.httpRequest({
-      url: 'http://222.216.30.107:8080/sign/DD_API/getAccess_token',
+      url: 'http://192.168.137.240:8080/sign/DD_API/getAccess_token',
       method: 'get',
       dataType: 'json',
       success: function(res) {
@@ -27,7 +27,7 @@ Page({
               headers: {
                 "Content-Type": "application/string"
               },
-              url: 'http://222.216.30.107:8080/sign/DD_API/getDDUser',
+              url: 'http://192.168.137.240:8080/sign/DD_API/getDDUser',
               method: 'POST',
               data: (that.data.authCode),
               success: function(res) {
@@ -42,13 +42,14 @@ Page({
                   headers: {
                     "Content-Type": "application/json"
                   },
-                  url: 'http://222.216.30.107:8080/sign/users/findByDdUserId',
+                  url: 'http://192.168.137.240:8080/sign/users/findByDdUserId',
                   method: 'POST',
                   data: (
                     that.data.userid
                   ),
                   dataType: 'json',
                   success: function(res) {
+                    // console.log(res.data.msg);
                     console.log('登录后数据:' + JSON.stringify(res.data.data));
                     //已绑定账号
                     if (res.data.code > 0) {
@@ -118,7 +119,7 @@ Page({
         headers: {
           "Content-Type": "application/json"
         },
-        url: 'http://222.216.30.107:8080/sign/users/login',
+        url: 'http://192.168.137.240:8080/sign/users/login',
         method: 'POST',
         data: JSON.stringify({
           name: e.detail.value.name,
@@ -141,8 +142,8 @@ Page({
             })
           }
           else {
+            dd.alert({ content: JSON.stringify(res.data.msg)});
             dd.hideLoading();
-            dd.showToast({ content: res.data.msg, duration: 3000, });
           }
         },
       });

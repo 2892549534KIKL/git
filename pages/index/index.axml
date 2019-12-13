@@ -9,8 +9,8 @@
     <text class="sign_yes">已到岗{{num1}}</text>
     <text class="sign_no">未到岗{{num2}}</text></view>
   <view class='section'>
-    <view class='tree1'>{{num1}}</view>
-    <view class='tree2'>{{num2}}</view>
+    <view class='tree1' style="width:{{workNumber}}">{{num1}}</view>
+    <view class='tree2' style="width:{{noWorkNumber}}">{{num2}}</view>
   </view>
   <view class="centre">
   </view>

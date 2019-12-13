@@ -30,7 +30,7 @@
     </navigator>
     <view class="line"></view>
   </block>
-  <view onTap="out" class="form-row">
+  <!-- <view onTap="out" class="form-row">
     <view class="form-row-label">
       <image class="box_img" src='../images/myHomeTuichu.png'></image>
       <text class="box_text">退出登录</text>
@@ -38,6 +38,6 @@
         <view class='arrow'></view>
       </view>
     </view>
-  </view>
+  </view> -->
 </view>
 <view style="width:100%;background-color:rgb(221,221,221);height:1px;"></view>
