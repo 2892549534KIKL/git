@@ -126,6 +126,7 @@ Page({
     list:null,
     width:null,
     height:null,
+    firstInit:true,
     Data:[
     { State: '福建', 状态: '归属范围内签到', 数量: 0 },
     { State: '福建', 状态: '超出归属地签到', 数量: 0 },
@@ -215,7 +216,9 @@ Page({
           height: canvasHeight * pixelRatio
         });
         const myCtx = my.createCanvasContext('pie');
-        myCtx.scale(pixelRatio, pixelRatio); // 必要！按照设置的分辨率进行放大
+        if(that.data.firstInit){
+          myCtx.scale(pixelRatio, pixelRatio); // 必要！按照设置的分辨率进行放大
+        }
         const canvas = new F2.Renderer(myCtx);
         this.canvas = canvas;
         console.log(res[0].width);
@@ -243,10 +246,15 @@ Page({
           height: canvasHeight * pixelRatio
         });
         const myCtx = my.createCanvasContext('stackBar');
-        myCtx.scale(pixelRatio, pixelRatio); // 必要！按照设置的分辨率进行放大
+        if(that.data.firstInit){
+          myCtx.scale(pixelRatio, pixelRatio); // 必要！按照设置的分辨率进行放大
+        }
         const canvas = new F2.Renderer(myCtx);
         this.canvas = canvas;
         drawChart_bar(that.data.Data,canvas, res[0].width, res[0].height);
+        that.setData({
+          firstInit:false,
+        })
       });
   },
   search(){
