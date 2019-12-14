@@ -4,14 +4,14 @@
   <view class="top_box_img">
     <image src="{{photo==null?'../images/my.png':photo}}" />
   </view>
+</view>
+<view class="top_box_back">
   <view class="top_box_text_nickName">
     {{nickName}}
   </view>
-  <view class="top_box_text_companyName">
+  <!-- <view class="top_box_text_companyName">
     江西*******有限公司
-  </view>
-</view>
-<view class="top_box_back">
+  </view> -->
 </view>
 <!-- 底部导航栏部分 -->
 <view style="width:100%;background-color:rgb(221,221,221);height:1px;"></view>

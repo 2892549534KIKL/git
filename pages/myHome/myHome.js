@@ -22,7 +22,7 @@ Page({
             that.setData({
               nickName:res.data.user.nickName,
             })
-            if(res.data.user.photo!=null) { that.setData({  photo:'http://192.168.137.240:8080/sign/'+res.data.user.photo, }) } 
+            if(res.data.user.photo!=null) { that.setData({  photo:'http://222.216.30.107:8080/sign/'+res.data.user.photo, }) } 
           },
           fail: function(res){
             dd.alert({content: res.errorMessage});
@@ -34,7 +34,7 @@ Page({
   //       headers: {
   //         "Content-Type": "application/json"
   //       },
-  //       url: 'http://192.168.137.240:8080/sign/users/deleteSession',
+  //       url: 'http://222.216.30.107:8080/sign/users/deleteSession',
   //       method: 'POST',
   //       dataType: 'json',
   //       success: function(res) {

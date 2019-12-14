@@ -49,7 +49,7 @@ Page({
         headers: {
           "Content-Type": "application/json"
         },
-        url: 'http://192.168.137.240:8080/sign/users/editPass',
+        url: 'http://222.216.30.107:8080/sign/users/editPass',
         method: 'POST',
         data: JSON.stringify({
              iD:that.data.iD,
@@ -70,7 +70,7 @@ Page({
                         headers: {
                           "Content-Type": "application/json"
                         },
-                        url: 'http://192.168.137.240:8080/sign/users/deleteSession',
+                        url: 'http://222.216.30.107:8080/sign/users/deleteSession',
                         method: 'POST',
                         dataType: 'json',
                         success: function(res) {

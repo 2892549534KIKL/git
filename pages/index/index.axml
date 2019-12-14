@@ -30,7 +30,7 @@
       <view class="bottom2_view1">
         <view>
           <view class="bottom2_view1_photo">
-            {{signData[index].name}}
+            {{signData[index].name.substring(signData[index].name.length-2,signData[index].name.length)}}
           </view>
           <text style="font-weight: bold;font-size: 30rpx;">{{signData[index].name}}</text>
         </view>
